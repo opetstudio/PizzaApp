@@ -1,0 +1,87 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        jcenter()
+        google()
+        maven {
+            url 'https://maven.google.com/'
+            name 'Google'
+        }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.0.1'
+//        classpath 'com.android.tools.build:gradle:3.1.2'
+        classpath 'com.google.gms:google-services:3.2.1'
+//        classpath 'com.google.gms:google-services:3.2.0'
+//        classpath 'com.android.tools.build:gradle:2.2.3'
+//        classpath 'com.google.gms:google-services:3.2.0'
+//        classpath 'com.android.tools.build:gradle:3.1.2'
+//        classpath 'com.google.gms:google-services:3.2.1'
+//        classpath 'com.google.gms:google-services:3.2.0'
+//        classpath 'com.google.gms:google-services:4.0.1' // google-services plugin
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        mavenLocal()
+        jcenter()
+
+
+        maven {
+            // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
+            url "$rootDir/../node_modules/react-native/android"
+        }
+        maven { url "https://jitpack.io" }
+//        maven {
+//            url 'https://maven.fabric.io/public'
+//        }
+        // -------------------------------------------------
+        // Add this below the existing maven property above
+        // -------------------------------------------------
+        google()
+//        maven {
+//            url "https://maven.google.com" // Google's Maven repository
+//        }
+
+        configurations.all {
+//            resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+//                def requested = details.requested
+//                if (requested.group == 'com.android.support') {
+//                    if (!requested.name.startsWith("multidex")) {
+//                        details.useVersion '25.+'
+//                    }
+//                }
+//            }
+            resolutionStrategy {
+//                // Add force (11.4.0 is version you want to use)
+//                force 'com.google.firebase:firebase-messaging:11.8.0'
+//                force 'com.google.firebase:firebase-core:11.+'
+//                force 'com.google.firebase:firebase-core:11.8.0'
+//                force 'com.android.support:appcompat-v7:23.0.1'
+//                force 'com.android.support:support-compat:23.0.1'
+//                force 'com.google.android.gms:play-services-basement:15.+'
+//                force 'com.google.android.gms:play-services-basement:15.0.1'
+//                force 'com.google.android.gms:play-services-basement:11.8.0'
+//                force 'com.google.android.gms:play-services-tasks:11.8.0'
+//                force 'com.google.android.gms:play-services-tasks:15.+'
+//                // force "com.google.android.gms:play-services-gcm:12.0.0"
+//                // force 'com.google.android.gms:play-services-gcm:11.4.0'
+//                // compile 'com.facebook.react:react-native:+'
+//                // compile 'com.google.firebase:firebase-core:+'
+//                // compile 'com.google.firebase:firebase-messaging:+'
+//                force 'com.android.support:support-compat:26'
+//                force 'com.android.support:support-media-compat:27.1.1'
+//                force 'com.android.support:support-v4:27.1.1'
+            }
+        }
+        maven {
+            url 'https://maven.google.com/'
+            name 'Google'
+        }
+    }
+}
