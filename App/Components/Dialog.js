@@ -1,0 +1,204 @@
+import React, { Component } from 'react'
+import PropTypes from 'prop-types';
+import { View, Text, Modal, TouchableWithoutFeedback } from 'react-native'
+import Lodash from 'lodash'
+import I18n from '../I18n'
+import Overlay from './Overlay'
+import StyledText from './StyledText'
+import styles, { modalStyle } from './Styles/DialogStyle'
+import {
+  Button
+} from 'native-base'
+import { isNullOrUndefined } from 'util';
+
+const textMessage = I18n.t;
+
+export default class Dialog extends Component {
+  // // Prop type warnings
+  static propTypes = {
+    hidePopup: PropTypes.func,
+    isOpen: PropTypes.bool,
+    message: PropTypes.object,
+  }
+  //
+  // // Defaults for props
+  // static defaultProps = {
+  //   someSetting: false
+  // }
+  
+  generateActionButton(type, addedStyle, actionObject) {
+    console.log('[Popup.generateActionButton] props=>', this.props)
+    const { message, hidePopup } = this.props;
+    const onPressHandler = () => {
+      hidePopup();
+      // alert('coook')
+      if (actionObject && actionObject.handler) {
+        return actionObject.handler();
+      }
+
+      return null;
+    };
+
+    return (
+        <Button
+            onPress={onPressHandler}
+            block
+            info
+          >
+          <Text
+            style={{ color: 'white' }}
+          >     {textMessage(actionObject.name)}    </Text>
+        </Button>
+    );
+  }
+
+  render () {
+    const { isOpen, message } = this.props;
+    if (!isOpen) {
+      return null;
+    }
+    const actionButtons = message && message.actions;
+    const title = message.title ? message.title : 'popup-error';
+    const body = message.body ? message.body : '';
+    const imageBody = message.imageBody ? message.imageBody : '';
+    const imageUrl = message.imageSource ? message.imageSource : '';
+    /**
+     * This was written in order to add support for injecting
+     * components inside the popup(at title and body position).
+     *
+     * Returns component if a component is passed to it,
+     * returns a translated string if String type is passed,
+     * returns a stubbed string if an Object with the Template String and Substitute values is passed
+     *
+     * @param content { React.Component | String | {template: String, values: Object}}
+     * @returns {React.Component}
+     */
+    const renderReactElementOrString = content => {
+      if (content) {
+        if (React.isValidElement(content)) {
+          return content;
+        } else {
+          if (
+            Lodash.isPlainObject(content) &&
+            Lodash.has(content, 'template')
+          ) {
+            return textMessage(content.template);
+          } else if (
+            Lodash.isPlainObject(content) &&
+            Lodash.has(content, 'template') &&
+            Lodash.has(content, 'values')
+          ) {
+            return textMessage(content.template, content.values);
+          }
+          return content;
+        }
+      }
+
+      return null;
+    };
+    return (
+      <Overlay
+        animationType="fade"
+        childrenWrapperStyle={modalStyle.modalBody}
+        closeOnTouchOutside={false}
+        containerStyle={modalStyle.modalContainer}
+        visible={isOpen}
+      >
+        <StyledText textStyle="h4" isUnderline>
+            {renderReactElementOrString(title)}
+        </StyledText>
+        {(message.imageUrl || message.imageBody) && (
+          <View style={styles.imageContainer}>
+            <Image source={imageUrl} />
+            <StyledText textStyle="h6" addedStyle={styles.imageBody}>
+              {renderReactElementOrString(imageBody)}
+            </StyledText>
+          </View>
+        )}
+        {message.body && (
+          <StyledText textStyle="h6" addedStyle={styles.message}>
+            {renderReactElementOrString(body)}
+          </StyledText>
+        )}
+        
+        {actionButtons.length === 1 &&
+          this.generateActionButton(
+            'secondary',
+            styles.buttonAddedStyle,
+            actionButtons[0],
+          )
+        }
+        {actionButtons.length === 2 &&
+          <View
+            style={[
+              styles.actionButtons,
+              actionButtons.length === 1
+                ? styles.centerButton
+                : styles.spaceBetweenButton,
+            ]}
+          > 
+          {this.generateActionButton(
+            'secondary',
+            styles.buttonAddedStyle,
+            actionButtons[0],
+          )}
+          {this.generateActionButton(
+            'primary',
+            styles.highlightedButtonStyle,
+            actionButtons[1],
+          )}
+          </View>
+        }
+        {actionButtons.length > 2 &&
+          <View
+            style={[
+              styles.actionButtons,
+              actionButtons.length === 1
+                ? styles.centerButton
+                : styles.spaceBetweenButton,
+            ]}
+          > 
+            {this.generateActionButton(
+              'secondary',
+              styles.buttonAddedStyle,
+              actionButtons[1],
+            )}
+            {this.generateActionButton(
+              'primary',
+              styles.highlightedButtonStyle,
+              actionButtons[actionButtons.length - 1],
+            )}
+          </View>
+        }
+        {/* <View
+          style={[
+            styles.actionButtons,
+            // actionButtons.length === 1
+            //   ? styles.centerButton
+            //   : styles.spaceBetweenButton,
+          ]}
+        > */}
+          {/* {actionButtons.length > 1
+            ? this.generateActionButton(
+                'secondary',
+                styles.buttonAddedStyle,
+                actionButtons[0],
+              )
+            : null} */}
+          {/* {actionButtons.length > 2
+            ? this.generateActionButton(
+                'secondary',
+                styles.buttonAddedStyle,
+                actionButtons[1],
+              )
+            : null} */}
+          {/* {this.generateActionButton(
+            'primary',
+            styles.highlightedButtonStyle,
+            actionButtons[actionButtons.length - 1],
+          )} */}
+        {/* </View> */}
+      </Overlay>
+    )
+  }
+}

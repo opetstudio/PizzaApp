@@ -4,6 +4,8 @@ import React, { Component } from 'react'
 import { Provider } from 'react-redux'
 import RootContainer from './RootContainer'
 import createStore from '../Redux'
+import codePush from 'react-native-code-push';
+
 
 // create our store
 const store = createStore()
@@ -17,6 +19,9 @@ const store = createStore()
  *
  * We separate like this to play nice with React Native's hot reloading.
  */
+// const codePushOptions = { checkFrequency: codePush.CheckFrequency.MANUAL };
+const codePushOptions = { checkFrequency: codePush.CheckFrequency.ON_APP_RESUME };
+
 class App extends Component {
   render () {
     return (
@@ -30,4 +35,5 @@ class App extends Component {
 // allow reactotron overlay for fast design in dev mode
 export default DebugConfig.useReactotron
   ? console.tron.overlay(App)
-  : App
+  : codePush(codePushOptions)(App);
+// export default codePush(codePushOptions)(App);

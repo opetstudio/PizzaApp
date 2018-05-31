@@ -27,7 +27,7 @@ config_google_service_ios="cred/$environment/GoogleService-Info.plist"
 config_google_service_android="cred/$environment/google-services.json"
 
 dest_appcenter="xx"
-dest_file_db=$appname"/App/"
+dest_file_db="App/"
 dest_file_config="xx"
 source_file_config="xx"
 
@@ -64,28 +64,28 @@ fi
 # fi
 
 
-if [ "$appname" != "" ]; then
-    mkdir -p "App"
-    echo "cp $appname/Main.js App/"
-    cp $appname"/Main.js" "App/"
+# if [ "$appname" != "" ]; then
+#     mkdir -p "App"
+#     echo "cp $appname/Main.js App/"
+#     cp $appname"/Main.js" "App/"
 
-    echo "cp $config_db $dest_file_db"
-    cp $config_db $dest_file_db 
-    # if [ "$appname" == "$currentappname" ]; then
-    #     mv "App" $appname"/App"
-    #     # mv $appname"/App" "App"
-    # else
-    #     mv "App" $appname"/App"
-    #     mv $appname"/App" "App"
-    # fi
-    # rm -rf "App"
-    # cp -r $appname"/App" $appfolder
-fi
+   
+#     # if [ "$appname" == "$currentappname" ]; then
+#     #     mv "App" $appname"/App"
+#     #     # mv $appname"/App" "App"
+#     # else
+#     #     mv "App" $appname"/App"
+#     #     mv $appname"/App" "App"
+#     # fi
+#     # rm -rf "App"
+#     # cp -r $appname"/App" $appfolder
+# fi
 
 
 echo "cp $source_file_config to $dest_file_config"
 cp $source_file_config $dest_file_config
-
+echo "cp $config_db $dest_file_db"
+cp $config_db $dest_file_db 
 echo "run ENVFILE=.env.$env react-native run-$platform"
 ENVFILE=.env.$env react-native run-$platform
 

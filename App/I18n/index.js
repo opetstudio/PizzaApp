@@ -3,7 +3,7 @@ import I18n from 'react-native-i18n'
 const missingTranslationRegex = /^\[missing ".*" translation\]$/
 
 // This function is a wrapper to avoid exception wich leads in a crash
-const translateOrFallback = initialMsg => {
+const translateOrFallback = (initialMsg, defaultVal) => {
   // We tried to translate something else than a string
   // The native I18n function will simply crash instead of rejecting the attempt with an error message
   if (typeof initialMsg !== 'string') {
@@ -19,7 +19,7 @@ const translateOrFallback = initialMsg => {
   if (missingTranslationRegex.test(localMsg)) {
     __DEV__ && console.log(`translation "${initialMsg}" does not exists in translations files`)
 
-    return initialMsg
+    return defaultVal || initialMsg
   }
 
   return localMsg

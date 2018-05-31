@@ -19,7 +19,17 @@ const images = {
   chevronRight: require('../Images/Icons/chevron-right.png'),
   hamburger: require('../Images/Icons/hamburger.png'),
   backButton: require('../Images/Icons/back-button.png'),
-  closeButton: require('../Images/Icons/close-button.png')
+  closeButton: require('../Images/Icons/close-button.png'),
+  maxstream: require('../Images/menu/faces.png'),
+  menu: require('../Images/menu/menu.png'),
+  menufaces: require('../Images/menu/faces.png'),
+  // menufaces: require('../Images/menu/menu.png'),
+  drawerCover: require('../Images/drawer-cover.png'),
+  drawerImage: require('../Images/logo-kitchen-sink.png'),
+  launchscreenBg: require('../Images/launchscreen-bg.png'),
+  launchscreenLogo: require('../Images/logo-kitchen-sink.png'),
+  renunganPagiIcon: require('../Images/renunganPagiIcon.png'),
+  sekolahsabatIcon: require('../Images/sekolahsabatIcon.png'),
 }
 
 export default images
