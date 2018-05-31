@@ -17,10 +17,12 @@ if [ "$env" == "production" ]
         environment="dev"
 fi
 
+config_appcenter="cred/$environment/AppCenter-Config.plist"
 config_db="cred/$environment/db.js"
 config_google_service_ios="cred/$environment/GoogleService-Info.plist"
 config_google_service_android="cred/$environment/google-services.json"
 
+dest_appcenter="xx"
 dest_file_db="App/"
 dest_file_config="xx"
 source_file_config="xx"
@@ -33,9 +35,11 @@ ios_google_dev="cred/dev/GoogleService-Info.plist"
 if ([ "$platform" == 'ios' ]) && ([ "$env" == 'development' ] || [ "$env" == 'staging' ] || [ "$env" == 'docker' ]); then
     source_file_config=$ios_google_dev
     dest_file_config="ios/"
+    dest_appcenter="ios/PizzaApp/"
 elif [ "$platform" == 'ios' ] && [ "$env" == 'production' ]; then
     source_file_config=$ios_google_prod
     dest_file_config="ios/"
+    dest_appcenter="ios/PizzaApp/"
 elif ([ "$platform" == 'android' ]) && ([ "$env" == 'development' ] || [ "$env" == 'staging' ] || [ "$env" == 'docker' ] || [ "$env" == 'development_device' ]); then
     source_file_config=$android_google_dev
     dest_file_config="android/app/"
