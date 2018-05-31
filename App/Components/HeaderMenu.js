@@ -64,7 +64,7 @@ export default class HeaderMenu extends Component {
           )}
           {hasBack && (
             <Left>
-              <Button transparent onPress={() => {}}>
+              <Button transparent onPress={() => navigation.goBack()}>
                 <Icon name="arrow-back" style={{ color: "#FFF" }} />
               </Button>
             </Left>

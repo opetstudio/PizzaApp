@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { StackNavigator, DrawerNavigator } from 'react-navigation'
+import DetailScreen from '../Containers/DetailScreen'
 import HomeScreen from '../Containers/HomeScreen'
 import AboutAppScreen from '../Containers/AboutAppScreen'
 import RenunganpagiScreen from '../Containers/RenunganpagiScreen'
@@ -28,4 +29,17 @@ const PrimaryNav = DrawerNavigator({
   contentComponent: props => <Sidedrawer {...props} />
 })
 
-export default PrimaryNav
+const StackNav = StackNavigator({
+  PrimaryNav: { screen: PrimaryNav },
+  DetailScreen: { screen: DetailScreen },
+   // LaunchScreen: { screen: LaunchScreen }
+}, {
+  // Default config for all screens
+  headerMode: 'none',
+  initialRouteName: 'PrimaryNav',
+  navigationOptions: {
+    headerStyle: styles.header
+  }
+})
+
+export default StackNav

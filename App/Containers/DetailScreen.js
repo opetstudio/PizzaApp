@@ -1,41 +1,32 @@
 import React, { Component } from 'react'
-import { ScrollView, Text, KeyboardAvoidingView, FlatList } from 'react-native'
+import { ScrollView, Text, KeyboardAvoidingView } from 'react-native'
 import { connect } from 'react-redux'
 import {
   Container,
-  Content,
-  Button
+  Content
 } from 'native-base'
 import HeaderMenu from '../Components/HeaderMenu'
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
 
 // Styles
-import styles from './Styles/RenunganpagiScreenStyle'
+import styles from './Styles/DetailScreenStyle'
 
-const labelScreen = 'Renungan'
-
-class RenunganpagiScreen extends Component {
-  _renderList() {
-    
-  }
+class DetailScreen extends Component {
   render () {
     return (
       <Container>
         <HeaderMenu
-          hasHamburger
-          hasSearch
+          hasBack
           navigation={this.props.navigation}
-          title={labelScreen}
+          title={'Detail'}
         />
         <Content>
-          <Button
-            onPress={() => this.props.navigation.navigate('DetailScreen')}
-            success
-            full
-          >
-            <Text>goto detail</Text>
-          </Button>
+          <ScrollView style={styles.container}>
+            <KeyboardAvoidingView behavior='position'>
+              <Text>Detail Screen</Text>
+            </KeyboardAvoidingView>
+          </ScrollView>
         </Content>
       </Container>
     )
@@ -52,4 +43,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(RenunganpagiScreen)
+export default connect(mapStateToProps, mapDispatchToProps)(DetailScreen)
