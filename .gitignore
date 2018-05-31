@@ -59,8 +59,8 @@ buck-out/
 #
 .env
 
-ios/Pods/
-JemaatApp/
+ios/Pods/*
+JemaatApp/*
 android/app/google-services.json
 android/app/my-release-key.keystore
 ios/PizzaApp/GoogleService-Info.plist
@@ -68,6 +68,6 @@ ios/PizzaApp/AppCenter-Config.plist
 private.pem
 index.jemaatapp.js
 android/local.properties
-cred/prod/
-cred/dev/
+cred/prod/*
+cred/dev/*
 
