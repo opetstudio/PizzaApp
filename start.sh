@@ -5,9 +5,11 @@ platform=$1
 env=$2
 appname=$3
 appfolder="."
+# currentappname=`cat App/appname.txt`
 echo "startup mobile app"
 echo "platform=$platform"
 echo "env=$env"
+# echo "current app name = $currentappname"
 #cp cred/prod/
 #ENVFILE=.env.staging react-native run-ios ### pointing to docker testbed
 environment="xx"
@@ -25,7 +27,7 @@ config_google_service_ios="cred/$environment/GoogleService-Info.plist"
 config_google_service_android="cred/$environment/google-services.json"
 
 dest_appcenter="xx"
-dest_file_db="App/"
+dest_file_db=$appname"/App/"
 dest_file_config="xx"
 source_file_config="xx"
 
@@ -54,18 +56,40 @@ if [ "$source_file_config" == "xx" ] || [ "$dest_file_config" == "xx" ]; then
     echo "wrong environment or platform"
     exit 1
 fi
+# if [ "$currentappname" == "" ]; then
+#     echo "current app name not exist"
+#     mkdir -p App
+#     echo "App-DefaultApp" >> App/appname.txt
+#     exit 1
+# fi
 
+
+if [ "$appname" != "" ]; then
+    mkdir -p "App"
+    echo "cp $appname/Main.js App/"
+    cp $appname"/Main.js" "App/"
+
+    echo "cp $config_db $dest_file_db"
+    cp $config_db $dest_file_db 
+    # if [ "$appname" == "$currentappname" ]; then
+    #     mv "App" $appname"/App"
+    #     # mv $appname"/App" "App"
+    # else
+    #     mv "App" $appname"/App"
+    #     mv $appname"/App" "App"
+    # fi
+    # rm -rf "App"
+    # cp -r $appname"/App" $appfolder
+fi
 
 
 echo "cp $source_file_config to $dest_file_config"
 cp $source_file_config $dest_file_config
-echo "cp $config_db $dest_file_db"
-cp $config_db $dest_file_db 
+
 echo "run ENVFILE=.env.$env react-native run-$platform"
 ENVFILE=.env.$env react-native run-$platform
 
-if [ "$appname" != "" ]; then
-    rm -rf "App"
-    cp -r $appname"/App" $appfolder
-fi
+
+
+
 
