@@ -3,6 +3,8 @@
 #sed -E 's|../cred/prod/GoogleService-Info.plist|../cred/dev/GoogleService-Info.plist|g' ios/rayakuMobileApp.xcodeproj/project.pbxproj > project_new.pbxproj && mv project_new.pbxproj ios/rayakuMobileApp.xcodeproj/project.pbxproj
 platform=$1
 env=$2
+appname=$3
+appfolder="."
 echo "startup mobile app"
 echo "platform=$platform"
 echo "env=$env"
@@ -53,9 +55,17 @@ if [ "$source_file_config" == "xx" ] || [ "$dest_file_config" == "xx" ]; then
     exit 1
 fi
 
+
+
 echo "cp $source_file_config to $dest_file_config"
 cp $source_file_config $dest_file_config
 echo "cp $config_db $dest_file_db"
 cp $config_db $dest_file_db 
 echo "run ENVFILE=.env.$env react-native run-$platform"
 ENVFILE=.env.$env react-native run-$platform
+
+if [ "$appname" != "" ]; then
+    rm -rf "App"
+    cp -r $appname"/App" $appfolder
+fi
+

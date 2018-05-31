@@ -73,4 +73,5 @@ android/local.properties
 cred/prod/*
 cred/dev/*
 App/*
+!App/README.md
 
