@@ -50,10 +50,10 @@ class HomeScreen extends Component {
 
     registerAppListener(this.props.navigation)
     firebase.notifications().getInitialNotification()
-      .then((notificationOpen: NotificationOpen) => {
+      .then((notificationOpen = {}) => {
         if (notificationOpen) {
           // Get information about the notification that was opened
-          const notif: Notification = notificationOpen.notification
+          const notif = notificationOpen.notification
           this.setState({
             initNotif: notif.data
           })
@@ -74,7 +74,7 @@ class HomeScreen extends Component {
     }
 
     firebase.database().goOnline()
-    const fcm_token = firebase.database().ref('fcm_token')
+    const fcmToken = firebase.database().ref('fcm_token')
 
     firebase.messaging().getToken().then(token => {
       const newState = {}
@@ -83,7 +83,7 @@ class HomeScreen extends Component {
       if (this.state.isAuthenticated) {
         newState.uid = firebase.auth().currentUser.uid
         console.log('current user: ', newState.uid)
-        fcm_token.child(newState.uid).set(newState)
+        fcmToken.child(newState.uid).set(newState)
       }
       this.setState(newState)
     })
