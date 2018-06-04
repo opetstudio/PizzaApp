@@ -53,7 +53,7 @@
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
-  [SplashScreen show];  // here
+//  [SplashScreen show];  // here
   
   [RNFirebaseNotifications configure];
   

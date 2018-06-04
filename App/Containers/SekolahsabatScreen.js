@@ -6,12 +6,16 @@ import {
   Content,
   Button
 } from 'native-base'
+import _ from 'lodash'
 import HeaderMenu from '../Components/HeaderMenu'
+import PaginationList from '../Components/PaginationList'
+
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
+import {SsdewasaSelectors} from '../Redux/SsdewasaRedux'
 
 // redux
-import PopupActions, { reducer, INITIAL_STATE } from '../Redux/PopupRedux';
+import PopupActions, { reducer, INITIAL_STATE } from '../Redux/PopupRedux'
 
 // Styles
 import styles from './Styles/SekolahsabatScreenStyle'
@@ -42,13 +46,28 @@ class SekolahsabatScreen extends Component {
           title={labelScreen}
         />
         <Content>
-          <Button
+          {/* <Button
             onPress={() => this.showPopup()}
             success
             full
           >
             <Text>Menu</Text>
-          </Button>
+          </Button> */}
+          <PaginationList
+            data={this.props.allDataArr}
+            firstText={'title'}
+            secondText={'title'}
+            rightText={'tanggal'}
+            itemOnPress={(v) => {
+              // console.log('[SekolahsabatScreen] ====>>>>>>onPress')
+              // alert(item.title)
+              const listPelajaran = _.orderBy(_.filter(
+                this.props.allDataSsdewasaArr,
+                { pelajaranke: v.pelajaranke, triwulanke: v.triwulanke, year: v.year }
+                ), ['tanggal'], ['asc'])
+              this.props.navigation.navigate('DetailContentDeckSwiperScreen', {alldata: listPelajaran})
+            }}
+          />
         </Content>
       </Container>
     )
@@ -57,12 +76,14 @@ class SekolahsabatScreen extends Component {
 
 const mapStateToProps = (state) => {
   return {
+    allDataSsdewasaArr: SsdewasaSelectors.getAllDataArr(state.ssdewasa),
+    allDataArr: SsdewasaSelectors.getAllLessons(state.ssdewasa)
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    popupShow: (popupMessage) => dispatch(PopupActions.popupShow(popupMessage)),
+    popupShow: (popupMessage) => dispatch(PopupActions.popupShow(popupMessage))
   }
 }
 

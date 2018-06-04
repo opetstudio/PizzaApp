@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { StackNavigator, DrawerNavigator } from 'react-navigation'
+import DetailContentDeckSwiperScreen from '../Containers/DetailContentDeckSwiperScreen'
 import DetailScreen from '../Containers/DetailScreen'
 import HomeScreen from '../Containers/HomeScreen'
 import AboutAppScreen from '../Containers/AboutAppScreen'
@@ -32,6 +33,7 @@ const PrimaryNav = DrawerNavigator({
 const StackNav = StackNavigator({
   PrimaryNav: { screen: PrimaryNav },
   DetailScreen: { screen: DetailScreen },
+  DetailContentDeckSwiperScreen: { screen: DetailContentDeckSwiperScreen }
    // LaunchScreen: { screen: LaunchScreen }
 }, {
   // Default config for all screens

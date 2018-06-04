@@ -8,6 +8,7 @@ import ReduxPersist from '../Config/ReduxPersist'
 export const reducers = combineReducers({
   restapi: require('./RestapiRedux').reducer,
   renpagi: require('./RenpagiRedux').reducer,
+  ssdewasa: require('./SsdewasaRedux').reducer,
   popup: require('./PopupRedux').reducer,
   nav: require('./NavigationRedux').reducer,
   github: require('./GithubRedux').reducer,

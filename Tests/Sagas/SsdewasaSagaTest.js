@@ -1,17 +1,16 @@
 import FixtureAPI from '../../App/Services/FixtureApi'
 import { put, call } from 'redux-saga/effects'
-import { getRestapi } from '../../App/Sagas/RestapiSagas'
-import RestapiActions from '../../App/Redux/RestapiRedux'
+import { getSsdewasa } from '../../App/Sagas/SsdewasaSagas'
+import SsdewasaActions from '../../App/Redux/SsdewasaRedux'
 import API from '../../App/Services/Api'
-import ConvertRestapiResp from '../../App/Transforms/ConvertRestapiResp'
 import { path } from 'ramda'
 
 const stepper = (fn) => (mock) => fn.next(mock).value
 
 test('first calls API', () => {
-  const step = stepper(getRestapi(FixtureAPI, { data: { page: 1 } }))
+  const step = stepper(getSsdewasa(FixtureAPI, { data: { page: 1 } }))
   // first yield is API
-  expect(step()).toEqual(call(FixtureAPI.getRestapi, { page: 1 }))
+  expect(step()).toEqual(call(FixtureAPI.getSsdewasa, { page: 1 }))
 })
 
 // test('real calls API', () => {
@@ -30,9 +29,9 @@ test('first calls API', () => {
 
 test('success path', async () => {
   const api = API.create('http://localhost:8090/api/')
-  const response = await api.getRestapi({ newerModifiedon: 1494844278993 })
+  const response = await api.getSsdewasa({ newerModifiedon: 1494844278993 })
   // const response = FixtureAPI.getRestapi({ page: 1 })
-  const step = stepper(getRestapi(api, { newerModifiedon: 1494844278993 }))
+  const step = stepper(getSsdewasa(api, { newerModifiedon: 1494844278993 }))
   // first step API
   step()
   // Second step successful return
@@ -42,18 +41,18 @@ test('success path', async () => {
   // const dataApi = path(['data'], response) // https://api.github.com/user
   const dataResp = path(['data'], response)
   // console.log('======>', dataResp)
-  
-  const { byId, allIds } = dataResp
+
+  const { byId, allIds, maxModifiedon } = dataResp
 
   // const byId = dataApi
-  expect(stepResponse).toEqual(put(RestapiActions.restapiSuccess(byId, allIds)))
+  expect(stepResponse).toEqual(put(SsdewasaActions.ssdewasaSuccess(byId, allIds, maxModifiedon)))
 })
 
-test('failure path', () => {
-  const response = {ok: false}
-  const step = stepper(getRestapi(FixtureAPI, {data: {page: 1}}))
-  // first step API
-  step()
-  // Second step failed response
-  expect(step(response)).toEqual(put(RestapiActions.restapiFailure()))
-})
+// test('failure path', () => {
+//   const response = {ok: false}
+//   const step = stepper(getRestapi(FixtureAPI, {data: {page: 1}}))
+//   // first step API
+//   step()
+//   // Second step failed response
+//   expect(step(response)).toEqual(put(RestapiActions.restapiFailure()))
+// })

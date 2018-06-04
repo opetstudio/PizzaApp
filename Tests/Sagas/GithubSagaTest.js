@@ -13,7 +13,9 @@ test('first calls API', () => {
 })
 
 test('success path', () => {
+  // get response from data static
   const response = FixtureAPI.getUser('taco')
+  //  hit the api
   const step = stepper(getUserAvatar(FixtureAPI, {username: 'taco'}))
   // first step API
   step()

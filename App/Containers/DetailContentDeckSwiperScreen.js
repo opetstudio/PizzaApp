@@ -10,20 +10,17 @@ import HeaderMenu from '../Components/HeaderMenu'
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
 
-import DetailContent from '../Components/DetailContent'
+import DetailContentDeckSwiper from '../Components/DetailContentDeckSwiper'
 
 // Styles
-import styles from './Styles/DetailScreenStyle'
+import styles from './Styles/DetailContentDeckSwiperScreenStyle'
 
-class DetailScreen extends Component {
+class DetailContentDeckSwiperScreen extends Component {
   render () {
     const { navigation } = this.props
     const params = path(['state', 'params'], navigation) || {}
-    const title = params['title'] || 'NO-TITLE'
-    const tanggal = params['tanggal'] || 'NO-TITLE'
-    const htmlContent = params['isi_html'] || 'NO-TITLE'
-
-    // console.log('[DetailScreen] props', this.props)
+    const allData = params['alldata'] || []
+    // console.log('[DetailContentDeckSwiperScreen] props====>', this.props)
     return (
       <Container>
         <HeaderMenu
@@ -32,10 +29,8 @@ class DetailScreen extends Component {
           title={'Detail'}
         />
         <Content>
-          <DetailContent
-            title={title}
-            date={tanggal}
-            htmlContent={htmlContent}
+          <DetailContentDeckSwiper
+            allData={allData}
           />
         </Content>
       </Container>
@@ -53,4 +48,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(DetailScreen)
+export default connect(mapStateToProps, mapDispatchToProps)(DetailContentDeckSwiperScreen)

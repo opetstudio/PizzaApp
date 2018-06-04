@@ -37,7 +37,15 @@ const create = (baseURL = 'https://api.github.com/') => {
   const getRoot = () => api.get('')
   const getRate = () => api.get('rate_limit')
   const getUser = (username) => api.get('search/users', {q: username})
-  const getRestapi = (data) => api.get('getRestapi', { data })
+  const getRestapi = ({ newerModifiedon }) => api.get('getRestapi', { newerModifiedon })
+  const getRenpagi = ({ apiName, baseUrl, newerModifiedon }) => {
+    if (baseUrl) api.setBaseURL(baseUrl)
+    return api.get(apiName || 'getRenpagi', { newerModifiedon })
+  }
+  const getSsdewasa = ({ apiName, baseUrl, newerModifiedon }) => {
+    if (baseUrl) api.setBaseURL(baseUrl)
+    return api.get(apiName || 'getSsdewasa', { newerModifiedon })
+  }
 
   // ------
   // STEP 3
@@ -56,7 +64,9 @@ const create = (baseURL = 'https://api.github.com/') => {
     getRoot,
     getRate,
     getUser,
-    getRestapi
+    getRestapi,
+    getRenpagi,
+    getSsdewasa
   }
 }
 

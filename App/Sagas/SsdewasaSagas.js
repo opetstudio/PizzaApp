@@ -11,28 +11,23 @@
 *************************************************************/
 
 import { call, put } from 'redux-saga/effects'
-import RestapiActions from '../Redux/RestapiRedux'
-// import ConvertRestapiResp from '../Transforms/ConvertRestapiResp'
-// import { RestapiSelectors } from '../Redux/RestapiRedux'
+import SsdewasaActions from '../Redux/SsdewasaRedux'
+// import { SsdewasaSelectors } from '../Redux/SsdewasaRedux'
 
-export function * getRestapi (api, action) {
+export function * getSsdewasa (api, action) {
   const { data } = action
   // get current data from Store
-  // const currentData = yield select(RestapiSelectors.getData)
+  // const currentData = yield select(SsdewasaSelectors.getData)
   // make the call to the api
-  const response = yield call(api.getRestapi, data)
-
-  // console.log('responseeee', response)
+  const response = yield call(api.getSsdewasa, data)
 
   // success?
   if (response.ok) {
     // You might need to change the response here - do this with a 'transform',
     // located in ../Transforms/. Otherwise, just pass the data back from the api.
-    // const byId = response.data
-    const { byId, allIds } = response.data
-    // const byId = ConvertRestapiResp(response.data)
-    yield put(RestapiActions.restapiSuccess(byId, allIds))
+    const { byId, allIds, maxModifiedon } = response.data
+    yield put(SsdewasaActions.ssdewasaSuccess(byId, allIds, maxModifiedon))
   } else {
-    yield put(RestapiActions.restapiFailure())
+    yield put(SsdewasaActions.ssdewasaFailure())
   }
 }

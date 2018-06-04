@@ -1,11 +1,12 @@
 import { createReducer, createActions } from 'reduxsauce'
 import Immutable from 'seamless-immutable'
+import {arrayMerge} from '../Utils/helper/datamining'
 
 /* ------------- Types and Action Creators ------------- */
 
 const { Types, Creators } = createActions({
-  restapiRequest: ['data'],
-  restapiSuccess: ['byId'],
+  restapiRequest: ['data', 'payload'],
+  restapiSuccess: ['byId', 'allIds'],
   restapiFailure: null
 })
 
@@ -17,6 +18,7 @@ export default Creators
 export const INITIAL_STATE = Immutable({
   data: null,
   byId: null,
+  allIds: [],
   fetching: null,
   payload: null,
   error: null
@@ -27,18 +29,22 @@ export const INITIAL_STATE = Immutable({
 export const RestapiSelectors = {
   getData: state => state.data,
   getById: state => state.byId,
+  getAllIds: state => state.allIds,
+  getAllDataArr: state => state.allIds.map(id => state.byId[id])
 }
 
 /* ------------- Reducers ------------- */
 
 // request the data from an api
-export const request = (state, { data }) =>
-  state.merge({ fetching: true, data, payload: null })
+export const request = (state, { data, payload }) =>
+  state.merge({ fetching: true, data, payload })
 
 // successful api lookup
 export const success = (state, action) => {
-  const { byId } = action
-  return state.merge({ fetching: false, error: null, byId })
+  const { byId, allIds } = action
+  // console.log('success===>state', state)
+  // console.log('success===>allIds', allIds)
+  return state.merge({ fetching: false, error: null, byId, allIds: arrayMerge([state.allIds, allIds]) })
 }
 
 // Something went wrong somewhere.

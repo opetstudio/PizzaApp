@@ -8,6 +8,11 @@ import {
 import HeaderMenu from '../Components/HeaderMenu'
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
+import API from '../Services/Api'
+// import {getRestapi} from '../Sagas/RestapiSagas'
+import RestapiActions from '../Redux/RestapiRedux'
+import RenpagiActions from '../Redux/RenpagiRedux'
+import SsdewasaActions from '../Redux/SsdewasaRedux'
 
 // firebase
 import firebase from 'react-native-firebase'
@@ -31,6 +36,11 @@ class HomeScreen extends Component {
     }
   }
   componentWillMount () {
+    // const api = API.create('http://localhost:8090/api/')
+    // console.log('okeeee')
+    this.props.restapiRequest({ newerModifiedon: 1494844278993 })
+    this.props.renpagiRequest({ newerModifiedon: 1494844278993 })
+    this.props.ssdewasaRequest({ newerModifiedon: 1494844278993 })
     firebase.auth().signInAnonymously()
       .then(() => {
         this.setState({
@@ -245,6 +255,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    restapiRequest: (query) => dispatch(RestapiActions.restapiRequest(query)),
+    renpagiRequest: (query) => dispatch(RenpagiActions.renpagiRequest(query)),
+    ssdewasaRequest: (query) => dispatch(SsdewasaActions.ssdewasaRequest(query))
   }
 }
 

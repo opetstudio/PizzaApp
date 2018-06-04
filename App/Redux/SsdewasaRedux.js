@@ -1,16 +1,17 @@
 import { createReducer, createActions } from 'reduxsauce'
 import Immutable from 'seamless-immutable'
 import {arrayMerge} from '../Utils/helper/datamining'
+import _ from 'lodash'
 
 /* ------------- Types and Action Creators ------------- */
 
 const { Types, Creators } = createActions({
-  renpagiRequest: ['data', 'payload'],
-  renpagiSuccess: ['byId', 'allIds', 'maxModifiedon'],
-  renpagiFailure: null
+  ssdewasaRequest: ['data', 'payload'],
+  ssdewasaSuccess: ['byId', 'allIds', 'maxModifiedon'],
+  ssdewasaFailure: null
 })
 
-export const RenpagiTypes = Types
+export const SsdewasaTypes = Types
 export default Creators
 
 /* ------------- Initial State ------------- */
@@ -27,11 +28,34 @@ export const INITIAL_STATE = Immutable({
 
 /* ------------- Selectors ------------- */
 
-export const RenpagiSelectors = {
+export const SsdewasaSelectors = {
   getData: state => state.data,
   getById: state => state.byId,
   getAllIds: state => state.allIds,
-  getAllDataArr: state => state.allIds.map(id => state.byId[id])
+  getAllDataArr: state => state.allIds.map(id => state.byId[id]),
+  getAllLessons: (state, filter) => {
+    const r = []
+    SsdewasaSelectors.getAllDataArr(state).forEach((v) => {
+      if (new Date(v.tanggal).getDay() + 1 === 7) {
+        r.push(v)
+      }
+    })
+    return r
+  }
+  // getAllLessonsByFilter: (state, filter) => {
+  //   // { pelajaranke: v.pelajaranke, triwulanke: v.triwulanke, year: v.year }
+  //   const r = _.orderBy(_.filter(
+  //     SsdewasaSelectors.getAllDataArr(state),
+  //     filter
+  //     ), ['tanggal'], ['asc'])
+  //   // const r = []
+  //   // SsdewasaSelectors.getAllDataArr(state).forEach((v) => {
+  //   //   if (new Date(v.tanggal).getDay() + 1 === 7) {
+  //   //     r.push(v)
+  //   //   }
+  //   // })
+  //   return r
+  // }
 }
 
 /* ------------- Reducers ------------- */
@@ -53,7 +77,7 @@ export const failure = state =>
 /* ------------- Hookup Reducers To Types ------------- */
 
 export const reducer = createReducer(INITIAL_STATE, {
-  [Types.RENPAGI_REQUEST]: request,
-  [Types.RENPAGI_SUCCESS]: success,
-  [Types.RENPAGI_FAILURE]: failure
+  [Types.SSDEWASA_REQUEST]: request,
+  [Types.SSDEWASA_SUCCESS]: success,
+  [Types.SSDEWASA_FAILURE]: failure
 })

@@ -1,8 +1,8 @@
-import Actions, { reducer, INITIAL_STATE } from '../../App/Redux/RestapiRedux'
+import Actions, { reducer, INITIAL_STATE } from '../../App/Redux/RenpagiRedux'
 
 test('request', () => {
   const data = 'taco'
-  const state = reducer(INITIAL_STATE, Actions.restapiRequest(data, 'tes'))
+  const state = reducer(INITIAL_STATE, Actions.renpagiRequest(data, 'tes'))
   expect(state.fetching).toBe(true)
   expect(state.data).toBe(data)
   // expect(state.payload).toBeNull()
@@ -11,15 +11,17 @@ test('request', () => {
 
 test('success', () => {
   const byId = {'id1': { 'title': 'title2' }}
-  let state = reducer(INITIAL_STATE, Actions.restapiSuccess(byId, [1, 2, 3]))
+  const allIds = [1, 2, 3]
+  let state = reducer(INITIAL_STATE, Actions.renpagiSuccess(byId, allIds))
 
   expect(state.fetching).toBe(false)
   expect(state.byId).toEqual(byId)
+  expect(state.allIds).toEqual(allIds)
   expect(state.error).toBeNull()
 })
 
 test('failure', () => {
-  const state = reducer(INITIAL_STATE, Actions.restapiFailure())
+  const state = reducer(INITIAL_STATE, Actions.renpagiFailure())
 
   expect(state.fetching).toBe(false)
   expect(state.error).toBe(true)
