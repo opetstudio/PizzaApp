@@ -70,6 +70,7 @@
 		B163708430CE4FF1A7B63AFA /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7FFADAD44B3142C8A9541C58 /* SimpleLineIcons.ttf */; };
 		B1712F145F01E9DBC49FCA5E /* libPods-PizzaApp-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22B16D2FF5D031FB64D9691F /* libPods-PizzaApp-tvOSTests.a */; };
 		C39C551F8D0E41E7BE3683CE /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A64649055A2A424292CB5C7B /* Entypo.ttf */; };
+		C8D9BCC0CE9E4A2697011FDB /* libRNAdMobManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 920EE47C0E9E47AAB03C967C /* libRNAdMobManager.a */; };
 		CA0DDC86CD234A538328DF0D /* libAppCenterReactNative.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 493F584612A5463B931AB333 /* libAppCenterReactNative.a */; };
 		D0109A837E1B474BBEFAD623 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6FE19A07F21745F7A6B4EEFC /* Zocial.ttf */; };
 		D4C4EE854D544F689AD2826E /* libAppCenterReactNativeCrashes.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC53B7C1B1BC47B4AEE303D8 /* libAppCenterReactNativeCrashes.a */; };
@@ -305,6 +306,13 @@
 			remoteGlobalIDString = 3D7682761D8E76B80014119E;
 			remoteInfo = SplashScreen;
 		};
+		2F98019120C6772D0081E42E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6FF63806F870496D9D73C45C /* RNAdMobManager.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A96DA7741C146D7200FC639B;
+			remoteInfo = RNAdMobManager;
+		};
 		2FD036FB20BEA981004D6564 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A838ECCBEE294D8EBAC0C387 /* RNFirebase.xcodeproj */;
@@ -488,11 +496,13 @@
 		6C0DED45DDB90EEA1F80ACD0 /* Pods-PizzaAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PizzaAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PizzaAppTests/Pods-PizzaAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		6C9E332D4AEB42F3968C4EDE /* RNVectorIcons.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNVectorIcons.xcodeproj; path = "../node_modules/react-native-vector-icons/RNVectorIcons.xcodeproj"; sourceTree = "<group>"; };
 		6FE19A07F21745F7A6B4EEFC /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/native-base/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
+		6FF63806F870496D9D73C45C /* RNAdMobManager.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNAdMobManager.xcodeproj; path = "../node_modules/react-native-admob/ios/RNAdMobManager.xcodeproj"; sourceTree = "<group>"; };
 		7424778A9BEF19DD93D3EF1E /* Pods-PizzaApp-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PizzaApp-tvOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PizzaApp-tvOS/Pods-PizzaApp-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		7D77EE556F5E47E2AC6298BA /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		7FFADAD44B3142C8A9541C58 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/native-base/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
+		920EE47C0E9E47AAB03C967C /* libRNAdMobManager.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNAdMobManager.a; sourceTree = "<group>"; };
 		9A77175C5970D1ECAD38CC95 /* libPods-PizzaApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PizzaApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C39CFBD217D42509444B8A3 /* libAppCenterReactNativeAnalytics.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libAppCenterReactNativeAnalytics.a; sourceTree = "<group>"; };
 		9CBCA38562334CC4938400B0 /* RNI18n.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNI18n.xcodeproj; path = "../node_modules/react-native-i18n/ios/RNI18n.xcodeproj"; sourceTree = "<group>"; };
@@ -564,6 +574,7 @@
 				D4C4EE854D544F689AD2826E /* libAppCenterReactNativeCrashes.a in Frameworks */,
 				1970E8E413731D68446AE12E /* libPods-PizzaApp.a in Frameworks */,
 				138A02CAC3834C4F9225F85C /* libRNFirebase.a in Frameworks */,
+				C8D9BCC0CE9E4A2697011FDB /* libRNAdMobManager.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -738,6 +749,7 @@
 				9C39CFBD217D42509444B8A3 /* libAppCenterReactNativeAnalytics.a */,
 				AC53B7C1B1BC47B4AEE303D8 /* libAppCenterReactNativeCrashes.a */,
 				4655B9CACE1140149CE0CA5C /* libRNFirebase.a */,
+				920EE47C0E9E47AAB03C967C /* libRNAdMobManager.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -816,6 +828,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		2F98016320C6772D0081E42E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2F98019220C6772D0081E42E /* libRNAdMobManager.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		2FD036F820BEA981004D6564 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -867,6 +887,7 @@
 				F1450761D9FD463DA29E3C24 /* AppCenterReactNativeAnalytics.xcodeproj */,
 				284827D87F984E3A88B79E2B /* AppCenterReactNativeCrashes.xcodeproj */,
 				A838ECCBEE294D8EBAC0C387 /* RNFirebase.xcodeproj */,
+				6FF63806F870496D9D73C45C /* RNAdMobManager.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1149,6 +1170,10 @@
 					ProjectRef = C9AB791A0A01456D8D66603B /* ReactNativeConfig.xcodeproj */;
 				},
 				{
+					ProductGroup = 2F98016320C6772D0081E42E /* Products */;
+					ProjectRef = 6FF63806F870496D9D73C45C /* RNAdMobManager.xcodeproj */;
+				},
+				{
 					ProductGroup = 2F302E6A20BC04080013C7EC /* Products */;
 					ProjectRef = DFE5E6C6E2274093A9C7AD5A /* RNDeviceInfo.xcodeproj */;
 				},
@@ -1388,6 +1413,13 @@
 			fileType = archive.ar;
 			path = libSplashScreen.a;
 			remoteRef = 2F30321C20BC1F640013C7EC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2F98019220C6772D0081E42E /* libRNAdMobManager.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNAdMobManager.a;
+			remoteRef = 2F98019120C6772D0081E42E /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		2FD036FC20BEA981004D6564 /* libRNFirebase.a */ = {
@@ -1768,6 +1800,7 @@
 					"$(SRCROOT)/../node_modules/appcenter-analytics/ios/AppCenterReactNativeAnalytics",
 					"$(SRCROOT)/../node_modules/appcenter-crashes/ios/AppCenterReactNativeCrashes",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
+					"$(SRCROOT)/../node_modules/react-native-admob/ios",
 				);
 				INFOPLIST_FILE = PizzaAppTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1801,6 +1834,7 @@
 					"$(SRCROOT)/../node_modules/appcenter-analytics/ios/AppCenterReactNativeAnalytics",
 					"$(SRCROOT)/../node_modules/appcenter-crashes/ios/AppCenterReactNativeCrashes",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
+					"$(SRCROOT)/../node_modules/react-native-admob/ios",
 				);
 				INFOPLIST_FILE = PizzaAppTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1860,6 +1894,7 @@
 					"$(SRCROOT)/../node_modules/appcenter-crashes/ios/AppCenterReactNativeCrashes",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
+					"$(SRCROOT)/../node_modules/react-native-admob/ios",
 				);
 				INFOPLIST_FILE = PizzaApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1917,6 +1952,7 @@
 					"$(SRCROOT)/../node_modules/appcenter-crashes/ios/AppCenterReactNativeCrashes",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
+					"$(SRCROOT)/../node_modules/react-native-admob/ios",
 				);
 				INFOPLIST_FILE = PizzaApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1956,6 +1992,7 @@
 					"$(SRCROOT)/../node_modules/appcenter-analytics/ios/AppCenterReactNativeAnalytics",
 					"$(SRCROOT)/../node_modules/appcenter-crashes/ios/AppCenterReactNativeCrashes",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
+					"$(SRCROOT)/../node_modules/react-native-admob/ios",
 				);
 				INFOPLIST_FILE = "PizzaApp-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1998,6 +2035,7 @@
 					"$(SRCROOT)/../node_modules/appcenter-analytics/ios/AppCenterReactNativeAnalytics",
 					"$(SRCROOT)/../node_modules/appcenter-crashes/ios/AppCenterReactNativeCrashes",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
+					"$(SRCROOT)/../node_modules/react-native-admob/ios",
 				);
 				INFOPLIST_FILE = "PizzaApp-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -2039,6 +2077,7 @@
 					"$(SRCROOT)/../node_modules/appcenter-analytics/ios/AppCenterReactNativeAnalytics",
 					"$(SRCROOT)/../node_modules/appcenter-crashes/ios/AppCenterReactNativeCrashes",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
+					"$(SRCROOT)/../node_modules/react-native-admob/ios",
 				);
 				INFOPLIST_FILE = "PizzaApp-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -2080,6 +2119,7 @@
 					"$(SRCROOT)/../node_modules/appcenter-analytics/ios/AppCenterReactNativeAnalytics",
 					"$(SRCROOT)/../node_modules/appcenter-crashes/ios/AppCenterReactNativeCrashes",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
+					"$(SRCROOT)/../node_modules/react-native-admob/ios",
 				);
 				INFOPLIST_FILE = "PizzaApp-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

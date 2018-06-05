@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
-import { WebView, Text, View } from 'react-native'
+import { WebView, Text, View, Platform } from 'react-native'
 import {
   Content,
   Card,
@@ -11,6 +11,10 @@ import {
 } from 'native-base'
 import moment from 'moment'
 import styles from './Styles/DetailContentStyle'
+import {
+  AdMobBanner
+} from 'react-native-admob'
+import AppConfig from '../Config/AppConfig'
 
 export default class DetailContent extends Component {
   // // Prop type warnings
@@ -27,13 +31,19 @@ export default class DetailContent extends Component {
 
   render () {
     // const { data: { title, tanggal, isi_html }, even } = this.props
-    const {title, htmlContent, date} = this.props
+    const {title, htmlContent, date, contributorSpace} = this.props
     const formatedDate = moment(new Date(date)).format('dddd DD-MMM YYYY')
 
-    const html = `<h3>${formatedDate}</h3><h2>${title}</h2> ${htmlContent}`
+    const html = `<h3>${formatedDate}</h3><h2>${title}</h2><div>${htmlContent}</div>${AppConfig.getContributorSpace(contributorSpace)}`
     return (
       <View style={{ flex: 1 }}>
-        <WebView style={{ flex: 1 }} source={{ html }} />
+        <WebView style={{ flex: 1 }} source={{ html }} scalesPageToFit={Platform.OS === 'android'} />
+        <AdMobBanner
+          adSize='fullBanner'
+          adUnitID={AppConfig.bannerAdUnitID}
+          testDeviceID={AdMobBanner.simulatorId}
+          onAdFailedToLoad={this._bannerError}
+        />
       </View>
     )
   }

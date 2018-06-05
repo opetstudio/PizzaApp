@@ -3,12 +3,18 @@ package com.opetstudio.jemaatapp;
 import android.os.Bundle;
 
 import com.facebook.react.ReactActivity;
+import com.google.android.gms.ads.MobileAds;
+//import com.google.android.gms.ads.MobileAds;
+
 import org.devio.rn.splashscreen.SplashScreen; // here
 
 public class MainActivity extends ReactActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         SplashScreen.show(this);  // here
+//        String appPub = "ca-app-pub-3940256099942544/6300978111"
+        MobileAds.initialize(this, "ca-app-pub-3773214315606599~9709453424");
+
         super.onCreate(savedInstanceState);
     }
 

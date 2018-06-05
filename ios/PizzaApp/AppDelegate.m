@@ -19,6 +19,8 @@
 #import <Firebase.h>
 #import "RNFirebaseNotifications.h"
 #import "RNFirebaseMessaging.h"
+@import GoogleMobileAds;
+
 
 
 
@@ -56,6 +58,8 @@
 //  [SplashScreen show];  // here
   
   [RNFirebaseNotifications configure];
+  [GADMobileAds configureWithApplicationID:@"ca-app-pub-3773214315606599~1905069305"];
+
   
 //  [FIRApp configure];
 //  [[UNUserNotificationCenter currentNotificationCenter] setDelegate:self];

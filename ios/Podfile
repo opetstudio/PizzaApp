@@ -30,7 +30,7 @@ target 'PizzaApp' do
   pod 'Firebase/Database'
   pod 'Firebase/Auth'
 
-
+  pod 'Google-Mobile-Ads-SDK'
   
 
   platform :ios, '9.0'

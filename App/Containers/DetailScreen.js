@@ -14,6 +14,7 @@ import DetailContent from '../Components/DetailContent'
 
 // Styles
 import styles from './Styles/DetailScreenStyle'
+import AppConfig from '../Config/AppConfig'
 
 class DetailScreen extends Component {
   // static navigationOptions = {
@@ -27,6 +28,7 @@ class DetailScreen extends Component {
     const title = item['title'] || 'NO-TITLE'
     const tanggal = item['tanggal'] || 'NO-TITLE'
     const htmlContent = item['isi_html'] || 'NO-TITLE'
+    const contributorSpace = item['contributorSpace'] || AppConfig.contributorSpace
 
     // console.log('[DetailScreen] props', this.props)
     return (
@@ -37,11 +39,12 @@ class DetailScreen extends Component {
           title={headerTitle || 'Detail'}
         />
         {/* <Content> */}
-          <DetailContent
-            title={title}
-            date={tanggal}
-            htmlContent={htmlContent}
-          />
+        <DetailContent
+          title={title}
+          date={tanggal}
+          htmlContent={htmlContent}
+          contributorSpace={contributorSpace}
+        />
         {/* </Content> */}
       </View>
     )

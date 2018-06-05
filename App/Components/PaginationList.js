@@ -1,12 +1,16 @@
 import React, { Component } from 'react'
 // import PropTypes from 'prop-types';
-import { View, FlatList, RefreshControl } from 'react-native'
+import { View, FlatList, RefreshControl, Platform } from 'react-native'
 import {
   ListItem, Body, Text, Right
 } from 'native-base'
 import moment from 'moment'
 import _ from 'lodash'
 import styles from './Styles/PaginationListStyle'
+import {
+  AdMobBanner
+} from 'react-native-admob'
+import AppConfig from '../Config/AppConfig'
 
 export default class PaginationList extends Component {
   // // Prop type warnings
@@ -67,25 +71,28 @@ export default class PaginationList extends Component {
     this._getPaginatedItems()
     return true
   }
-  _renderRow ({item}) {
-    item = item || {}
+  _renderRow (p) {
+    // console.log('====>', p)
+    const { item } = p
     const date = moment(new Date(item[this.props.rightText])).format('DD-MM/YY')
     return (
-      <ListItem onPress={() => this.props.itemOnPress(item)}>
-        <Body>
-          <Text>
-            {item[this.props.firstText]}
-          </Text>
-          {/* <Text numberOfLines={1} note>
-            {item[this.props.secondText]}
-          </Text> */}
-        </Body>
-        <Right>
-          <Text note>
-            {date}
-          </Text>
-        </Right>
-      </ListItem>
+      <View style={{ flex: 1 }}>
+        <ListItem onPress={() => this.props.itemOnPress(item)}>
+          <Body>
+            <Text>
+              {item[this.props.firstText]}
+            </Text>
+            {/* <Text numberOfLines={1} note>
+              {item[this.props.secondText]}
+            </Text> */}
+          </Body>
+          <Right>
+            <Text note>
+              {date}
+            </Text>
+          </Right>
+        </ListItem>
+      </View>
     )
   }
   _handleRefresh () {
@@ -94,32 +101,42 @@ export default class PaginationList extends Component {
     })
     this.props.handleRefresh()
   }
+  _bannerError (p1, p2) {
+    console.log('bannerError=====>>>>>', p1)
+  }
   _renderList () {
     // if (this.state.isLoading) return <View><Text>loading</Text></View>
+    const testAdUnitID = AppConfig.bannerAdUnitID
     return (
       <View
-          style={{
-            flex: 1,
-            backgroundColor: '#FFF'
-          }}
-        >
-      <FlatList
-        data={this.state.currentListAllArr || []}
-        renderItem={this._renderRow}
-        keyExtractor={(item = {}) => item._id}
-        initialNumToRender={3}
-        onMomentumScrollEnd={() => {
-          this._nextOffset()
+        style={{
+          flex: 1,
+          backgroundColor: '#FFF'
         }}
-        // refreshControl={
-        //   <RefreshControl
-        //    refreshing={this.state.isLoading}
-        //    onRefresh={this._handleRefresh}
-        //   />
-        // }
-        refreshing={this.state.isLoading}
-        onRefresh={this._handleRefresh}
-      />
+      >
+        <FlatList
+          data={this.state.currentListAllArr || []}
+          renderItem={this._renderRow}
+          keyExtractor={(item = {}) => item._id}
+          initialNumToRender={3}
+          onMomentumScrollEnd={() => {
+            this._nextOffset()
+          }}
+          // refreshControl={
+          //   <RefreshControl
+          //    refreshing={this.state.isLoading}
+          //    onRefresh={this._handleRefresh}
+          //   />
+          // }
+          refreshing={this.state.isLoading}
+          onRefresh={this._handleRefresh}
+        />
+        <AdMobBanner
+          adSize='fullBanner'
+          adUnitID={testAdUnitID}
+          testDeviceID={AdMobBanner.simulatorId}
+          onAdFailedToLoad={this._bannerError}
+        />
       </View>
     )
   }
