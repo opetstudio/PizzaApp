@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { View, Image, Platform } from 'react-native'
 import { Container, Header, Button, Content, ActionSheet, Text, Body, Left, Right, Title, Icon, Thumbnail } from "native-base"
 import styles from './Styles/HeaderMenuStyle'
-import { Images, Colors } from '../Themes'
+import { Images, Colors, Metrics } from '../Themes'
 import I18n from '../I18n'
 import StyledText from './StyledText'
 
@@ -48,10 +48,10 @@ export default class HeaderMenu extends Component {
     const goToClose = () => navigation.navigate('Menu');
     return (
       <Header
-          style={{ backgroundColor: Colors.colorPrimary }}
-          androidStatusBarColor={Colors.colorPrimaryDark}
-          iosBarStyle="light-content"
-        >
+        style={{ backgroundColor: Colors.colorPrimary }}
+        androidStatusBarColor={Colors.colorPrimaryDark}
+        iosBarStyle="light-content"
+      >
           {hasHamburger && (
             <Left>
               <Button

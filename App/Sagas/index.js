@@ -1,3 +1,4 @@
+import { Platform } from 'react-native'
 import { takeLatest, all } from 'redux-saga/effects'
 import API from '../Services/Api'
 import FixtureAPI from '../Services/FixtureApi'
@@ -23,10 +24,11 @@ import { getSsdewasa } from './SsdewasaSagas'
 
 // The API we use is only used from Sagas, so we create it here and pass along
 // to the sagas which need it.
+const host = Platform.OS === 'ios' ? 'http://localhost:8090/api/' : 'http://10.0.2.2:8090/api/'
 const api = DebugConfig.useFixtures ? FixtureAPI : API.create()
-const apiRestapi = DebugConfig.useFixtures ? FixtureAPI : API.create('http://localhost:8090/api/')
-const apiRenpagi = DebugConfig.useFixtures ? FixtureAPI : API.create('http://localhost:8090/api/')
-const apiSsdewasa = DebugConfig.useFixtures ? FixtureAPI : API.create('http://localhost:8090/api/')
+const apiRestapi = DebugConfig.useFixtures ? FixtureAPI : API.create(host)
+const apiRenpagi = DebugConfig.useFixtures ? FixtureAPI : API.create(host)
+const apiSsdewasa = DebugConfig.useFixtures ? FixtureAPI : API.create(host)
 
 /* ------------- Connect Types To Sagas ------------- */
 

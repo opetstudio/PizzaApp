@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text } from 'react-native'
+import { Text, View } from 'react-native'
 import { connect } from 'react-redux'
 import {
   Container,
@@ -11,7 +11,7 @@ import PaginationList from '../Components/PaginationList'
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
 
-import {RenpagiSelectors} from '../Redux/RenpagiRedux'
+import RenpagiActions, {RenpagiSelectors} from '../Redux/RenpagiRedux'
 
 // Styles
 import styles from './Styles/RenunganpagiScreenStyle'
@@ -19,41 +19,55 @@ import styles from './Styles/RenunganpagiScreenStyle'
 const labelScreen = 'Renungan'
 
 class RenunganpagiScreen extends Component {
+  constructor (props) {
+    super(props)
+    this._handleRefresh = this._handleRefresh.bind(this)
+  }
+  componentWillMount () {
+    this.props.renpagiRequest({ newerModifiedon: this.props.maxModifiedon })
+  }
+  _handleRefresh () {
+    this.props.renpagiRequest({ newerModifiedon: this.props.maxModifiedon })
+  }
   render () {
+    console.log('[RenunganpagiScreen] props', this.props)
     return (
-      <Container>
+      <View style={{flex: 1}}>
         <HeaderMenu
           hasHamburger
           hasSearch
           navigation={this.props.navigation}
           title={labelScreen}
         />
-        <Content>
-          <PaginationList
-            data={this.props.allDataArr}
-            firstText={'title'}
-            secondText={'title'}
-            rightText={'tanggal'}
-            itemOnPress={(item) => {
-              // alert(item.title)
-              this.props.navigation.navigate('DetailScreen', item)
-            }}
+        {/* <Content> */}
+        <PaginationList
+          data={this.props.allDataArr}
+          firstText={'title'}
+          secondText={'title'}
+          rightText={'tanggal'}
+          itemOnPress={(item) => {
+            // alert(item.title)
+            this.props.navigation.navigate('DetailScreen', {title: 'Renungan Pagi', item})
+          }}
+          handleRefresh={this._handleRefresh}
           />
-        </Content>
-      </Container>
+        {/* </Content> */}
+      </View>
     )
   }
 }
 
 const mapStateToProps = (state) => {
-  console.log('====>', state)
+  // console.log('====>', state)
   return {
-    allDataArr: RenpagiSelectors.getAllDataArr(state.renpagi)
+    allDataArr: RenpagiSelectors.getAllDataArr(state.renpagi),
+    maxModifiedon: RenpagiSelectors.getMaxModifiedon(state.renpagi)
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    renpagiRequest: (query) => dispatch(RenpagiActions.renpagiRequest(query))
   }
 }
 

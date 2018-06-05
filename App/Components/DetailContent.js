@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
-import { WebView, Text } from 'react-native'
+import { WebView, Text, View } from 'react-native'
 import {
   Content,
   Card,
@@ -32,11 +32,9 @@ export default class DetailContent extends Component {
 
     const html = `<h3>${formatedDate}</h3><h2>${title}</h2> ${htmlContent}`
     return (
-      <Container>
-        <Content contentContainerStyle={{ flex: 1 }}>
-          <WebView scalesPageToFit={false} source={{ html }} />
-        </Content>
-      </Container>
+      <View style={{ flex: 1 }}>
+        <WebView style={{ flex: 1 }} source={{ html }} />
+      </View>
     )
   }
 }

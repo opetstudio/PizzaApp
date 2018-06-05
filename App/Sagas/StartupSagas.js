@@ -1,5 +1,9 @@
 import { put, select } from 'redux-saga/effects'
 import GithubActions, { GithubSelectors } from '../Redux/GithubRedux'
+import RestapiActions from '../Redux/RestapiRedux'
+import RenpagiActions from '../Redux/RenpagiRedux'
+import SsdewasaActions from '../Redux/SsdewasaRedux'
+
 import { is } from 'ramda'
 
 // exported to make available for tests
@@ -37,4 +41,7 @@ export function * startup (action) {
   if (!is(String, avatar)) {
     yield put(GithubActions.userRequest('GantMan'))
   }
+  yield put(RestapiActions.restapiRequest({ newerModifiedon: 0 }))
+  yield put(RenpagiActions.renpagiRequest({ newerModifiedon: 0 }))
+  yield put(SsdewasaActions.ssdewasaRequest({ newerModifiedon: 0 }))
 }

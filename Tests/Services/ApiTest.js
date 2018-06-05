@@ -23,7 +23,8 @@ test('Api getRestapi returns the right response', async () => {
   // console.log('resp', resp)
   // api.getRestapi().then(resp => console.log('resp', resp))
   // console.log('resp', resp)
-  const newerModifiedon = 1494844278993
+
+  const newerModifiedon = 0
   const response = await api.getRestapi({ newerModifiedon })
   // console.log('responseeee', response)
   expect(response.data.minModifiedon > newerModifiedon).toBe(true)
@@ -31,7 +32,7 @@ test('Api getRestapi returns the right response', async () => {
   expect('maxModifiedon' in response.data).toBe(true)
   expect('byId' in response.data).toBe(true)
   expect('allIds' in response.data).toBe(true)
-  expect(response.data.allIds.length).toBe(4)
+  expect(response.data.allIds.length).toBe(5)
   // expect(response.data.alldata.length).toBe(2)
 
   // expect(response.data).toEqual({
@@ -42,7 +43,6 @@ test('Api getRestapi returns the right response', async () => {
 test('Api getRenpagi returns the right response', async () => {
   const api = API.create('http://localhost:8090/api/')
   // const expectedFile = require('../../App/Fixtures/restapi.json')
-
   // const resp = new Promise(api.getRestapi())
   // const resp = new Promise((resolve, reject) => {
   //   api.getRestapi().then(r => resolve(r)).catch(e => reject(e))
@@ -50,15 +50,16 @@ test('Api getRenpagi returns the right response', async () => {
   // console.log('resp', resp)
   // api.getRestapi().then(resp => console.log('resp', resp))
   // console.log('resp', resp)
-  const newerModifiedon = 1494844278993
+  const newerModifiedon = 0
   const response = await api.getRenpagi({ newerModifiedon })
   // console.log('responseeee', response)
   expect(response.data.minModifiedon > newerModifiedon).toBe(true)
   expect('minModifiedon' in response.data).toBe(true)
   expect('maxModifiedon' in response.data).toBe(true)
+  expect(response.data.maxModifiedon).toBe(1518280007246)
   expect('byId' in response.data).toBe(true)
   expect('allIds' in response.data).toBe(true)
-  expect(response.data.allIds.length).toBe(151)
+  expect(response.data.allIds.length).toBe(30)
   
   // expect(response.data.alldata.length).toBe(2)
 
@@ -78,7 +79,7 @@ test('Api getSsdewasa returns the right response', async () => {
   // console.log('resp', resp)
   // api.getRestapi().then(resp => console.log('resp', resp))
   // console.log('resp', resp)
-  const newerModifiedon = 1494844278993
+  const newerModifiedon = 0
   const response = await api.getSsdewasa({ newerModifiedon })
   // console.log('responseeee', response)
   expect(response.data.minModifiedon > newerModifiedon).toBe(true)
@@ -86,7 +87,7 @@ test('Api getSsdewasa returns the right response', async () => {
   expect('maxModifiedon' in response.data).toBe(true)
   expect('byId' in response.data).toBe(true)
   expect('allIds' in response.data).toBe(true)
-  expect(response.data.allIds.length).toBe(267)
+  expect(response.data.allIds.length).toBe(30)
 
   // expect(response.data.alldata.length).toBe(2)
 

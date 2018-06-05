@@ -40,6 +40,7 @@ const create = (baseURL = 'https://api.github.com/') => {
   const getRestapi = ({ newerModifiedon }) => api.get('getRestapi', { newerModifiedon })
   const getRenpagi = ({ apiName, baseUrl, newerModifiedon }) => {
     if (baseUrl) api.setBaseURL(baseUrl)
+    // console.log('Api.js=========>>>>>', api.getBaseURL())
     return api.get(apiName || 'getRenpagi', { newerModifiedon })
   }
   const getSsdewasa = ({ apiName, baseUrl, newerModifiedon }) => {

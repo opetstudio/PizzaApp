@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { ScrollView, Text, KeyboardAvoidingView } from 'react-native'
+import { ScrollView, Text, KeyboardAvoidingView, View } from 'react-native'
 import { connect } from 'react-redux'
 import {
   Container,
@@ -16,29 +16,34 @@ import DetailContent from '../Components/DetailContent'
 import styles from './Styles/DetailScreenStyle'
 
 class DetailScreen extends Component {
+  // static navigationOptions = {
+  //   title: 'Home'
+  // };
   render () {
     const { navigation } = this.props
-    const params = path(['state', 'params'], navigation) || {}
-    const title = params['title'] || 'NO-TITLE'
-    const tanggal = params['tanggal'] || 'NO-TITLE'
-    const htmlContent = params['isi_html'] || 'NO-TITLE'
+    // navigation.setParams({ title: 'opeeet' })
+    const item = path(['state', 'params', 'item'], navigation) || {}
+    const headerTitle = path(['state', 'params', 'title'], navigation)
+    const title = item['title'] || 'NO-TITLE'
+    const tanggal = item['tanggal'] || 'NO-TITLE'
+    const htmlContent = item['isi_html'] || 'NO-TITLE'
 
     // console.log('[DetailScreen] props', this.props)
     return (
-      <Container>
+      <View style={{ flex: 1 }}>
         <HeaderMenu
           hasBack
           navigation={this.props.navigation}
-          title={'Detail'}
+          title={headerTitle || 'Detail'}
         />
-        <Content>
+        {/* <Content> */}
           <DetailContent
             title={title}
             date={tanggal}
             htmlContent={htmlContent}
           />
-        </Content>
-      </Container>
+        {/* </Content> */}
+      </View>
     )
   }
 }

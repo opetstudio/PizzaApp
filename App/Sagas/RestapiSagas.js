@@ -29,9 +29,9 @@ export function * getRestapi (api, action) {
     // You might need to change the response here - do this with a 'transform',
     // located in ../Transforms/. Otherwise, just pass the data back from the api.
     // const byId = response.data
-    const { byId, allIds } = response.data
+    const { byId, allIds, maxModifiedon } = response.data
     // const byId = ConvertRestapiResp(response.data)
-    yield put(RestapiActions.restapiSuccess(byId, allIds))
+    yield put(RestapiActions.restapiSuccess(byId, allIds, maxModifiedon))
   } else {
     yield put(RestapiActions.restapiFailure())
   }

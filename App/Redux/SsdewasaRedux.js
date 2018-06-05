@@ -29,13 +29,14 @@ export const INITIAL_STATE = Immutable({
 /* ------------- Selectors ------------- */
 
 export const SsdewasaSelectors = {
+  getMaxModifiedon: state => state.maxModifiedon,
   getData: state => state.data,
   getById: state => state.byId,
   getAllIds: state => state.allIds,
   getAllDataArr: state => state.allIds.map(id => state.byId[id]),
   getAllLessons: (state, filter) => {
     const r = []
-    SsdewasaSelectors.getAllDataArr(state).forEach((v) => {
+    SsdewasaSelectors.getAllDataArr(state).forEach((v = {}) => {
       if (new Date(v.tanggal).getDay() + 1 === 7) {
         r.push(v)
       }
@@ -67,7 +68,7 @@ export const request = (state, { data, payload }) =>
 // successful api lookup
 export const success = (state, action) => {
   const { byId, allIds, maxModifiedon } = action
-  return state.merge({ fetching: false, error: null, byId, allIds: arrayMerge([state.allIds, allIds]), maxModifiedon })
+  return state.merge({ fetching: false, error: null, byId: {...state.byId, ...byId}, allIds: arrayMerge([state.allIds, allIds]), maxModifiedon })
 }
 
 // Something went wrong somewhere.

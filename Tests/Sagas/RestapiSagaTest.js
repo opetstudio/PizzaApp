@@ -43,10 +43,10 @@ test('success path', async () => {
   const dataResp = path(['data'], response)
   // console.log('======>', dataResp)
   
-  const { byId, allIds } = dataResp
+  const { byId, allIds, maxModifiedon } = dataResp
 
   // const byId = dataApi
-  expect(stepResponse).toEqual(put(RestapiActions.restapiSuccess(byId, allIds)))
+  expect(stepResponse).toEqual(put(RestapiActions.restapiSuccess(byId, allIds, maxModifiedon)))
 })
 
 test('failure path', () => {

@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 // import PropTypes from 'prop-types';
-import { View, FlatList } from 'react-native'
+import { View, FlatList, RefreshControl } from 'react-native'
 import {
   ListItem, Body, Text, Right
 } from 'native-base'
 import moment from 'moment'
+import _ from 'lodash'
 import styles from './Styles/PaginationListStyle'
 
 export default class PaginationList extends Component {
@@ -26,6 +27,8 @@ export default class PaginationList extends Component {
     this._renderList = this._renderList.bind(this)
     this._setDataSource = this._setDataSource.bind(this)
     this._getPaginatedItems = this._getPaginatedItems.bind(this)
+    this._handleRefresh = this._handleRefresh.bind(this)
+    this._nextOffset = this._nextOffset.bind(this)
   }
   componentWillMount () {
     this.state.page = 1
@@ -58,7 +61,14 @@ export default class PaginationList extends Component {
       isLoading: false
     })
   }
+  _nextOffset () {
+    if (this.state.totalItems / this.state.per_page < this.state.page) return false
+    this.state.page += 1
+    this._getPaginatedItems()
+    return true
+  }
   _renderRow ({item}) {
+    item = item || {}
     const date = moment(new Date(item[this.props.rightText])).format('DD-MM/YY')
     return (
       <ListItem onPress={() => this.props.itemOnPress(item)}>
@@ -78,20 +88,39 @@ export default class PaginationList extends Component {
       </ListItem>
     )
   }
+  _handleRefresh () {
+    this.setState({
+      isLoading: true
+    })
+    this.props.handleRefresh()
+  }
   _renderList () {
-    if (this.state.isLoading) return <View><Text>loading</Text></View>
+    // if (this.state.isLoading) return <View><Text>loading</Text></View>
     return (
+      <View
+          style={{
+            flex: 1,
+            backgroundColor: '#FFF'
+          }}
+        >
       <FlatList
-        data={this.state.currentListAllArr}
+        data={this.state.currentListAllArr || []}
         renderItem={this._renderRow}
-        keyExtractor={(item) => item._id}
+        keyExtractor={(item = {}) => item._id}
         initialNumToRender={3}
-        style={{
-        }}
         onMomentumScrollEnd={() => {
-          // this._next_offset();
+          this._nextOffset()
         }}
+        // refreshControl={
+        //   <RefreshControl
+        //    refreshing={this.state.isLoading}
+        //    onRefresh={this._handleRefresh}
+        //   />
+        // }
+        refreshing={this.state.isLoading}
+        onRefresh={this._handleRefresh}
       />
+      </View>
     )
   }
   render () {

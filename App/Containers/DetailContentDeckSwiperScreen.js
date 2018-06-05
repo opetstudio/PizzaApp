@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { ScrollView, Text, KeyboardAvoidingView } from 'react-native'
+import { ScrollView, Text, KeyboardAvoidingView, View } from 'react-native'
 import { connect } from 'react-redux'
 import {
   Container,
@@ -20,20 +20,24 @@ class DetailContentDeckSwiperScreen extends Component {
     const { navigation } = this.props
     const params = path(['state', 'params'], navigation) || {}
     const allData = params['alldata'] || []
+    const headerTitle = params['title']
     // console.log('[DetailContentDeckSwiperScreen] props====>', this.props)
     return (
-      <Container>
+      <View style={{ flex: 1 }}>
         <HeaderMenu
+          ref='myHeader'
           hasBack
           navigation={this.props.navigation}
-          title={'Detail'}
+          title={headerTitle || 'Detail'}
         />
-        <Content>
+        {/* <Content> */}
           <DetailContentDeckSwiper
             allData={allData}
+            headerHeight={this.refs.myHeader}
+            navigation={this.props.navigation}
           />
-        </Content>
-      </Container>
+        {/* </Content> */}
+      </View>
     )
   }
 }

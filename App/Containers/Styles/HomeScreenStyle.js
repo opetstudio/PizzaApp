@@ -1,5 +1,5 @@
 import { StyleSheet, Platform } from 'react-native'
-import { ApplicationStyles, Metrics } from '../../Themes/'
+import { ApplicationStyles, Metrics, Colors } from '../../Themes/'
 
 export default StyleSheet.create({
   imageContainer: {
@@ -9,15 +9,19 @@ export default StyleSheet.create({
   },
   logoContainer: {
     flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
     marginTop: Metrics.screenHeight / 8,
-    marginBottom: 30
+    marginBottom: 25
   },
   logo: {
-    position: "absolute",
-    left: Platform.OS === "android" ? 40 : 50,
-    top: Platform.OS === "android" ? 35 : 60,
+    // flex: 1,
+    // position: "absolute",
+    // left: Platform.OS === "android" ? 40 : 50,
+    // top: Platform.OS === "android" ? 35 : 60,
     width: 280,
-    height: 100
+    height: 300,
+    resizeMode: 'contain'
   },
   text: {
     color: "#D8D8D8",

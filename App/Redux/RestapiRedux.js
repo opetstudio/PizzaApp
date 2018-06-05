@@ -6,7 +6,7 @@ import {arrayMerge} from '../Utils/helper/datamining'
 
 const { Types, Creators } = createActions({
   restapiRequest: ['data', 'payload'],
-  restapiSuccess: ['byId', 'allIds'],
+  restapiSuccess: ['byId', 'allIds', 'maxModifiedon'],
   restapiFailure: null
 })
 
@@ -16,6 +16,7 @@ export default Creators
 /* ------------- Initial State ------------- */
 
 export const INITIAL_STATE = Immutable({
+  maxModifiedon: 0,
   data: null,
   byId: null,
   allIds: [],
@@ -27,6 +28,7 @@ export const INITIAL_STATE = Immutable({
 /* ------------- Selectors ------------- */
 
 export const RestapiSelectors = {
+  getMaxModifiedon: state => state.maxModifiedon,
   getData: state => state.data,
   getById: state => state.byId,
   getAllIds: state => state.allIds,
@@ -41,10 +43,10 @@ export const request = (state, { data, payload }) =>
 
 // successful api lookup
 export const success = (state, action) => {
-  const { byId, allIds } = action
+  const { byId, allIds, maxModifiedon } = action
   // console.log('success===>state', state)
   // console.log('success===>allIds', allIds)
-  return state.merge({ fetching: false, error: null, byId, allIds: arrayMerge([state.allIds, allIds]) })
+  return state.merge({ fetching: false, error: null, byId: {...state.byId, ...byId}, allIds: arrayMerge([state.allIds, allIds], maxModifiedon) })
 }
 
 // Something went wrong somewhere.

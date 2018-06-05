@@ -28,6 +28,7 @@ export const INITIAL_STATE = Immutable({
 /* ------------- Selectors ------------- */
 
 export const RenpagiSelectors = {
+  getMaxModifiedon: state => state.maxModifiedon,
   getData: state => state.data,
   getById: state => state.byId,
   getAllIds: state => state.allIds,
@@ -43,7 +44,7 @@ export const request = (state, { data, payload }) =>
 // successful api lookup
 export const success = (state, action) => {
   const { byId, allIds, maxModifiedon } = action
-  return state.merge({ fetching: false, error: null, byId, allIds: arrayMerge([state.allIds, allIds]), maxModifiedon })
+  return state.merge({ fetching: false, error: null, byId: {...state.byId, ...byId}, allIds: arrayMerge([state.allIds, allIds]), maxModifiedon })
 }
 
 // Something went wrong somewhere.

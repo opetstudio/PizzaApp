@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { ScrollView, Text, KeyboardAvoidingView } from 'react-native'
+import { ScrollView, Text, KeyboardAvoidingView, View } from 'react-native'
 import { connect } from 'react-redux'
 import {
   Container,
@@ -12,7 +12,7 @@ import PaginationList from '../Components/PaginationList'
 
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
-import {SsdewasaSelectors} from '../Redux/SsdewasaRedux'
+import SsdewasaActions, {SsdewasaSelectors} from '../Redux/SsdewasaRedux'
 
 // redux
 import PopupActions, { reducer, INITIAL_STATE } from '../Redux/PopupRedux'
@@ -23,6 +23,16 @@ import styles from './Styles/SekolahsabatScreenStyle'
 const labelScreen = 'Sekolah Sabat'
 
 class SekolahsabatScreen extends Component {
+  constructor (props) {
+    super(props)
+    this._handleRefresh = this._handleRefresh.bind(this)
+  }
+  componentWillMount () {
+    this.props.ssdewasaRequest({ newerModifiedon: this.props.maxModifiedon })
+  }
+  _handleRefresh () {
+    this.props.ssdewasaRequest({ newerModifiedon: this.props.maxModifiedon })
+  }
   showPopup = () => {
     this.props.popupShow({
       title: 'tes title adsf asdf asdf',
@@ -38,14 +48,14 @@ class SekolahsabatScreen extends Component {
   }
   render () {
     return (
-      <Container>
+      <View style={{flex:1}}>
         <HeaderMenu
           hasHamburger
           hasSearch
           navigation={this.props.navigation}
           title={labelScreen}
         />
-        <Content>
+        {/* <Content> */}
           {/* <Button
             onPress={() => this.showPopup()}
             success
@@ -65,11 +75,12 @@ class SekolahsabatScreen extends Component {
                 this.props.allDataSsdewasaArr,
                 { pelajaranke: v.pelajaranke, triwulanke: v.triwulanke, year: v.year }
                 ), ['tanggal'], ['asc'])
-              this.props.navigation.navigate('DetailContentDeckSwiperScreen', {alldata: listPelajaran})
+              this.props.navigation.navigate('DetailContentDeckSwiperScreen', {title: 'Sekolah Sabat', alldata: listPelajaran})
             }}
+            handleRefresh={this._handleRefresh}
           />
-        </Content>
-      </Container>
+        {/* </Content> */}
+      </View>
     )
   }
 }
@@ -77,13 +88,15 @@ class SekolahsabatScreen extends Component {
 const mapStateToProps = (state) => {
   return {
     allDataSsdewasaArr: SsdewasaSelectors.getAllDataArr(state.ssdewasa),
-    allDataArr: SsdewasaSelectors.getAllLessons(state.ssdewasa)
+    allDataArr: SsdewasaSelectors.getAllLessons(state.ssdewasa),
+    maxModifiedon: SsdewasaSelectors.getMaxModifiedon(state.ssdewasa)
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    popupShow: (popupMessage) => dispatch(PopupActions.popupShow(popupMessage))
+    popupShow: (popupMessage) => dispatch(PopupActions.popupShow(popupMessage)),
+    ssdewasaRequest: (query) => dispatch(SsdewasaActions.ssdewasaRequest(query))
   }
 }
 
