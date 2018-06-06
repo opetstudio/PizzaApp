@@ -25,6 +25,7 @@
 		13F120F9132033BECE68E9F3 /* libPods-PizzaAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BB2640B72B1D49598FF9A596 /* libPods-PizzaAppTests.a */; };
 		140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
+		1812CCE3D6DB480E9F5EA3B1 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4C35A14EFBA414594B983E5 /* FBSDKCoreKit.framework */; };
 		1895FF209D5B4B41B0EF681B /* libRCTFBSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46CF80CF5A8F401AB8D2909E /* libRCTFBSDK.a */; };
 		1970E8E413731D68446AE12E /* libPods-PizzaApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A77175C5970D1ECAD38CC95 /* libPods-PizzaApp.a */; };
 		2595C9DFAE68405B9CA80C5C /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3851AAE2E98F479F8DFE3DF5 /* Ionicons.ttf */; };
@@ -71,6 +72,7 @@
 		B163708430CE4FF1A7B63AFA /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7FFADAD44B3142C8A9541C58 /* SimpleLineIcons.ttf */; };
 		B1712F145F01E9DBC49FCA5E /* libPods-PizzaApp-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22B16D2FF5D031FB64D9691F /* libPods-PizzaApp-tvOSTests.a */; };
 		C39C551F8D0E41E7BE3683CE /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A64649055A2A424292CB5C7B /* Entypo.ttf */; };
+		C54BC29F6FDB4FE3B9161549 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC52AC557B8D4C54AF704A59 /* FBSDKLoginKit.framework */; };
 		C8D9BCC0CE9E4A2697011FDB /* libRNAdMobManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 920EE47C0E9E47AAB03C967C /* libRNAdMobManager.a */; };
 		CA0DDC86CD234A538328DF0D /* libAppCenterReactNative.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 493F584612A5463B931AB333 /* libAppCenterReactNative.a */; };
 		D0109A837E1B474BBEFAD623 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6FE19A07F21745F7A6B4EEFC /* Zocial.ttf */; };
@@ -79,6 +81,7 @@
 		D90771BD72754D7ABCE293AB /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7D77EE556F5E47E2AC6298BA /* FontAwesome.ttf */; };
 		D97138AF56A74515BFE499BD /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3BD131E3538346AEB279610F /* Octicons.ttf */; };
 		F3AA628A33CA4A7FAB7EC46C /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E7C277A9801E44FE88FAE05B /* FontAwesome.ttf */; };
+		FEADCDE2A86640DABB36C69F /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB5AE7806D134CC79453B3F7 /* FBSDKShareKit.framework */; };
 		FF4B9449A6F14CEC87763607 /* libReactNativeConfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 462CECBB0063461FB4F3B135 /* libReactNativeConfig.a */; };
 /* End PBXBuildFile section */
 
@@ -471,7 +474,7 @@
 		11CAA3F29AAA40CBAF293CE0 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/native-base/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
 		139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "../node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* PizzaApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PizzaApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07F961A680F5B00A75B9A /* JemaatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JemaatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = PizzaApp/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = PizzaApp/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB21A68108700A75B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -517,6 +520,7 @@
 		9C39CFBD217D42509444B8A3 /* libAppCenterReactNativeAnalytics.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libAppCenterReactNativeAnalytics.a; sourceTree = "<group>"; };
 		9CBCA38562334CC4938400B0 /* RNI18n.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNI18n.xcodeproj; path = "../node_modules/react-native-i18n/ios/RNI18n.xcodeproj"; sourceTree = "<group>"; };
 		A4218F351BDF46FFAB920384 /* Pods-PizzaApp-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PizzaApp-tvOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-PizzaApp-tvOS/Pods-PizzaApp-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		A4C35A14EFBA414594B983E5 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ./ios/Frameworks/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		A64649055A2A424292CB5C7B /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 		A838ECCBEE294D8EBAC0C387 /* RNFirebase.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNFirebase.xcodeproj; path = "../node_modules/react-native-firebase/ios/RNFirebase.xcodeproj"; sourceTree = "<group>"; };
 		A85B7E795B8FB1C997A6E359 /* Pods-PizzaApp-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PizzaApp-tvOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PizzaApp-tvOSTests/Pods-PizzaApp-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -538,7 +542,9 @@
 		E7C277A9801E44FE88FAE05B /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/native-base/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		E7F2BD3010844F469C4C72A5 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		EB4124DB58A54D478E6A5631 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
+		EB5AE7806D134CC79453B3F7 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ./ios/Frameworks/FBSDKShareKit.framework; sourceTree = "<group>"; };
 		EB6A616BF5F444A580069F12 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/native-base/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
+		EC52AC557B8D4C54AF704A59 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ./ios/Frameworks/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		EEE4F742EE9F450C913D26C0 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		F1450761D9FD463DA29E3C24 /* AppCenterReactNativeAnalytics.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = AppCenterReactNativeAnalytics.xcodeproj; path = "../node_modules/appcenter-analytics/ios/AppCenterReactNativeAnalytics.xcodeproj"; sourceTree = "<group>"; };
 		F9D3FC8561834893AEC5BDDE /* libRNI18n.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNI18n.a; sourceTree = "<group>"; };
@@ -586,6 +592,9 @@
 				138A02CAC3834C4F9225F85C /* libRNFirebase.a in Frameworks */,
 				C8D9BCC0CE9E4A2697011FDB /* libRNAdMobManager.a in Frameworks */,
 				1895FF209D5B4B41B0EF681B /* libRCTFBSDK.a in Frameworks */,
+				1812CCE3D6DB480E9F5EA3B1 /* FBSDKCoreKit.framework in Frameworks */,
+				FEADCDE2A86640DABB36C69F /* FBSDKShareKit.framework in Frameworks */,
+				C54BC29F6FDB4FE3B9161549 /* FBSDKLoginKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -744,6 +753,9 @@
 				E6D63B278F0E3CC6D434F106 /* libPods-PizzaApp-tvOS.a */,
 				22B16D2FF5D031FB64D9691F /* libPods-PizzaApp-tvOSTests.a */,
 				BB2640B72B1D49598FF9A596 /* libPods-PizzaAppTests.a */,
+				A4C35A14EFBA414594B983E5 /* FBSDKCoreKit.framework */,
+				EB5AE7806D134CC79453B3F7 /* FBSDKShareKit.framework */,
+				EC52AC557B8D4C54AF704A59 /* FBSDKLoginKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -943,7 +955,7 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* PizzaApp.app */,
+				13B07F961A680F5B00A75B9A /* JemaatApp.app */,
 				00E356EE1AD99517003FC87E /* PizzaAppTests.xctest */,
 				2D02E47B1E0B4A5D006451C7 /* PizzaApp-tvOS.app */,
 				2D02E4901E0B4A5D006451C7 /* PizzaApp-tvOSTests.xctest */,
@@ -1042,7 +1054,7 @@
 			);
 			name = PizzaApp;
 			productName = "Hello World";
-			productReference = 13B07F961A680F5B00A75B9A /* PizzaApp.app */;
+			productReference = 13B07F961A680F5B00A75B9A /* JemaatApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 		2D02E47A1E0B4A5D006451C7 /* PizzaApp-tvOS */ = {
@@ -1818,6 +1830,7 @@
 			baseConfigurationReference = C2413E19C52031D01AE0C9E3 /* Pods-PizzaAppTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Frameworks/";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1858,6 +1871,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Frameworks/";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-device-info/RNDeviceInfo",
@@ -1898,6 +1912,8 @@
 				DEVELOPMENT_TEAM = W66Y3BA56U;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks/",
+					"~/Documents/FacebookSDK",
 					"\"${PODS_ROOT}/AppCenter/AppCenter-SDK-Apple/iOS\"",
 					"\"${PODS_ROOT}/AppCenterReactNativeShared/AppCenterReactNativeShared\"",
 					"\"${PODS_ROOT}/FirebaseAnalytics/Frameworks\"",
@@ -1905,6 +1921,7 @@
 					"\"${PODS_ROOT}/FirebaseCore/Frameworks\"",
 					"\"${PODS_ROOT}/FirebaseDatabase/Frameworks\"",
 					"\"${PODS_ROOT}/FirebaseMessaging/Frameworks\"",
+					"\"${PODS_ROOT}/Google-Mobile-Ads-SDK/Frameworks\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1943,7 +1960,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.opetstudio.jemaatapp;
-				PRODUCT_NAME = PizzaApp;
+				PRODUCT_NAME = JemaatApp;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -1957,6 +1974,8 @@
 				DEVELOPMENT_TEAM = W66Y3BA56U;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks/",
+					"~/Documents/FacebookSDK",
 					"\"${PODS_ROOT}/AppCenter/AppCenter-SDK-Apple/iOS\"",
 					"\"${PODS_ROOT}/AppCenterReactNativeShared/AppCenterReactNativeShared\"",
 					"\"${PODS_ROOT}/FirebaseAnalytics/Frameworks\"",
@@ -1964,6 +1983,7 @@
 					"\"${PODS_ROOT}/FirebaseCore/Frameworks\"",
 					"\"${PODS_ROOT}/FirebaseDatabase/Frameworks\"",
 					"\"${PODS_ROOT}/FirebaseMessaging/Frameworks\"",
+					"\"${PODS_ROOT}/Google-Mobile-Ads-SDK/Frameworks\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2002,7 +2022,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.opetstudio.jemaatapp;
-				PRODUCT_NAME = PizzaApp;
+				PRODUCT_NAME = JemaatApp;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
@@ -2019,6 +2039,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Frameworks/";
 				GCC_NO_COMMON_BLOCKS = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2064,6 +2085,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Frameworks/";
 				GCC_NO_COMMON_BLOCKS = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2108,6 +2130,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Frameworks/";
 				GCC_NO_COMMON_BLOCKS = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2152,6 +2175,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Frameworks/";
 				GCC_NO_COMMON_BLOCKS = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2205,6 +2229,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Frameworks/";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -2247,6 +2272,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Frameworks/";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;

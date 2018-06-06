@@ -78,3 +78,10 @@ com.android.tools.build:gradle:3.1.0
 -> com.android.tools.build:gradle:3.0.1
 distributionUrl=https://services.gradle.org/distributions/gradle-4.4-all.zip
 -> distributionUrl=https://services.gradle.org/distributions/gradle-4.1-all.zip
+
+### FBSDK
+
+npm i -S react-native-fbsdk
+react-native link react-native-fbsdk
+
+https://developers.facebook.com/docs/react-native/configure-ios

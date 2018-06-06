@@ -73,6 +73,7 @@ android/local.properties
 cred/prod/*
 cred/dev/*
 App/db.js
+ios/Frameworks
 # App/*
 # !App/README.md
 

@@ -1,16 +1,12 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { View, WebView, ScrollView, Platform } from 'react-native'
-import {
-  Container,
-  Content,
-  Text
-} from 'native-base'
 import styles from './Styles/DetailContentDeckSwiperStyle'
 import Swiper from 'react-native-swiper'
 import moment from 'moment'
 import { Metrics } from '../Themes'
 import HeaderMenu from '../Components/HeaderMenu'
+import FabShare from '../Containers/FabShare'
 import {
   AdMobBanner
 } from 'react-native-admob'
@@ -27,6 +23,12 @@ export default class DetailContentDeckSwiper extends Component {
   // static defaultProps = {
   //   someSetting: false
   // }
+  constructor (props) {
+    super(props)
+    this.state = {
+      active: false
+    }
+  }
   _renderRow (v) {
     const {title, isi_html: isiHtml, tanggal, contributorSpace} = v
     const formatedDate = moment(new Date(tanggal)).format('dddd DD-MMM YYYY')
@@ -36,6 +38,7 @@ export default class DetailContentDeckSwiper extends Component {
     return (
       <View style={styles.slide} key={v._id}>
         <WebView source={{ html }} scalesPageToFit={Platform.OS === 'android'} />
+        <FabShare />
       </View>
     )
     // }
