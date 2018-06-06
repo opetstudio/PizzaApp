@@ -43,6 +43,7 @@
     "react-native-code-push": "^5.3.4",
     "react-native-config": "^0.10.0",
     "react-native-device-info": "0.11.0",
+    "react-native-fbsdk": "^0.7.0",
     "react-native-fcm": "^15.0.2",
     "react-native-firebase": "^4.2.0",
     "react-native-i18n": "^2.0.12",

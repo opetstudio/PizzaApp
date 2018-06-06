@@ -177,6 +177,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-fbsdk')
     compile project(':react-native-admob')
 ////    implementation(project(':react-native-firebase')) {
 //        transitive = false
@@ -221,6 +222,7 @@ dependencies {
     implementation "com.google.firebase:firebase-auth:15.1.0"
 
     implementation 'com.google.android.gms:play-services-identity:15.0.0'
+    implementation 'com.facebook.android:facebook-login:[4,5)'
 
 //    implementation "com.google.android.gms:play-services-maps:15.0.2"
 

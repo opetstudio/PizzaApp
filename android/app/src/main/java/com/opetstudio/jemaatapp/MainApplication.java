@@ -3,7 +3,9 @@ package com.opetstudio.jemaatapp;
 import android.app.Application;
 import android.support.multidex.MultiDexApplication;
 
+import com.facebook.appevents.AppEventsLogger;
 import com.facebook.react.ReactApplication;
+import com.facebook.reactnative.androidsdk.FBSDKPackage;
 import com.sbugert.rnadmob.RNAdMobPackage;
 //import com.sbugert.rnadmob.RNAdMobPackage;
 import io.invertase.firebase.RNFirebasePackage;
@@ -28,10 +30,18 @@ import com.facebook.soloader.SoLoader;
 import com.opetstudio.jemaatapp.BuildConfig;
 import com.opetstudio.jemaatapp.R;
 
+import com.facebook.CallbackManager;
+
 import java.util.Arrays;
 import java.util.List;
 
 public class MainApplication extends MultiDexApplication implements ReactApplication {
+
+  private static CallbackManager mCallbackManager = CallbackManager.Factory.create();
+
+  protected static CallbackManager getCallbackManager() {
+    return mCallbackManager;
+  }
 
   private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
 
@@ -49,6 +59,7 @@ public class MainApplication extends MultiDexApplication implements ReactApplica
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new FBSDKPackage(mCallbackManager),
             new RNAdMobPackage(),
 //            new RNAdMobPackage(),
             new RNFirebasePackage(),
@@ -83,6 +94,7 @@ public class MainApplication extends MultiDexApplication implements ReactApplica
   @Override
   public void onCreate() {
     super.onCreate();
+    AppEventsLogger.activateApp(this);
     SoLoader.init(this, /* native exopackage */ false);
   }
 }

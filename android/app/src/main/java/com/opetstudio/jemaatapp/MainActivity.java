@@ -1,5 +1,6 @@
 package com.opetstudio.jemaatapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.facebook.react.ReactActivity;
@@ -16,6 +17,12 @@ public class MainActivity extends ReactActivity {
         MobileAds.initialize(this, "ca-app-pub-3773214315606599~9709453424");
 
         super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        MainApplication.getCallbackManager().onActivityResult(requestCode, resultCode, data);
     }
 
     /**

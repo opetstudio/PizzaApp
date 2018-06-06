@@ -7,6 +7,7 @@ import ReduxPersist from '../Config/ReduxPersist'
 /* ------------- Assemble The Reducers ------------- */
 export const reducers = combineReducers({
   restapi: require('./RestapiRedux').reducer,
+  session: require('./SessionRedux').reducer,
   renpagi: require('./RenpagiRedux').reducer,
   ssdewasa: require('./SsdewasaRedux').reducer,
   popup: require('./PopupRedux').reducer,

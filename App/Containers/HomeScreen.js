@@ -5,6 +5,7 @@ import {
   Container,
   Button, Text
 } from 'native-base'
+// import { LoginButton } from 'react-native-fbsdk'
 import HeaderMenu from '../Components/HeaderMenu'
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
@@ -13,15 +14,17 @@ import HeaderMenu from '../Components/HeaderMenu'
 // import RestapiActions from '../Redux/RestapiRedux'
 // import RenpagiActions from '../Redux/RenpagiRedux'
 // import SsdewasaActions from '../Redux/SsdewasaRedux'
+import SessionActions from '../Redux/SessionRedux'
 
 // firebase
+import { AccessToken, LoginManager, LoginButton } from 'react-native-fbsdk'
 import firebase from 'react-native-firebase'
 import {registerAppListener} from '../Listeners'
 // import firebaseClient from '../FirebaseClient'
 
 // Styles
 import styles from './Styles/HomeScreenStyle'
-import { Images } from '../Themes'
+import { Images, Colors } from '../Themes'
 const launchscreenBg = Images.launchscreenBg
 const launchscreenLogo = Images.launchscreenLogo
 
@@ -34,6 +37,7 @@ class HomeScreen extends Component {
       tokenCopyFeedback: '',
       isAuthenticated: false
     }
+    this.facebookLogin = this.facebookLogin.bind(this)
   }
   componentWillMount () {
     // const api = API.create('http://localhost:8090/api/')
@@ -184,6 +188,39 @@ class HomeScreen extends Component {
 
   //   firebaseClient.send(JSON.stringify(body), 'notification')
   // }
+  async facebookLogin () {
+    try {
+      this.props.sessionRequest({data: {}})
+      const result = await LoginManager.logInWithReadPermissions(['public_profile', 'email'])
+  
+      if (result.isCancelled) {
+        throw new Error('User cancelled request') // Handle this however fits the flow of your app
+      }
+  
+      console.log(`Login success with permissions: ${result.grantedPermissions.toString()}`);
+  
+      // get the access token
+      const data = await AccessToken.getCurrentAccessToken()
+  
+      if (!data) {
+        throw new Error('Something went wrong obtaining the users access token'); // Handle this however fits the flow of your app
+      }
+      console.log('data facebook==>', data)
+  
+      // create a new firebase credential with the token
+      const credential = firebase.auth.FacebookAuthProvider.credential(data.accessToken, 'aad46bac56d7d9669bf42a318f58fd4b')
+  
+      // login with credential
+      const currentUser = await firebase.auth().signInAndRetrieveDataWithCredential(credential)
+      this.props.sessionSuccess('FB', currentUser)
+  
+      console.info(JSON.stringify(currentUser.user.toJSON()))
+    } catch (e) {
+      // console.error(e)
+      this.props.sessionFailure()
+    }
+  }
+
   render () {
     // If the user has not authenticated
     // if (!this.state.isAuthenticated) {
@@ -225,6 +262,28 @@ class HomeScreen extends Component {
               {/* {this.state.uid.toString()} */}
               {/* {this.state.tokenCopyFeedback} */}
             </Text>
+            <Button
+              style={{ backgroundColor: Colors.facebook, alignSelf: 'center' }}
+              onPress={() => this.facebookLogin()}
+            >
+              <Text>FB Login</Text>
+            </Button>
+            <LoginButton
+              onPress={() => {}}
+              publishPermissions={['email']}
+              onLoginFinished={
+                (error, result) => {
+                  if (error) {
+                    alert('Login failed with error: ' + error.message)
+                  } else if (result.isCancelled) {
+                    alert('Login was cancelled')
+                  } else {
+                    alert('Login was successful with permissions: ' + result.grantedPermissions)
+                  }
+                }
+              }
+              onLogoutFinished={() => alert('User logged out')} 
+              />
           </View>
         </ImageBackground>
       </Container>
@@ -239,6 +298,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    sessionRequest: (data) => dispatch(SessionActions.sessionRequest(data)),
+    sessionSuccess: (data) => dispatch(SessionActions.sessionSuccess(data)),
+    sessionFailure: () => dispatch(SessionActions.sessionFailure())
     // restapiRequest: (query) => dispatch(RestapiActions.restapiRequest(query)),
     // renpagiRequest: (query) => dispatch(RenpagiActions.renpagiRequest(query)),
     // ssdewasaRequest: (query) => dispatch(SsdewasaActions.ssdewasaRequest(query))
