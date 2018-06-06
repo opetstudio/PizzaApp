@@ -10,9 +10,9 @@ export default StyleSheet.create({
   logoContainer: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: Metrics.screenHeight / 8,
-    marginBottom: 25
+    alignItems: 'center'
+    // marginTop: Metrics.screenHeight / 8,
+    // marginBottom: 25
   },
   logo: {
     // flex: 1,
@@ -24,7 +24,7 @@ export default StyleSheet.create({
     resizeMode: 'contain'
   },
   text: {
-    color: "#D8D8D8",
+    color: '#D8D8D8',
     bottom: 6,
     marginTop: 5
   }

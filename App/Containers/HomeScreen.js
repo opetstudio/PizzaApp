@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
-import { View, ImageBackground, Image } from 'react-native'
+import { View, ImageBackground, Image, ScrollView } from 'react-native'
 import { connect } from 'react-redux'
 import {
   Container,
-  Button, Text
+  Text
 } from 'native-base'
 // import { LoginButton } from 'react-native-fbsdk'
 import HeaderMenu from '../Components/HeaderMenu'
+import LoginOption from '../Containers/LoginOption'
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
 // import API from '../Services/Api'
@@ -17,14 +18,13 @@ import HeaderMenu from '../Components/HeaderMenu'
 import SessionActions from '../Redux/SessionRedux'
 
 // firebase
-import { AccessToken, LoginManager, LoginButton } from 'react-native-fbsdk'
 import firebase from 'react-native-firebase'
 import {registerAppListener} from '../Listeners'
 // import firebaseClient from '../FirebaseClient'
 
 // Styles
 import styles from './Styles/HomeScreenStyle'
-import { Images, Colors } from '../Themes'
+import { Images } from '../Themes'
 const launchscreenBg = Images.launchscreenBg
 const launchscreenLogo = Images.launchscreenLogo
 
@@ -37,7 +37,6 @@ class HomeScreen extends Component {
       tokenCopyFeedback: '',
       isAuthenticated: false
     }
-    this.facebookLogin = this.facebookLogin.bind(this)
   }
   componentWillMount () {
     // const api = API.create('http://localhost:8090/api/')
@@ -188,39 +187,6 @@ class HomeScreen extends Component {
 
   //   firebaseClient.send(JSON.stringify(body), 'notification')
   // }
-  async facebookLogin () {
-    try {
-      this.props.sessionRequest({data: {}})
-      const result = await LoginManager.logInWithReadPermissions(['public_profile', 'email'])
-  
-      if (result.isCancelled) {
-        throw new Error('User cancelled request') // Handle this however fits the flow of your app
-      }
-  
-      console.log(`Login success with permissions: ${result.grantedPermissions.toString()}`);
-  
-      // get the access token
-      const data = await AccessToken.getCurrentAccessToken()
-  
-      if (!data) {
-        throw new Error('Something went wrong obtaining the users access token'); // Handle this however fits the flow of your app
-      }
-      console.log('data facebook==>', data)
-  
-      // create a new firebase credential with the token
-      const credential = firebase.auth.FacebookAuthProvider.credential(data.accessToken, 'aad46bac56d7d9669bf42a318f58fd4b')
-  
-      // login with credential
-      const currentUser = await firebase.auth().signInAndRetrieveDataWithCredential(credential)
-      this.props.sessionSuccess('FB', currentUser)
-  
-      console.info(JSON.stringify(currentUser.user.toJSON()))
-    } catch (e) {
-      // console.error(e)
-      this.props.sessionFailure()
-    }
-  }
-
   render () {
     // If the user has not authenticated
     // if (!this.state.isAuthenticated) {
@@ -237,54 +203,23 @@ class HomeScreen extends Component {
           title={'JemaatApp'}
         />
         <ImageBackground source={launchscreenBg} style={styles.imageContainer}>
-          <View style={styles.logoContainer}>
-            <Image source={launchscreenLogo} style={styles.logo} />
-            {/* <ImageBackground source={launchscreenLogo} style={styles.logo} /> */}
-          </View>
-          <View
-            style={{
-              flex: 1,
-              alignItems: 'center',
-              marginBottom: 50,
-              backgroundColor: 'transparent'
-            }}
-          >
-            {/* <H3 style={styles.text}>JemaatApp</H3>
-            <View style={{ marginTop: 8 }} />
-            <H3 style={styles.text}>Aplikasi untuk Jemaat/Jamaah</H3>
-            <View style={{ marginTop: 8 }} /> */}
-
-            <Text>
-              {/* {this.state.token} */}
-              {/* {this.state.tokenCopyFeedback} */}
-            </Text>
-            <Text>
-              {/* {this.state.uid.toString()} */}
-              {/* {this.state.tokenCopyFeedback} */}
-            </Text>
-            <Button
-              style={{ backgroundColor: Colors.facebook, alignSelf: 'center' }}
-              onPress={() => this.facebookLogin()}
+          <ScrollView style={{ flex: 1 }}>
+            <View style={styles.logoContainer}>
+              <Image source={launchscreenLogo} style={styles.logo} />
+              {/* <ImageBackground source={launchscreenLogo} style={styles.logo} /> */}
+            </View>
+            <View
+              style={{
+                flex: 1,
+                // alignItems: 'center',
+                marginLeft: 50,
+                marginRight: 50,
+                backgroundColor: 'transparent'
+              }}
             >
-              <Text>FB Login</Text>
-            </Button>
-            <LoginButton
-              onPress={() => {}}
-              publishPermissions={['email']}
-              onLoginFinished={
-                (error, result) => {
-                  if (error) {
-                    alert('Login failed with error: ' + error.message)
-                  } else if (result.isCancelled) {
-                    alert('Login was cancelled')
-                  } else {
-                    alert('Login was successful with permissions: ' + result.grantedPermissions)
-                  }
-                }
-              }
-              onLogoutFinished={() => alert('User logged out')} 
-              />
-          </View>
+              <LoginOption />
+            </View>
+          </ScrollView>
         </ImageBackground>
       </Container>
     )

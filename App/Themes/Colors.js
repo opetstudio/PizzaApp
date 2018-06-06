@@ -25,6 +25,18 @@ const colors = {
   colorPrimaryDark: '#0097A7',
   colorPrimary: '#00BCD4',
   blackOpacity: 'rgba(0,0,0,0.6)',
+  darkNavyBluePrimary: '#001122',
+  darkNavyBlueSecondary: '#000f1d',
+  darkNavyBluePrimaryOpacity: 'rgba(0, 17, 34, 0.8)',
+  darkNavyBluePrimaryOpacity2: 'rgba(0, 17, 34, 0.3)',
+  darkNavyBlueTertiary: '#0f2033',
+  twitter: '#00aced',
+  telkomNumber: '#e5131d',
+  defaultAvatarBackground: '#546474',
+  whitePrimary: '#f1f1f1',
+  whiteSecondary: '#fefefe',
+  whiteTertiary: '#ffffff',
+  whiteTertiaryOpacity: 'rgba(255,255,255,0.3)'
 }
 
 export default colors

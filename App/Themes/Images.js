@@ -30,6 +30,8 @@ const images = {
   launchscreenLogo: require('../Images/logo-kitchen-sink.png'),
   renunganPagiIcon: require('../Images/renunganPagiIcon.png'),
   sekolahsabatIcon: require('../Images/sekolahsabatIcon.png'),
+  facebookWhite: require('../Images/facebook_white.png'),
+  twitterWhite: require('../Images/twitter-white.png')
 }
 
 export default images

@@ -34,7 +34,7 @@ export default class DetailContentDeckSwiper extends Component {
     const html = `<h3>${formatedDate}</h3><h2>${title}</h2><div>${isiHtml}</div>${AppConfig.getContributorSpace(contributorSpace || AppConfig.contributorSpace)}`
     // if (Platform.OS === 'ios') {
     return (
-      <View style={styles.slide}>
+      <View style={styles.slide} key={v._id}>
         <WebView source={{ html }} scalesPageToFit={Platform.OS === 'android'} />
       </View>
     )
