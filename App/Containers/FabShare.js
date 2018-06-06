@@ -13,10 +13,12 @@ import { connect } from 'react-redux'
 import styles from './Styles/FabShareStyle'
 
 class FabShare extends Component {
-  // constructor (props) {
-  //   super(props)
-  //   this.state = {}
-  // }
+  constructor (props) {
+    super(props)
+    this.state = {
+      active: false
+    }
+  }
 
   render () {
     return (
