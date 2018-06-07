@@ -5,6 +5,7 @@ import android.support.multidex.MultiDexApplication;
 
 import com.facebook.appevents.AppEventsLogger;
 import com.facebook.react.ReactApplication;
+import com.idehub.GoogleAnalyticsBridge.GoogleAnalyticsBridgePackage;
 import com.facebook.reactnative.androidsdk.FBSDKPackage;
 import com.sbugert.rnadmob.RNAdMobPackage;
 //import com.sbugert.rnadmob.RNAdMobPackage;
@@ -59,6 +60,7 @@ public class MainApplication extends MultiDexApplication implements ReactApplica
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new GoogleAnalyticsBridgePackage(),
             new FBSDKPackage(mCallbackManager),
             new RNAdMobPackage(),
 //            new RNAdMobPackage(),

@@ -5,6 +5,7 @@ import NavigatorHelper from '../utils/helper/navigator'
 import { createReduxBoundAddListener } from 'react-navigation-redux-helpers'
 import { connect } from 'react-redux'
 import AppNavigation from './AppNavigation'
+import ScreenTracker from './ScreenTracker'
 
 class ReduxNavigation extends React.Component {
   componentWillMount () {
@@ -44,13 +45,13 @@ class ReduxNavigation extends React.Component {
     return <AppNavigation
       screenProps={{ locale: 'ID' }}
       navigation={addNavigationHelpers({ dispatch: this.props.dispatch, state: this.props.nav, addListener: createReduxBoundAddListener('root') })}
-      onNavigationStateChange={(prevState, currentState) => {}
-        // screenTracking(
-        //   prevState,
-        //   currentState,
-        //   this.props.profile,
-        //   this.props.myPackagesList,
-        // )
+      onNavigationStateChange={(prevState, currentState) =>
+        ScreenTracker(
+          prevState,
+          currentState
+          // this.props.profile,
+          // this.props.myPackagesList,
+        )
       }
       ref={navigatorRef => {
         NavigatorHelper.setContainer(navigatorRef)

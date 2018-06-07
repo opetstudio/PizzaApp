@@ -46,6 +46,7 @@
     "react-native-fbsdk": "^0.7.0",
     "react-native-fcm": "^15.0.2",
     "react-native-firebase": "^4.2.0",
+    "react-native-google-analytics-bridge": "^5.6.3",
     "react-native-i18n": "^2.0.12",
     "react-native-splash-screen": "^3.0.6",
     "react-native-swiper": "^1.5.13",

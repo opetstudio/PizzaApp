@@ -40,6 +40,8 @@ target 'PizzaApp' do
 
   # pod 'react-native-fcm', :path => '../node_modules/react-native-fcm'
 
+  pod 'react-native-google-analytics-bridge', :path => '../node_modules/react-native-google-analytics-bridge'
+
   target 'PizzaAppTests' do
     inherit! :search_paths
     # Pods for testing
