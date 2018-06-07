@@ -26,7 +26,8 @@ export const INITIAL_STATE = Immutable({
 /* ------------- Selectors ------------- */
 
 export const SessionSelectors = {
-  getData: state => state.data
+  getData: state => state.data,
+  getCurrentUser: state => state.currentUser
 }
 
 /* ------------- Reducers ------------- */

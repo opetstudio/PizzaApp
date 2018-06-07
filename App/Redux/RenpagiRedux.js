@@ -32,7 +32,8 @@ export const RenpagiSelectors = {
   getData: state => state.data,
   getById: state => state.byId,
   getAllIds: state => state.allIds,
-  getAllDataArr: state => state.allIds.map(id => state.byId[id])
+  getAllDataArr: state => state.allIds.map(id => state.byId[id]),
+  getFetching: state => state.fetching || false
 }
 
 /* ------------- Reducers ------------- */

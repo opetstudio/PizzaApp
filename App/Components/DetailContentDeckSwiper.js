@@ -11,34 +11,54 @@ import {
   AdMobBanner
 } from 'react-native-admob'
 import AppConfig from '../Config/AppConfig'
+import DetailTabs from './DetailTabs'
+import DetailContent from '../Containers/DetailContent'
 
 export default class DetailContentDeckSwiper extends Component {
   // // Prop type warnings
   static propTypes = {
-    allData: PropTypes.array.isRequired
+    allData: PropTypes.array.isRequired,
     // someSetting: PropTypes.bool.isRequired,
   }
   //
   // // Defaults for props
   // static defaultProps = {
-  //   someSetting: false
+  //   showComments: () => {}
   // }
   constructor (props) {
     super(props)
     this.state = {
-      active: false
     }
+    this._renderRow = this._renderRow.bind(this)
   }
   _renderRow (v) {
-    const {title, isi_html: isiHtml, tanggal, contributorSpace} = v
-    const formatedDate = moment(new Date(tanggal)).format('dddd DD-MMM YYYY')
+    const {title, isi_html: isiHtml, tanggal, contributorSpace: contributorS, _id: contentId} = v
+    const contributorSpace = contributorS || AppConfig.contributorSpace
+    // const formatedDate = moment(new Date(tanggal)).format('dddd DD-MMM YYYY')
     // const html = `<h3>${formatedDate}</h3><h2>${title}</h2> ${isiHtml}`
-    const html = `<h3>${formatedDate}</h3><h2>${title}</h2><div>${isiHtml}</div>${AppConfig.getContributorSpace(contributorSpace || AppConfig.contributorSpace)}`
+    // const htmlContent = `<h3>${formatedDate}</h3><div>${isiHtml}</div>${AppConfig.getContributorSpace(contributorSpace || AppConfig.contributorSpace)}`
+    // const htmlContent = `<h3>${formatedDate}</h3><h2>${title}</h2><div>${isiHtml}</div>${AppConfig.getContributorSpace(contributorSpace || AppConfig.contributorSpace)}`
     // if (Platform.OS === 'ios') {
     return (
       <View style={styles.slide} key={v._id}>
-        <WebView source={{ html }} scalesPageToFit={Platform.OS === 'android'} />
-        <FabShare />
+        <DetailContent
+          title={title}
+          date={tanggal}
+          htmlContent={isiHtml}
+          contributorSpace={contributorSpace}
+          contentId={contentId}
+          navigation={this.props.navigation}
+        />
+        {/* <DetailTabs
+          screenProps={{
+            title,
+            date: tanggal,
+            htmlContent: isiHtml,
+            contributorSpace
+          }}
+        /> */}
+        {/* <WebView source={{ html }} scalesPageToFit={Platform.OS === 'android'} />
+        <FabShare /> */}
       </View>
     )
     // }
@@ -68,12 +88,12 @@ export default class DetailContentDeckSwiper extends Component {
         <Swiper style={styles.wrapper} showsButtons>
           {this.props.allData.map(v => this._renderRow(v))}
         </Swiper>
-        <AdMobBanner
+        {/* <AdMobBanner
           adSize='fullBanner'
           adUnitID={AppConfig.bannerAdUnitID}
           testDeviceID={AdMobBanner.simulatorId}
           onAdFailedToLoad={this._bannerError}
-        />
+        /> */}
       </View>
     )
   }

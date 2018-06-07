@@ -33,7 +33,8 @@ export default class StyledText extends Component {
     const props = this.props
     const textMessage = I18n.t
     const fontStyle = Fonts.style
-    const styling = fontStyle[props.textStyle] || fontStyle['h4MedWhiteP']
+    const styling = fontStyle[props.textStyle] || fontStyle['h4MedWhiteP'] || {props: {}}
+    styling['props'] = styling['props'] || {}
     const underline = props.isUnderline && <View style={styles.textUnderline} />
     let children = props.i18nKey
       ? textMessage(props.i18nKey, props.i18nValue)

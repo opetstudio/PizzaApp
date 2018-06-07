@@ -5,16 +5,29 @@ import {
   Container,
   Content
 } from 'native-base'
+import { TabNavigator } from 'react-navigation'
 import { path } from 'ramda'
 import HeaderMenu from '../Components/HeaderMenu'
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
 
-import DetailContent from '../Components/DetailContent'
-
+import DetailTabs from '../Components/DetailTabs'
+import DetailContent from './DetailContent'
 // Styles
 import styles from './Styles/DetailScreenStyle'
 import AppConfig from '../Config/AppConfig'
+
+// const DetailTabs = TabNavigator(generateTabs(), {
+//   lazy: true,
+//   ...TabNavigator.Presets.AndroidTopTabs,
+//   tabBarOptions: {
+//     upperCaseLabel: false,
+//     pressColor: 'rgba(0,0,0,0)',
+//     pressOpacity: 0,
+//     ...tabNavigationStyles
+//   },
+//   tabBarPosition: 'top'
+// })
 
 class DetailScreen extends Component {
   // static navigationOptions = {
@@ -26,6 +39,7 @@ class DetailScreen extends Component {
     const item = path(['state', 'params', 'item'], navigation) || {}
     const headerTitle = path(['state', 'params', 'title'], navigation)
     const title = item['title'] || 'NO-TITLE'
+    const contentId = item['_id'] || Date.now()
     const tanggal = item['tanggal'] || 'NO-TITLE'
     const htmlContent = item['isi_html'] || 'NO-TITLE'
     const contributorSpace = item['contributorSpace'] || AppConfig.contributorSpace
@@ -38,13 +52,29 @@ class DetailScreen extends Component {
           navigation={this.props.navigation}
           title={headerTitle || 'Detail'}
         />
-        {/* <Content> */}
+        {/* <DetailTabs
+          screenProps={{
+            title,
+            date: tanggal,
+            htmlContent,
+            contributorSpace
+          }}
+        /> */}
         <DetailContent
           title={title}
           date={tanggal}
           htmlContent={htmlContent}
           contributorSpace={contributorSpace}
+          contentId={contentId}
+          navigation={navigation}
         />
+        {/* <Content> */}
+        {/* <DetailContent
+          title={title}
+          date={tanggal}
+          htmlContent={htmlContent}
+          contributorSpace={contributorSpace}
+        /> */}
         {/* </Content> */}
       </View>
     )

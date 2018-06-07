@@ -8,8 +8,8 @@ export default StyleSheet.create({
     color: colors.banner,
   },
   message: {
-    color: colors.eggplant,
-    paddingVertical: 16,
+    color: colors.greyPrimary,
+    paddingVertical: 16
   },
   imageBody: {
     color: colors.facebook,
@@ -17,13 +17,13 @@ export default StyleSheet.create({
   },
   buttonContainer: {
     flexDirection: 'row',
-    height: 32,
+    height: 32
   },
   largeButton: {
     width: 120,
   },
   smallButton: {
-    width: 100,
+    width: 100
   },
   buttonAddedStyle: {
     paddingVertical: 5,
@@ -55,11 +55,11 @@ export default StyleSheet.create({
 
 export const modalStyle = {
   modalBody: {
-    backgroundColor: colors.silver,
+    backgroundColor: colors.colorPrimaryDark,
     alignItems: 'flex-start',
-    padding: 16,
+    padding: 16
   },
   modalContainer: {
-    backgroundColor: colors.blackOpacity,
-  },
-};
+    backgroundColor: colors.blackOpacity
+  }
+}

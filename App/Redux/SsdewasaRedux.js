@@ -33,6 +33,7 @@ export const SsdewasaSelectors = {
   getData: state => state.data,
   getById: state => state.byId,
   getAllIds: state => state.allIds,
+  getFetching: state => state.fetching || false,
   getAllDataArr: state => state.allIds.map(id => state.byId[id]),
   getAllLessons: (state, filter) => {
     const r = []

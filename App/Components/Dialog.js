@@ -6,9 +6,10 @@ import I18n from '../I18n'
 import Overlay from './Overlay'
 import StyledText from './StyledText'
 import styles, { modalStyle } from './Styles/DialogStyle'
-import {
-  Button
-} from 'native-base'
+// import {
+//   Button
+// } from 'native-base'
+import Button from '../Components/StyledButton'
 import { isNullOrUndefined } from 'util';
 
 const textMessage = I18n.t;
@@ -25,43 +26,53 @@ export default class Dialog extends Component {
   // static defaultProps = {
   //   someSetting: false
   // }
-  
-  generateActionButton(type, addedStyle, actionObject) {
+  generateActionButton (type, addedStyle, actionObject) {
     console.log('[Popup.generateActionButton] props=>', this.props)
-    const { message, hidePopup } = this.props;
+    const { message, hidePopup } = this.props
     const onPressHandler = () => {
       hidePopup();
       // alert('coook')
       if (actionObject && actionObject.handler) {
-        return actionObject.handler();
+        return actionObject.handler()
       }
-
       return null;
-    };
+    }
 
+    // return (
+    //   <Button
+    //     onPress={onPressHandler}
+    //     block
+    //     info
+    //     >
+    //     <Text
+    //       style={{ color: 'white' }}
+    //     >{textMessage(actionObject.name)}</Text>
+    //   </Button>
+    // )
     return (
-        <Button
-            onPress={onPressHandler}
-            block
-            info
-          >
-          <Text
-            style={{ color: 'white' }}
-          >     {textMessage(actionObject.name)}    </Text>
+      <View
+        style={[
+          styles.buttonContainer,
+          message.actions.length > 2 ? styles.smallButton : styles.largeButton
+        ]}
+      >
+        <Button type={type} onPress={onPressHandler} addedStyle={addedStyle}>
+          {textMessage(actionObject.name)}
         </Button>
-    );
+      </View>
+    )
   }
 
   render () {
-    const { isOpen, message } = this.props;
+    const { isOpen, message } = this.props
     if (!isOpen) {
-      return null;
+      return null
     }
-    const actionButtons = message && message.actions;
-    const title = message.title ? message.title : 'popup-error';
-    const body = message.body ? message.body : '';
-    const imageBody = message.imageBody ? message.imageBody : '';
-    const imageUrl = message.imageSource ? message.imageSource : '';
+    const actionButtons = message && message.actions
+    const title = message.title ? message.title : 'popup-error'
+    const body = message.body ? message.body : ''
+    const imageBody = message.imageBody ? message.imageBody : ''
+    const imageUrl = message.imageSource ? message.imageSource : ''
     /**
      * This was written in order to add support for injecting
      * components inside the popup(at title and body position).
@@ -76,47 +87,47 @@ export default class Dialog extends Component {
     const renderReactElementOrString = content => {
       if (content) {
         if (React.isValidElement(content)) {
-          return content;
+          return content
         } else {
           if (
             Lodash.isPlainObject(content) &&
             Lodash.has(content, 'template')
           ) {
-            return textMessage(content.template);
+            return textMessage(content.template)
           } else if (
             Lodash.isPlainObject(content) &&
             Lodash.has(content, 'template') &&
             Lodash.has(content, 'values')
           ) {
-            return textMessage(content.template, content.values);
+            return textMessage(content.template, content.values)
           }
-          return content;
+          return content
         }
       }
 
-      return null;
-    };
+      return null
+    }
     return (
       <Overlay
-        animationType="fade"
+        animationType='fade'
         childrenWrapperStyle={modalStyle.modalBody}
         closeOnTouchOutside={false}
         containerStyle={modalStyle.modalContainer}
         visible={isOpen}
       >
-        <StyledText textStyle="h4" isUnderline>
-            {renderReactElementOrString(title)}
+        <StyledText textStyle='h4MedWhiteP' isUnderline>
+          {renderReactElementOrString(title)}
         </StyledText>
         {(message.imageUrl || message.imageBody) && (
           <View style={styles.imageContainer}>
             <Image source={imageUrl} />
-            <StyledText textStyle="h6" addedStyle={styles.imageBody}>
+            <StyledText textStyle='h6' addedStyle={styles.imageBody}>
               {renderReactElementOrString(imageBody)}
             </StyledText>
           </View>
         )}
         {message.body && (
-          <StyledText textStyle="h6" addedStyle={styles.message}>
+          <StyledText textStyle='h11LtGreyS2' addedStyle={styles.message}>
             {renderReactElementOrString(body)}
           </StyledText>
         )}
@@ -170,34 +181,6 @@ export default class Dialog extends Component {
             )}
           </View>
         }
-        {/* <View
-          style={[
-            styles.actionButtons,
-            // actionButtons.length === 1
-            //   ? styles.centerButton
-            //   : styles.spaceBetweenButton,
-          ]}
-        > */}
-          {/* {actionButtons.length > 1
-            ? this.generateActionButton(
-                'secondary',
-                styles.buttonAddedStyle,
-                actionButtons[0],
-              )
-            : null} */}
-          {/* {actionButtons.length > 2
-            ? this.generateActionButton(
-                'secondary',
-                styles.buttonAddedStyle,
-                actionButtons[1],
-              )
-            : null} */}
-          {/* {this.generateActionButton(
-            'primary',
-            styles.highlightedButtonStyle,
-            actionButtons[actionButtons.length - 1],
-          )} */}
-        {/* </View> */}
       </Overlay>
     )
   }

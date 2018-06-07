@@ -1,13 +1,16 @@
 import React, { Component } from 'react'
-import { View, AsyncStorage } from 'react-native'
+import { View, AsyncStorage, StatusBar } from 'react-native'
 import { Root } from 'native-base'
 import SplashScreen from 'react-native-splash-screen'
+import {SafeAreaView} from 'react-navigation'
+import {isIphoneX} from '../Utils/helper/platform'
 
 import ReduxNavigation from '../Navigation/ReduxNavigation'
 import { connect } from 'react-redux'
 import StartupActions from '../Redux/StartupRedux'
 import ReduxPersist from '../Config/ReduxPersist'
 import Dialog from '../Components/Dialog'
+import StyledView from '../Components/StyledView'
 
 import PopupActions, { PopupSelectors } from '../Redux/PopupRedux'
 // import RestapiActions from '../Redux/RestapiRedux'
@@ -21,6 +24,7 @@ import firebase from 'react-native-firebase'
 
 // Styles
 import styles from './Styles/RootContainerStyles'
+import { Colors } from '../Themes';
 
 class RootContainer extends Component {
   constructor (props) {
@@ -89,18 +93,41 @@ class RootContainer extends Component {
 
   render () {
     // if (!this.state.isAuthenticated) return null
+    const navigator = (<ReduxNavigation />)
     return (
       <Root>
-
-        <View style={styles.applicationView}>
-          {/* <StatusBar barStyle='light-content' /> */}
+        <StyledView style={{ paddingHorizontal: 0 }} isLoading={false}>
+          <StatusBar
+            backgroundColor={Colors.colorPrimaryDark}
+            barStyle='light-content'
+          />
+          {/* {updateOverlay} */}
           <Dialog
             message={this.props.message}
             isOpen={this.props.isOpen}
             hidePopup={this.props.hidePopup}
           />
+          {/* {this.generateOfflineToast()} */}
+          {/* {React.Children.toArray(this.props.children)} */}
+          {isIphoneX ? (
+            <SafeAreaView style={{ flex: 1 }} forceInset={{ bottom: 'never' }}>
+              {navigator}
+              {<View style={styles.fixBackgroundTop} />}
+            </SafeAreaView>
+          ) : (
+            navigator
+          )}
+        </StyledView>
+
+        {/* <View style={styles.applicationView}> */}
+        {/* <StatusBar barStyle='light-content' /> */}
+        {/* <Dialog
+            message={this.props.message}
+            isOpen={this.props.isOpen}
+            hidePopup={this.props.hidePopup}
+          />
           <ReduxNavigation />
-        </View>
+        </View> */}
       </Root>
     )
   }

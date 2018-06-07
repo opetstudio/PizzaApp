@@ -49,15 +49,17 @@ export const success = (state, action) => {
 export const failure = state =>
   state.merge({ fetching: false, error: true, payload: null })
 
-export const show  = (state, action) => {
-  console.log('showwwww==>', action)
-  return state.merge({ popupOpen: true, popupMessage: {
+export const show = (state, action) => {
+  // console.log('showwwww==>', action)
+  return state.merge({
+    popupOpen: true,
+    popupMessage: {
       title: action.popupMessage.title,
       body: action.popupMessage.body,
       actions: action.popupMessage.actions,
       imageSource: action.popupMessage.imageSource,
-      imageBody: action.popupMessage.imageBody,
-    } 
+      imageBody: action.popupMessage.imageBody
+    }
   })
 }
 

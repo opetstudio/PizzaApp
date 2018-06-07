@@ -9,6 +9,12 @@ import {
 import _ from 'lodash'
 import HeaderMenu from '../Components/HeaderMenu'
 import PaginationList from '../Components/PaginationList'
+import {
+  AdMobBanner
+} from 'react-native-admob'
+import AppConfig from '../Config/AppConfig'
+
+import AdsBanner from '../Components/AdsBanner'
 
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
@@ -66,7 +72,7 @@ class SekolahsabatScreen extends Component {
           <PaginationList
             data={this.props.allDataArr}
             firstText={'title'}
-            secondText={'title'}
+            secondText={''}
             rightText={'tanggal'}
             itemOnPress={(v) => {
               // console.log('[SekolahsabatScreen] ====>>>>>>onPress')
@@ -78,7 +84,9 @@ class SekolahsabatScreen extends Component {
               this.props.navigation.navigate('DetailContentDeckSwiperScreen', {title: 'Sekolah Sabat', alldata: listPelajaran})
             }}
             handleRefresh={this._handleRefresh}
+            isLoading={this.props.fetching}
           />
+        <AdsBanner />
         {/* </Content> */}
       </View>
     )
@@ -89,6 +97,7 @@ const mapStateToProps = (state) => {
   return {
     allDataSsdewasaArr: SsdewasaSelectors.getAllDataArr(state.ssdewasa),
     allDataArr: SsdewasaSelectors.getAllLessons(state.ssdewasa),
+    fetching: SsdewasaSelectors.getFetching(state.ssdewasa),
     maxModifiedon: SsdewasaSelectors.getMaxModifiedon(state.ssdewasa)
   }
 }

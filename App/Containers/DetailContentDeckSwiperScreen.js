@@ -16,6 +16,9 @@ import DetailContentDeckSwiper from '../Components/DetailContentDeckSwiper'
 import styles from './Styles/DetailContentDeckSwiperScreenStyle'
 
 class DetailContentDeckSwiperScreen extends Component {
+  showComments (contentId) {
+
+  }
   render () {
     const { navigation } = this.props
     const params = path(['state', 'params'], navigation) || {}
@@ -31,11 +34,12 @@ class DetailContentDeckSwiperScreen extends Component {
           title={headerTitle || 'Detail'}
         />
         {/* <Content> */}
-          <DetailContentDeckSwiper
-            allData={allData}
-            headerHeight={this.refs.myHeader}
-            navigation={this.props.navigation}
-          />
+        <DetailContentDeckSwiper
+          allData={allData}
+          showComments={this.showComments}
+          headerHeight={this.refs.myHeader}
+          navigation={this.props.navigation}
+        />
         {/* </Content> */}
       </View>
     )

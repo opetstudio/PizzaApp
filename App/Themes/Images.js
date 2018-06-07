@@ -31,7 +31,20 @@ const images = {
   renunganPagiIcon: require('../Images/renunganPagiIcon.png'),
   sekolahsabatIcon: require('../Images/sekolahsabatIcon.png'),
   facebookWhite: require('../Images/facebook_white.png'),
-  twitterWhite: require('../Images/twitter-white.png')
+  twitterWhite: require('../Images/twitter-white.png'),
+
+  pratik: require('../Images/contacts/pratik.png'),
+  sanket: require('../Images/contacts/sanket.png'),
+  megha: require('../Images/contacts/megha.png'),
+  atul: require('../Images/contacts/atul.png'),
+  saurabh: require('../Images/contacts/saurabh.png'),
+  varun: require('../Images/contacts/varun.png'),
+
+  headerBar: require('../Images/header_bar.png'),
+  hamburgerMenu: require('../Images/menu/hamburger_menu.png'),
+  backWhite: require('../Images/back_white.png'),
+  headerHome: require('../Images/home/home.png'),
+  searchWhite: require('../Images/search_white/search.png')
 }
 
 export default images

@@ -7,10 +7,8 @@ import {
 import moment from 'moment'
 import _ from 'lodash'
 import styles from './Styles/PaginationListStyle'
-import {
-  AdMobBanner
-} from 'react-native-admob'
-import AppConfig from '../Config/AppConfig'
+
+import StyledRow1 from './StyledRow1'
 
 export default class PaginationList extends Component {
   // // Prop type warnings
@@ -40,7 +38,6 @@ export default class PaginationList extends Component {
     this.state.per_page = 15
     this.state.allDataArr = this.props.data || []
     this.state.currentListAllArr = []
-    this.state.isLoading = true
 
     this._setDataSource()
     // set currentListAllArr
@@ -61,8 +58,7 @@ export default class PaginationList extends Component {
     const offset = (this.state.page - 1) * this.state.per_page
     const paginatedItems = _.slice(this.state.listAllMessages, 0, offset + this.state.per_page)
     this.setState({
-      currentListAllArr: paginatedItems,
-      isLoading: false
+      currentListAllArr: paginatedItems
     })
   }
   _nextOffset () {
@@ -75,30 +71,18 @@ export default class PaginationList extends Component {
     // console.log('====>', p)
     const { item } = p
     const date = moment(new Date(item[this.props.rightText])).format('DD-MM/YY')
+    const avatar = item[this.props.avatar]
     return (
-      <View style={{ flex: 1 }}>
-        <ListItem onPress={() => this.props.itemOnPress(item)}>
-          <Body>
-            <Text>
-              {item[this.props.firstText]}
-            </Text>
-            {/* <Text numberOfLines={1} note>
-              {item[this.props.secondText]}
-            </Text> */}
-          </Body>
-          <Right>
-            <Text note>
-              {date}
-            </Text>
-          </Right>
-        </ListItem>
-      </View>
+      <StyledRow1
+        firstText={item[this.props.firstText]}
+        secondText={item[this.props.secondText]}
+        rightText={date}
+        itemOnPress={() => this.props.itemOnPress(item)}
+        avatar={avatar}
+      />
     )
   }
   _handleRefresh () {
-    this.setState({
-      isLoading: true
-    })
     this.props.handleRefresh()
   }
   _bannerError (p1, p2) {
@@ -106,7 +90,6 @@ export default class PaginationList extends Component {
   }
   _renderList () {
     // if (this.state.isLoading) return <View><Text>loading</Text></View>
-    const testAdUnitID = AppConfig.bannerAdUnitID
     return (
       <View
         style={{
@@ -128,14 +111,8 @@ export default class PaginationList extends Component {
           //    onRefresh={this._handleRefresh}
           //   />
           // }
-          refreshing={this.state.isLoading}
+          refreshing={this.props.isLoading}
           onRefresh={this._handleRefresh}
-        />
-        <AdMobBanner
-          adSize='fullBanner'
-          adUnitID={testAdUnitID}
-          testDeviceID={AdMobBanner.simulatorId}
-          onAdFailedToLoad={this._bannerError}
         />
       </View>
     )

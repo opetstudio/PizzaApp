@@ -197,6 +197,7 @@ class HomeScreen extends Component {
     return (
       <Container>
         <HeaderMenu
+          isHomePage
           hasHamburger
           hasSearch
           navigation={this.props.navigation}

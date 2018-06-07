@@ -91,6 +91,86 @@ const style = {
     props: {
       lineHeight: 6.7
     }
+  },
+  h11MedWhiteT: {
+    style: {
+      fontSize: size.h11,
+      fontFamily: type.medium,
+      color: Colors.whiteTertiary
+    },
+    props: {
+      lineHeight: 4.7,
+      letterSpacing: 0.4
+    }
+  },
+  h13MedWhiteT: {
+    style: {
+      fontSize: size.h13,
+      fontFamily: type.medium,
+      color: Colors.whiteTertiary
+    },
+    props: {
+      lineHeight: 4.7,
+      letterSpacing: 0.4
+    }
+  },
+  h11LtGreyS2: {
+    style: {
+      fontSize: size.h11,
+      fontFamily: type.light,
+      color: Colors.greySecondary
+    },
+    props: {
+      lineHeight: 5.6,
+      letterSpacing: 0.1
+    }
+  },
+  h11MedRedP: {
+    style: {
+      fontSize: size.h11,
+      fontFamily: type.medium,
+      color: Colors.redPrimary
+    },
+    props: {
+      lineHeight: 4.7,
+      letterSpacing: 0.1
+    }
+  },
+  h11MedWhiteT3: {
+    style: {
+      fontSize: size.h11,
+      fontFamily: type.medium,
+      color: Colors.whiteTertiary
+    },
+    props: {
+      lineHeight: 5.6,
+      letterSpacing: 0.1
+    }
+  },
+  h11MedWhiteT3O: {
+    style: {
+      fontSize: size.h11,
+      fontFamily: type.medium,
+      color: Colors.whiteTertiaryOpacity
+    },
+    props: {
+      lineHeight: 5.6,
+      letterSpacing: 0.1
+    }
+  },
+  h21MedWhiteT2NLS: {
+    style: {
+      fontSize: size.h21,
+      fontFamily: type.medium,
+      color: Colors.whiteTertiary,
+      // this letterSpacing will be used in iOS
+      letterSpacing: 2.1
+    },
+    props: {
+      lineHeight: 0,
+      // this letterSpacing will be used in Android
+      letterSpacing: 2.1
+    }
   }
 }
 

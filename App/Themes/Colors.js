@@ -22,8 +22,16 @@ const colors = {
   border: '#483F53',
   banner: '#5F3E63',
   text: '#E0D7E5',
-  colorPrimaryDark: '#0097A7',
-  colorPrimary: '#00BCD4',
+  backgroundDark: '#202020',
+  colorPrimaryDark: '#008395',
+  colorPrimary: '#00BAD4',
+
+  colorSecondary10: '#FFAE00',
+
+  bluePrimary: '#00BAD4',
+  blueSecondary: '#008395',
+  bluePrimaryOpacity: 'rgba(229,19,29,0.3)',
+
   blackOpacity: 'rgba(0,0,0,0.6)',
   darkNavyBluePrimary: '#001122',
   darkNavyBlueSecondary: '#000f1d',
@@ -36,7 +44,22 @@ const colors = {
   whitePrimary: '#f1f1f1',
   whiteSecondary: '#fefefe',
   whiteTertiary: '#ffffff',
-  whiteTertiaryOpacity: 'rgba(255,255,255,0.3)'
+  whiteTertiaryOpacity: 'rgba(255,255,255,0.3)',
+
+  redPrimary: '#e5131d',
+  redSecondary: '#790000',
+  redPrimaryOpacity: 'rgba(229,19,29,0.3)',
+
+  darkGreyPrimary: '#0f2236',
+  darkGreySecondary: '#0c1b2b',
+  darkGreyTertiary: '#092e4d',
+  darkGreyTertiary2: '#112c44',
+
+  greyPrimary: '#e9e8ed',
+  greySecondary: '#9ca4ac',
+  greySecondaryOpacity: 'rgba(156,164,172,0.25)',
+  greyTertiary: '#3b4854'
+
 }
 
 export default colors
