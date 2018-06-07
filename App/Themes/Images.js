@@ -7,7 +7,7 @@ const images = {
   ignite: require('../Images/ignite_logo.png'),
   igniteClear: require('../Images/ignite-logo-transparent.png'),
   tileBg: require('../Images/tile_bg.png'),
-  background: require('../Images/BG.png'),
+  background: require('../Images/bg.png'),
   buttonBackground: require('../Images/button-bg.png'),
   api: require('../Images/Icons/icon-api-testing.png'),
   components: require('../Images/Icons/icon-components.png'),
@@ -44,7 +44,8 @@ const images = {
   hamburgerMenu: require('../Images/menu/hamburger_menu.png'),
   backWhite: require('../Images/back_white.png'),
   headerHome: require('../Images/home/home.png'),
-  searchWhite: require('../Images/search_white/search.png')
+  searchWhite: require('../Images/search_white/search.png'),
+  bg: require('../Images/bg.png')
 }
 
 export default images

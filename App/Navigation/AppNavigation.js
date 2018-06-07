@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { StackNavigator, DrawerNavigator } from 'react-navigation'
+import DrawerFooter from '../Containers/DrawerFooter'
+import DrawerHeader from '../Containers/DrawerHeader'
 import LoginMethodScreen from '../Containers/LoginMethodScreen'
 import DetailContentDeckSwiperScreen from '../Containers/DetailContentDeckSwiperScreen'
 import DetailScreen from '../Containers/DetailScreen'
@@ -25,6 +27,8 @@ const menuRoutes = {
   PresentationScreen: { screen: (props) => <PresentationScreen screenProps={{ toggle: () => {} }} /> }
 }
 const PrimaryNav = DrawerNavigator(menuRoutes, {
+  DrawerFooter: { screen: DrawerFooter },
+  DrawerHeader: { screen: DrawerHeader },
   // Default config for all screens
   headerMode: 'none',
   initialRouteName: 'HomeScreen',

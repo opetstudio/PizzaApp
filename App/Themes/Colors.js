@@ -25,6 +25,7 @@ const colors = {
   backgroundDark: '#202020',
   colorPrimaryDark: '#008395',
   colorPrimary: '#00BAD4',
+  colorPrimary1: '#17DFFB',
 
   colorSecondary10: '#FFAE00',
 

@@ -1,15 +1,15 @@
 import immutablePersistenceTransform from '../Services/ImmutablePersistenceTransform'
-import { AsyncStorage } from 'react-native'
-// import storage from 'redux-persist/lib/storage' // or whatever storage you are using
+// import { AsyncStorage } from 'react-native'
+import storage from 'redux-persist/lib/storage' // or whatever storage you are using
 
 // More info here:  https://shift.infinite.red/shipping-persistant-reducers-7341691232b1
 const REDUX_PERSIST = {
   active: true,
-  reducerVersion: '1.16',
+  reducerVersion: '1.2',
   storeConfig: {
     key: 'primary',
-    // storage,
-    storage: AsyncStorage,
+    storage,
+    // storage: AsyncStorage,
     // Reducer keys that you do NOT want stored to persistence here.
     blacklist: ['login', 'search', 'nav', 'popup'],
     // Optionally, just specify the keys you DO want stored to persistence.

@@ -30,18 +30,20 @@ function navigate(routeName, params, key) {
   if (getCurrentRouteInfo().routeName === 'DrawerOpen') {
     _container._navigation.navigate('DrawerClose')
   }
-  delay(
-    () =>
-      _container.dispatch(
-        NavigationActions.navigate({
-          type: 'Navigation/NAVIGATE',
-          routeName,
-          params,
-          key,
-        }),
-      ),
-    0,
-  )
+  // console.log('[navigator] ==>', _container)
+  // NavigationActions.navigate(routeName)
+  // delay(
+  //   () =>
+  //     _container.dispatch(
+  //       NavigationActions.navigate({
+  //         type: 'Navigation/NAVIGATE',
+  //         routeName,
+  //         params,
+  //         key,
+  //       }),
+  //     ),
+  //   0,
+  // )
 }
 
 function dispatch(action) {

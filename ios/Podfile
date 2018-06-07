@@ -40,7 +40,7 @@ target 'PizzaApp' do
 
   # pod 'react-native-fcm', :path => '../node_modules/react-native-fcm'
 
-  pod 'react-native-google-analytics-bridge', :path => '../node_modules/react-native-google-analytics-bridge'
+
 
   target 'PizzaAppTests' do
     inherit! :search_paths
@@ -62,10 +62,10 @@ target 'PizzaApp-tvOS' do
 
 end
 
-# post_install do |installer|
-#   installer.pods_project.targets.each do |target|
-#       if target.name == "React"
-#           target.remove_from_project
-#       end
-#   end
-# end
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+      if target.name == "React"
+          target.remove_from_project
+      end
+  end
+end

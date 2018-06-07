@@ -11,6 +11,7 @@ import { GithubTypes } from '../Redux/GithubRedux'
 import { RestapiTypes } from '../Redux/RestapiRedux'
 import { RenpagiTypes } from '../Redux/RenpagiRedux'
 import { SsdewasaTypes } from '../Redux/SsdewasaRedux'
+import { SessionTypes } from '../Redux/SessionRedux'
 
 /* ------------- Sagas ------------- */
 
@@ -19,6 +20,7 @@ import { getUserAvatar } from './GithubSagas'
 import { getRestapi } from './RestapiSagas'
 import { getRenpagi } from './RenpagiSagas'
 import { getSsdewasa } from './SsdewasaSagas'
+import { getSession, setSession } from './SessionSagas'
 
 /* ------------- API ------------- */
 
@@ -43,5 +45,8 @@ export default function * root () {
     takeLatest(RestapiTypes.RESTAPI_REQUEST, getRestapi, apiRestapi),
     takeLatest(RenpagiTypes.RENPAGI_REQUEST, getRenpagi, apiRenpagi),
     takeLatest(SsdewasaTypes.SSDEWASA_REQUEST, getSsdewasa, apiSsdewasa)
+
+    // takeLatest(SessionTypes.SESSION_REQUEST, getSession, null),
+    // takeLatest(SessionTypes.SESSION_SUCCESS, setSession, null)
   ])
 }

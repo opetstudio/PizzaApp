@@ -5,7 +5,6 @@ import android.support.multidex.MultiDexApplication;
 
 import com.facebook.appevents.AppEventsLogger;
 import com.facebook.react.ReactApplication;
-import com.idehub.GoogleAnalyticsBridge.GoogleAnalyticsBridgePackage;
 import com.facebook.reactnative.androidsdk.FBSDKPackage;
 import com.sbugert.rnadmob.RNAdMobPackage;
 //import com.sbugert.rnadmob.RNAdMobPackage;
@@ -14,6 +13,7 @@ import io.invertase.firebase.auth.RNFirebaseAuthPackage;
 import io.invertase.firebase.database.RNFirebaseDatabasePackage;
 import io.invertase.firebase.messaging.RNFirebaseMessagingPackage;
 import io.invertase.firebase.notifications.RNFirebaseNotificationsPackage;
+import io.invertase.firebase.analytics.RNFirebaseAnalyticsPackage;
 //import com.evollu.react.fcm.FIRMessagingPackage;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import com.microsoft.codepush.react.CodePush;
@@ -60,7 +60,6 @@ public class MainApplication extends MultiDexApplication implements ReactApplica
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new GoogleAnalyticsBridgePackage(),
             new FBSDKPackage(mCallbackManager),
             new RNAdMobPackage(),
 //            new RNAdMobPackage(),
@@ -69,6 +68,7 @@ public class MainApplication extends MultiDexApplication implements ReactApplica
             new RNFirebaseMessagingPackage(),
               new RNFirebaseDatabasePackage(),
               new RNFirebaseAuthPackage(),
+              new RNFirebaseAnalyticsPackage(),
 //            new FIRMessagingPackage(),
             new SplashScreenReactPackage(),
             new CodePush(getResources().getString(R.string.reactNativeCodePush_androidDeploymentKey), getApplicationContext(), BuildConfig.DEBUG),

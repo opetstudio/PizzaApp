@@ -114,6 +114,16 @@ const style = {
       letterSpacing: 0.4
     }
   },
+  h11LtGreyS: {
+    style: {
+      fontSize: size.h11,
+      fontFamily: type.light,
+      color: Colors.greySecondary
+    },
+    props: {
+      lineHeight: 7
+    }
+  },
   h11LtGreyS2: {
     style: {
       fontSize: size.h11,

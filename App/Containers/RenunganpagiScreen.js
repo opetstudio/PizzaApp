@@ -33,7 +33,7 @@ class RenunganpagiScreen extends Component {
     this.props.renpagiRequest({ newerModifiedon: this.props.maxModifiedon })
   }
   render () {
-    console.log('[RenunganpagiScreen] props', this.props)
+    // console.log('[RenunganpagiScreen] props', this.props)
     return (
       <View style={{flex: 1}}>
         <HeaderMenu

@@ -1,11 +1,13 @@
 import React from 'react'
 import { BackHandler, Platform } from 'react-native'
-import { addNavigationHelpers } from 'react-navigation'
-import NavigatorHelper from '../utils/helper/navigator'
+import { addNavigationHelpers, NavigationActions } from 'react-navigation'
+// import { NavigationActions } from 'react-navigation';
+import NavigatorHelper from '../Utils/helper/navigator'
 import { createReduxBoundAddListener } from 'react-navigation-redux-helpers'
 import { connect } from 'react-redux'
 import AppNavigation from './AppNavigation'
-import ScreenTracker from './ScreenTracker'
+// import ScreenTracker from './ScreenTracker'
+import {reducer as NavReducer} from '../Redux/NavigationRedux'
 
 class ReduxNavigation extends React.Component {
   componentWillMount () {
@@ -22,12 +24,27 @@ class ReduxNavigation extends React.Component {
     // })
     BackHandler.addEventListener('hardwareBackPress', () => {
       const { dispatch, nav } = this.props
-      console.log('this.props', this.props)
-      console.log('nav.routes[0].routeName', nav.routes[0].routeName)
-      console.log('nav.routes.length', nav.routes.length)
+      // console.log('this.props', this.props)
+      // console.log('nav.routes[0].routeName', nav.routes[0].routeName)
+      // console.log('nav.routes.length', nav.routes.length)
+
+      // gets the current screen from navigation state
+      const getCurrentRouteName = (navigationState) => {
+        if (!navigationState) {
+          return null
+        }
+        const route = navigationState.routes[navigationState.index]
+        // dive into nested navigators
+        if (route.routes) {
+          return getCurrentRouteName(route)
+        }
+        return route.routeName
+      }
+      // console.log('getCurrentRouteName', getCurrentRouteName(nav))
       // change to whatever is your first screen, otherwise unpredictable results may occur
       // if (nav.routes.length === 1 && (nav.routes[0].routeName === 'LaunchScreen')) {
-      if (nav.routes.length > 1 && (nav.routes[0].index === 0 && nav.index === 0)) {
+      if (getCurrentRouteName(nav) === 'HomeScreen') {
+      // if (nav.routes.length > 1 && (nav.routes[0].index === 0 && nav.index === 0)) {
         return false
       }
       // if (shouldCloseApp(nav)) return false
@@ -45,14 +62,22 @@ class ReduxNavigation extends React.Component {
     return <AppNavigation
       screenProps={{ locale: 'ID' }}
       navigation={addNavigationHelpers({ dispatch: this.props.dispatch, state: this.props.nav, addListener: createReduxBoundAddListener('root') })}
-      onNavigationStateChange={(prevState, currentState) =>
-        ScreenTracker(
-          prevState,
-          currentState
-          // this.props.profile,
-          // this.props.myPackagesList,
-        )
-      }
+      // onNavigationStateChange={(prevState, currentState) => {
+      // //   // this.props.dispatch()
+      // //   // NavigationActions.navigate({
+      // //   //   type: 'Navigation/NAVIGATE',
+      // //   //   routeName,
+      // //   //   params,
+      // //   //   key,
+      // //   // })
+      // // {type: "Navigation/NAVIGATE", routeName: "RenunganpagiScreen"}
+      //   // NavReducer(this.props.nav, this.props.dispatch({type: NavigationActions.NAVIGATE}))
+      // //   // const state = reducer(INITIAL_STATE, Actions.userRequest(username))
+      //   ScreenTracker({ prevState, currentState, dispatch: this.props.dispatch, state: this.props.nav
+      //     // this.props.profile,
+      //     // this.props.myPackagesList,
+      //   })
+      // }}
       ref={navigatorRef => {
         NavigatorHelper.setContainer(navigatorRef)
       }}

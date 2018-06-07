@@ -25,5 +25,8 @@
    "search": "Search",
    "tab-content": "Content",
    "tab-comments": "Comments",
-   "login-method-text1": "Login With"
+   "login-method-text1": "Login With",  
+   "drawer-support": "Support",
+   "drawer-logout": "Logout", 
+   "drawer-login": "Login"     
 }

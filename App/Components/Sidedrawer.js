@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 // import PropTypes from 'prop-types';
-import { Image } from "react-native";
+import { Image, View, ScrollView, ImageBackground} from 'react-native';
 import {
   Content,
   Text,
@@ -12,9 +12,12 @@ import {
   Right,
   Badge,
   Thumbnail
-} from "native-base";
+} from 'native-base';
 import styles from './Styles/SideDrawerStyle'
 import { Images } from '../Themes'
+import DrawerHeader from '../Containers/DrawerHeader'
+import DrawerFooter from '../Containers/DrawerFooter'
+import StyledText from '../Components/StyledText'
 
 const drawerCover = Images.drawerCover
 const drawerImage = Images.drawerImage
@@ -23,33 +26,33 @@ const sekolahsabatIcon = Images.sekolahsabatIcon
 const menufacesIcon = Images.menufaces
 const datas = [
   {
-    name: "Home",
-    route: "HomeScreen",
-    icon: "home",
-    bg: "#C5F442",
-    fontColor: "#00bfff"
+    name: 'Home',
+    route: 'HomeScreen',
+    icon: 'home',
+    bg: '#C5F442',
+    fontColor: '#00bfff'
   },
   {
-    name: "Renungan Pagi",
-    route: "RenunganpagiScreen",
-    icon: "heart",
-    bg: "#C5F442",
-    fontColor: "#00bfff",
+    name: 'Renungan Pagi',
+    route: 'RenunganpagiScreen',
+    icon: 'heart',
+    bg: '#C5F442',
+    fontColor: '#00bfff',
     iconPicture: renunganPagiIcon
   },
   {
-    name: "Sekolah sabat",
-    route: "SekolahsabatScreen",
-    icon: "phone-portrait",
-    bg: "#477EEA",
+    name: 'Sekolah sabat',
+    route: 'SekolahsabatScreen',
+    icon: 'phone-portrait',
+    bg: '#477EEA',
     // types: "10",
     iconPicture: sekolahsabatIcon
   },
   {
-    name: "Tentang App",
-    route: "AboutAppScreen",
-    icon: "phone-portrait",
-    bg: "#DA4437",
+    name: 'Tentang App',
+    route: 'AboutAppScreen',
+    icon: 'phone-portrait',
+    bg: '#DA4437',
     iconPicture: menufacesIcon
     // types: "4"
   },
@@ -75,56 +78,72 @@ export default class SideDrawer extends Component {
   }
 
   render () {
+    console.log('[Sidedrawer] props', this.props)
     return (
-      <Container>
-        <Content
-          bounces={false}
-          style={{ flex: 1, backgroundColor: "#fff", top: -1 }}
+      <ImageBackground
+        style={styles.container}
+        source={Images.bg}
+      >
+        <View
+          style={{ flex: 1 }}
         >
-          <Image source={drawerCover} style={styles.drawerCover} />
-          <Image square style={styles.drawerImage} source={drawerImage} />
-
-          <List
-            dataArray={datas}
-            renderRow={data =>
-              <ListItem
-                button
-                noBorder
-                onPress={() => this.props.navigation.navigate(data.route)}
-              >
-                <Left>
-                  {data.iconPicture &&
-                    <Thumbnail source={data.iconPicture} small square />
-                  }
-                  {!data.iconPicture && <Icon
-                      active
-                      name={data.icon}
-                      style={{ color: data.fontColor || "#777", fontSize: 26, width: 30 }}
-                      type="FontAwesome" />
-                   }
-                  <Text style={styles.text}>
-                    {data.name}
-                  </Text>
-                </Left>
-                {data.types &&
-                  <Right style={{ flex: 1 }}>
-                    <Badge
-                      style={{
-                        borderRadius: 3,
-                        height: 25,
-                        width: 72,
-                        backgroundColor: data.bg
-                      }}
-                    >
-                      <Text
-                        style={styles.badgeText}
-                      >{`${data.types} Types`}</Text>
-                    </Badge>
-                  </Right>}
-              </ListItem>}
+          <DrawerHeader />
+          <ScrollView
+            style={styles.scrollView}
+            contentContainerStyle={styles.scrollViewContentContainer}
+          >
+            <View style={styles.contentView}>
+              <List
+                dataArray={datas}
+                renderRow={data =>
+                  <ListItem
+                    button
+                    noBorder
+                    onPress={() => this.props.navigation.navigate(data.route)}
+                  >
+                    <Left>
+                      {data.iconPicture &&
+                        <Thumbnail source={data.iconPicture} small square />
+                      }
+                      {!data.iconPicture && <Icon
+                          active
+                          name={data.icon}
+                          style={{ color: data.fontColor || '#777', fontSize: 26, width: 30 }}
+                          type="FontAwesome" />
+                      }
+                      {/* <StyledText
+                        i18nKey={data.name}
+                        // textStyle='h11LtGreyS'
+                        addedStyle={styles.labelText}
+                      /> */}
+                      <Text style={styles.text}>
+                        {data.name}
+                      </Text>
+                    </Left>
+                    {data.types &&
+                      <Right style={{ flex: 1 }}>
+                        <Badge
+                          style={{
+                            borderRadius: 3,
+                            height: 25,
+                            width: 72,
+                            backgroundColor: data.bg
+                          }}
+                        >
+                          <Text
+                            style={styles.badgeText}
+                          >{`${data.types} Types`}</Text>
+                        </Badge>
+                      </Right>}
+                  </ListItem>}
+              />
+            </View>
+          </ScrollView>
+          <DrawerFooter
+            navigation={this.props.navigation}
           />
-        </Content>
-      </Container>
+        </View>
+      </ImageBackground>
     )
   }
 }

@@ -13,6 +13,7 @@ import firebase from 'react-native-firebase'
 
 import StyledText from '../Components/StyledText'
 import I18n from '../I18n'
+import {path} from 'ramda'
 
 // Styles
 import styles, { socialConnect } from './Styles/LoginOptionStyle'
@@ -60,7 +61,12 @@ class LoginOption extends Component {
 
       // login with credential
       const currentUser = await firebase.auth().signInAndRetrieveDataWithCredential(credential)
-      this.props.sessionSuccess('FB', currentUser)
+      // this.props.sessionSuccess('FB', currentUser)
+      const dataUser = path(['user', '_user'], currentUser)
+      this.props.sessionSuccess({
+        loginWith: 'FB',
+        currentUser: dataUser
+      })
 
       console.info(JSON.stringify(currentUser.user.toJSON()))
     } catch (e) {

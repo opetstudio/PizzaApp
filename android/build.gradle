@@ -78,6 +78,7 @@ allprojects {
 //                force 'com.android.support:support-media-compat:27.1.1'
 //                force 'com.android.support:support-v4:27.1.1'
 //                    force "com.google.android.gms:play-services-ads:15.0.0"
+//                force "com.google.android.gms:play-services-analytics:11.8.0"
             }
         }
         maven {
