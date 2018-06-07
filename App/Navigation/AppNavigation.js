@@ -12,6 +12,7 @@ import Sidedrawer from '../Components/Sidedrawer'
 import PresentationScreen from '../../ignite/DevScreens/PresentationScreen'
 import DetailArticleCommentScreen from '../Containers/DetailArticleCommentScreen'
 import navigatorHelper from '../Utils/helper/navigator'
+import {isIphoneX} from '../Utils/helper/platform'
 
 import styles from './Styles/NavigationStyles'
 
@@ -49,7 +50,8 @@ const StackNav = StackNavigator({
   initialRouteName: 'PrimaryNav',
   navigationOptions: {
     headerStyle: styles.header
-  }
+  },
+  cardStyle: isIphoneX ? { shadowColor: 'transparent' } : {}
 })
 
 export default StackNav
