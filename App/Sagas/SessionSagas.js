@@ -26,7 +26,24 @@ export function * getSession (api, action) {
   // if (response.ok) {
     // You might need to change the response here - do this with a 'transform',
     // located in ../Transforms/. Otherwise, just pass the data back from the api.
-  yield put(SessionActions.sessionRequest(data))
+  // yield put(SessionActions.sessionRequest(data))
+  // } else {
+  //   yield put(SessionActions.sessionFailure())
+  // }
+}
+export function * postSessionRegServer (api, action) {
+  // console.log('[SessonSaga] getSession action', action)
+  const { data } = action
+  // get current data from Store
+  // const currentData = yield select(SessionSelectors.getData)
+  // make the call to the api
+  const response = yield call(api.postSessionRegServer, data)
+
+  // success?
+  // if (response.ok) {
+    // You might need to change the response here - do this with a 'transform',
+    // located in ../Transforms/. Otherwise, just pass the data back from the api.
+  // yield put(SessionActions.sessionRequest(data))
   // } else {
   //   yield put(SessionActions.sessionFailure())
   // }

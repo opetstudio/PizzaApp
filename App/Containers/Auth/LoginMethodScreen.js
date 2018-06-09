@@ -15,14 +15,13 @@ import PropTypes from 'prop-types'
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
 
-import {SessionSelectors} from '../Redux/SessionRedux'
-
-import HeaderMenu from '../Components/HeaderMenu'
-import StyledView from '../Components/StyledView'
+import SessionActions, {SessionSelectors} from '../../Redux/SessionRedux'
+import HeaderMenu from '../../Components/HeaderMenu'
+import StyledView from '../../Components/StyledView'
 import LoginOption from './LoginOption'
 // Styles
-import styles from './Styles/LoginMethodScreenStyle'
-import {Colors} from '../Themes'
+import styles from './Styles'
+import {Colors} from '../../Themes'
 
 class LoginMethodScreen extends Component {
   static propTypes = {
@@ -39,6 +38,7 @@ class LoginMethodScreen extends Component {
   }
 
   componentWillMount () {
+    this.props.sessionFailure()
   }
 
   componentWillReceiveProps (nextProps) {
@@ -113,6 +113,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    sessionFailure: () => dispatch(SessionActions.sessionFailure())
   }
 }
 

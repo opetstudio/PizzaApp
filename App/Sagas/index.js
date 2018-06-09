@@ -12,6 +12,7 @@ import { RestapiTypes } from '../Redux/RestapiRedux'
 import { RenpagiTypes } from '../Redux/RenpagiRedux'
 import { SsdewasaTypes } from '../Redux/SsdewasaRedux'
 import { SessionTypes } from '../Redux/SessionRedux'
+import { CommentTypes } from '../Redux/CommentRedux'
 
 /* ------------- Sagas ------------- */
 
@@ -20,7 +21,8 @@ import { getUserAvatar } from './GithubSagas'
 import { getRestapi } from './RestapiSagas'
 import { getRenpagi } from './RenpagiSagas'
 import { getSsdewasa } from './SsdewasaSagas'
-import { getSession, setSession } from './SessionSagas'
+import {getComment} from './CommentSagas'
+import { setSession, postSessionRegServer } from './SessionSagas'
 
 /* ------------- API ------------- */
 
@@ -28,6 +30,7 @@ import { getSession, setSession } from './SessionSagas'
 // to the sagas which need it.
 const host = Platform.OS === 'ios' ? 'http://localhost:8090/api/' : 'http://10.0.2.2:8090/api/'
 const api = DebugConfig.useFixtures ? FixtureAPI : API.create()
+const apiJemaatApp = DebugConfig.useFixtures ? FixtureAPI : API.create(host)
 const apiRestapi = DebugConfig.useFixtures ? FixtureAPI : API.create(host)
 const apiRenpagi = DebugConfig.useFixtures ? FixtureAPI : API.create(host)
 const apiSsdewasa = DebugConfig.useFixtures ? FixtureAPI : API.create(host)
@@ -44,9 +47,10 @@ export default function * root () {
 
     takeLatest(RestapiTypes.RESTAPI_REQUEST, getRestapi, apiRestapi),
     takeLatest(RenpagiTypes.RENPAGI_REQUEST, getRenpagi, apiRenpagi),
-    takeLatest(SsdewasaTypes.SSDEWASA_REQUEST, getSsdewasa, apiSsdewasa)
+    takeLatest(SsdewasaTypes.SSDEWASA_REQUEST, getSsdewasa, apiSsdewasa),
+    takeLatest(CommentTypes.COMMENT_REQUEST, getComment, apiJemaatApp),
 
-    // takeLatest(SessionTypes.SESSION_REQUEST, getSession, null),
+    takeLatest(SessionTypes.SESSION_REGSERVER, postSessionRegServer, apiJemaatApp)
     // takeLatest(SessionTypes.SESSION_SUCCESS, setSession, null)
   ])
 }

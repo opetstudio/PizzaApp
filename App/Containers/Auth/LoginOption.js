@@ -4,20 +4,17 @@ import {
   Button
 } from 'native-base'
 import { connect } from 'react-redux'
+import firebase from 'react-native-firebase'
+import { AccessToken, LoginManager, LoginButton } from 'react-native-fbsdk'
+import {path} from 'ramda'
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
-import SessionActions from '../Redux/SessionRedux'
-
-import { AccessToken, LoginManager, LoginButton } from 'react-native-fbsdk'
-import firebase from 'react-native-firebase'
-
-import StyledText from '../Components/StyledText'
-import I18n from '../I18n'
-import {path} from 'ramda'
-
-// Styles
-import styles, { socialConnect } from './Styles/LoginOptionStyle'
-import { Colors, Images } from '../Themes'
+import SessionActions from '../../Redux/SessionRedux'
+import StyledText from '../../Components/StyledText'
+import I18n from '../../I18n'
+// Style
+import { loginOptionStyle as styles, socialConnect } from './Styles'
+import { Colors, Images } from '../../Themes'
 
 const socialAccounts = [
   {
@@ -33,10 +30,13 @@ const socialAccounts = [
 ]
 
 class LoginOption extends Component {
-  // constructor (props) {
-  //   super(props)
-  //   this.state = {}
-  // }
+  constructor (props) {
+    super(props)
+    this.state = {}
+  }
+  componentWillMount () {
+    this.props.sessionFailure()
+  }
   async facebookLogin () {
     try {
       this.props.sessionRequest({data: {}})

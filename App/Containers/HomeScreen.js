@@ -3,11 +3,13 @@ import { View, ImageBackground, Image, ScrollView } from 'react-native'
 import { connect } from 'react-redux'
 import {
   Container,
-  Text
+  Text,
+  Button
 } from 'native-base'
+import {path} from 'ramda'
 // import { LoginButton } from 'react-native-fbsdk'
 import HeaderMenu from '../Components/HeaderMenu'
-import LoginOption from '../Containers/LoginOption'
+import LoginOption from '../Containers/Auth/LoginOption'
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
 // import API from '../Services/Api'
@@ -15,7 +17,7 @@ import LoginOption from '../Containers/LoginOption'
 // import RestapiActions from '../Redux/RestapiRedux'
 // import RenpagiActions from '../Redux/RenpagiRedux'
 // import SsdewasaActions from '../Redux/SsdewasaRedux'
-import SessionActions from '../Redux/SessionRedux'
+import SessionActions, {SessionSelectors} from '../Redux/SessionRedux'
 
 // firebase
 import firebase from 'react-native-firebase'
@@ -25,6 +27,7 @@ import {registerAppListener} from '../Listeners'
 // Styles
 import styles from './Styles/HomeScreenStyle'
 import { Images } from '../Themes'
+import { Colors } from '../../ignite/DevScreens/DevTheme';
 const launchscreenBg = Images.launchscreenBg
 const launchscreenLogo = Images.launchscreenLogo
 
@@ -37,6 +40,9 @@ class HomeScreen extends Component {
       tokenCopyFeedback: '',
       isAuthenticated: false
     }
+    this.onPressLogin = this.onPressLogin.bind(this)
+    this.renderUnloggedinSection = this.renderUnloggedinSection.bind(this)
+    this.renderLoggedInSection = this.renderLoggedInSection.bind(this)
   }
   componentWillMount () {
     // const api = API.create('http://localhost:8090/api/')
@@ -187,6 +193,26 @@ class HomeScreen extends Component {
 
   //   firebaseClient.send(JSON.stringify(body), 'notification')
   // }
+  onPressLogin () {
+    this.props.navigation.navigate('LoginMethodScreen')
+  }
+  renderUnloggedinSection () {
+    return (
+      <View style={{flex: 1}}>
+        <Text style={{ marginBottom: 10, fontSize: 17, color: Colors.whitePrimary }}>Please Login to access more features</Text>
+        <Button full style={{ backgroundColor: Colors.facebook }} onPress={this.onPressLogin}>
+          <Text>Login</Text>
+        </Button>
+      </View>
+    )
+  }
+  renderLoggedInSection () {
+    return (
+      <View style={{flex: 1}}>
+        <Text style={{ marginBottom: 10, fontSize: 17, color: Colors.whitePrimary }}>Hi { path(['displayName'], this.props.currentUser)}, Have a nice day. God bless you.</Text>
+      </View>
+    )
+  }
   render () {
     // If the user has not authenticated
     // if (!this.state.isAuthenticated) {
@@ -218,7 +244,10 @@ class HomeScreen extends Component {
                 backgroundColor: 'transparent'
               }}
             >
-              <LoginOption />
+              
+              {!this.props.currentUser && this.renderUnloggedinSection()}
+              {this.props.currentUser && this.renderLoggedInSection()}
+              {/* <LoginOption /> */}
             </View>
           </ScrollView>
         </ImageBackground>
@@ -229,6 +258,7 @@ class HomeScreen extends Component {
 
 const mapStateToProps = (state) => {
   return {
+    currentUser: SessionSelectors.getCurrentUser(state.session)
   }
 }
 

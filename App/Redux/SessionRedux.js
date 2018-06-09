@@ -5,6 +5,7 @@ import Immutable from 'seamless-immutable'
 
 const { Types, Creators } = createActions({
   sessionRequest: ['data'],
+  sessionRegserver: ['data'],
   sessionSuccess: ['payload'],
   sessionFailure: null,
   sessionLogout: null
@@ -41,6 +42,12 @@ export const request = (state, action) => {
   console.log('[SessionRedux] request state', state)
   return state.merge({ fetching: true, data, payload: null })
 }
+export const regserver = (state, action) => {
+  const { data } = action
+  console.log('[SessionRedux] request action', action)
+  console.log('[SessionRedux] request state', state)
+  return state.merge({ fetching: true, data, payload: null })
+}
 
 // successful api lookup
 export const success = (state, {payload}) => {
@@ -60,6 +67,7 @@ export const logout = state =>
 
 export const reducer = createReducer(INITIAL_STATE, {
   [Types.SESSION_REQUEST]: request,
+  [Types.SESSION_REGSERVER]: regserver,
   [Types.SESSION_SUCCESS]: success,
   [Types.SESSION_LOGOUT]: logout,
   [Types.SESSION_FAILURE]: failure

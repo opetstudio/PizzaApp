@@ -41,5 +41,19 @@ export default {
       ok: true,
       data: restapiDataById
     }
+  },
+  postSessionRegServer: (data) => {
+    const restapiDataById = require('../Fixtures/restapi.json')
+    return {
+      ok: true,
+      data: restapiDataById
+    }
+  },
+  getcomment: (data) => {
+    const restapiDataById = require('../Fixtures/restapi.json')
+    return {
+      ok: true,
+      data: restapiDataById
+    }
   }
 }

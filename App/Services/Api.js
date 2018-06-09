@@ -38,6 +38,8 @@ const create = (baseURL = 'https://api.github.com/') => {
   const getRate = () => api.get('rate_limit')
   const getUser = (username) => api.get('search/users', {q: username})
   const getRestapi = ({ newerModifiedon }) => api.get('getRestapi', { newerModifiedon })
+  const getComment = ({ newerModifiedon }) => api.get('getComment', { newerModifiedon })
+  const postSessionRegServer = ({ currentUser }) => api.post('postSessionRegServer', { currentUser })
   const getRenpagi = ({ apiName, baseUrl, newerModifiedon }) => {
     if (baseUrl) api.setBaseURL(baseUrl)
     // console.log('Api.js=========>>>>>', api.getBaseURL())
@@ -67,7 +69,9 @@ const create = (baseURL = 'https://api.github.com/') => {
     getUser,
     getRestapi,
     getRenpagi,
-    getSsdewasa
+    getSsdewasa,
+    postSessionRegServer,
+    getcomment: getComment
   }
 }
 

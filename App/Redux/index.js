@@ -13,7 +13,8 @@ export const reducers = combineReducers({
   popup: require('./PopupRedux').reducer,
   nav: require('./NavigationRedux').reducer,
   github: require('./GithubRedux').reducer,
-  search: require('./SearchRedux').reducer
+  search: require('./SearchRedux').reducer,
+  comment: require('./CommentRedux').reducer
 })
 
 export default () => {
