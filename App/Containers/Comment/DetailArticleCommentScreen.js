@@ -14,12 +14,13 @@ import { connect } from 'react-redux'
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
 
-import HeaderMenu from '../Components/HeaderMenu'
-import PaginationList from '../Components/PaginationList'
-import AdsBanner from '../Components/AdsBanner'
+import HeaderMenu from '../../Components/HeaderMenu'
+import PaginationList from '../../Components/PaginationList'
+import AdsBanner from '../../Components/AdsBanner'
 // Styles
-import styles from './Styles/DetailArticleCommentScreenStyle'
-import {Images} from '../Themes'
+import styles from './Styles'
+import {Images} from '../../Themes'
+import CommentAction, {CommentSelectors} from '../../Redux/CommentRedux'
 
 const pratik = Images.pratik
 const sanket = Images.pratik
@@ -74,12 +75,15 @@ class DetailArticleCommentScreen extends Component {
       isLoading: false
     }
     this._handleRefresh = this._handleRefresh.bind(this)
+    this.props.renpagiRequest({ newerModifiedon: this.props.maxModifiedon })
   }
   _handleRefresh () {
-    this.setState({
-      isLoading: true
-    })
-    setTimeout(() => { this.setState({ isLoading: false }) }, 2000)
+    // this.setState({
+    //   isLoading: true
+    // })
+    // setTimeout(() => { this.setState({ isLoading: false }) }, 2000)
+
+    this.props.renpagiRequest({ newerModifiedon: this.props.maxModifiedon })
   }
   render () {
     const {contentId} = this.props.navigation.state.params
@@ -103,7 +107,7 @@ class DetailArticleCommentScreen extends Component {
               // this.props.navigation.navigate('DetailScreen', {title: 'Renungan Pagi', item})
             }}
             handleRefresh={this._handleRefresh}
-            isLoading={this.state.isLoading}
+            isLoading={this.props.isFetching}
           />
           <AdsBanner />
           {/* <List
@@ -136,11 +140,15 @@ class DetailArticleCommentScreen extends Component {
 
 const mapStateToProps = (state) => {
   return {
+    allDataArr: CommentSelectors.getAllDataArr(state.comment),
+    isFetching: CommentSelectors.getFetching(state.comment),
+    maxModifiedon: CommentSelectors.getMaxModifiedon(state.comment)
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    commentRequest: (query) => dispatch(CommentAction.commentRequest(query))
   }
 }
 

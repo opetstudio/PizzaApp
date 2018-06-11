@@ -6,7 +6,7 @@ import styles, {tabNavigationStyles} from './Styles/DetailTabsStyle'
 
 import I18n from '../I18n'
 import DetailArticleScreen from '../Containers/DetailArticleScreen'
-import DetailArticleCommentScreen from '../Containers/DetailArticleCommentScreen'
+import DetailArticleCommentScreen from '../Containers/Comment/DetailArticleCommentScreen'
 
 const textMessage = I18n.t
 

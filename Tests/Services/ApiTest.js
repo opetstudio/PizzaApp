@@ -88,7 +88,6 @@ test('Api getSsdewasa returns the right response', async () => {
   expect('byId' in response.data).toBe(true)
   expect('allIds' in response.data).toBe(true)
   expect(response.data.allIds.length).toBe(30)
-
   // expect(response.data.alldata.length).toBe(2)
 
   // expect(response.data).toEqual({
@@ -96,21 +95,15 @@ test('Api getSsdewasa returns the right response', async () => {
   //   data: expectedFile
   // })
 })
-
-// test('FixtureAPI getUser returns the right file for gantman', () => {
-//   const expectedFile = require('../../App/Fixtures/gantman.json')
-
-//   expect(FixtureAPI.getUser('GantMan')).toEqual({
-//     ok: true,
-//     data: expectedFile
-//   })
-// })
-
-// test('FixtureAPI getUser returns the right file for skellock as default', () => {
-//   const expectedFile = require('../../App/Fixtures/skellock.json')
-
-//   expect(FixtureAPI.getUser('Whatever')).toEqual({
-//     ok: true,
-//     data: expectedFile
-//   })
-// })
+test('Api getComment returns the right response', async () => {
+  const api = API.create('http://localhost:8090/api/')
+  const newerModifiedon = 0
+  const response = await api.getcomment({ newerModifiedon })
+  expect(response.status).toBe(200)
+  // expect(response.data.minModifiedon > newerModifiedon).toBe(true)
+  // expect('minModifiedon' in response.data).toBe(true)
+  // expect('maxModifiedon' in response.data).toBe(true)
+  // expect('byId' in response.data).toBe(true)
+  // expect('allIds' in response.data).toBe(true)
+  // expect(response.data.allIds.length).toBe(30)
+})

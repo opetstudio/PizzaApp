@@ -20,6 +20,7 @@ export function * getComment (api, action) {
   // const currentData = yield select(CommentSelectors.getData)
   // make the call to the api
   const response = yield call(api.getcomment, data)
+  // console.log('response', response)
 
   // success?
   if (response.ok) {
@@ -28,6 +29,25 @@ export function * getComment (api, action) {
     const { byId, allIds, maxModifiedon } = response.data
     yield put(CommentActions.commentSuccess(byId, allIds, maxModifiedon))
   } else {
-    yield put(CommentActions.commentFailure())
+    const {problem} = response
+    yield put(CommentActions.commentFailure(problem, 'System error.'))
+  }
+}
+export function * postingComment (api, action) {
+  const { dataPost } = action
+  // get current data from Store
+  // const currentData = yield select(CommentSelectors.getData)
+  // make the call to the api
+  const response = yield call(api.postComment, dataPost)
+
+  // success?
+  if (response.ok) {
+    // You might need to change the response here - do this with a 'transform',
+    // located in ../Transforms/. Otherwise, just pass the data back from the api.
+    const { byId, allIds, maxModifiedon } = response.data
+    yield put(CommentActions.commentPostsuccess(byId, allIds, maxModifiedon))
+  } else {
+    const {problem} = response
+    yield put(CommentActions.commentFailure(problem, 'System error.'))
   }
 }

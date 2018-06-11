@@ -21,8 +21,8 @@ import { getUserAvatar } from './GithubSagas'
 import { getRestapi } from './RestapiSagas'
 import { getRenpagi } from './RenpagiSagas'
 import { getSsdewasa } from './SsdewasaSagas'
-import {getComment} from './CommentSagas'
-import { setSession, postSessionRegServer } from './SessionSagas'
+import {getComment, postingComment} from './CommentSagas'
+import { setSession, postSessionRegServer, loginWithSocmed } from './SessionSagas'
 
 /* ------------- API ------------- */
 
@@ -49,7 +49,10 @@ export default function * root () {
     takeLatest(RenpagiTypes.RENPAGI_REQUEST, getRenpagi, apiRenpagi),
     takeLatest(SsdewasaTypes.SSDEWASA_REQUEST, getSsdewasa, apiSsdewasa),
     takeLatest(CommentTypes.COMMENT_REQUEST, getComment, apiJemaatApp),
+    takeLatest(CommentTypes.COMMENT_POST, postingComment, apiJemaatApp),
 
+    // Auth
+    takeLatest(SessionTypes.SESSION_LOGIN_WITH_SOCMED, loginWithSocmed, apiJemaatApp),
     takeLatest(SessionTypes.SESSION_REGSERVER, postSessionRegServer, apiJemaatApp)
     // takeLatest(SessionTypes.SESSION_SUCCESS, setSession, null)
   ])

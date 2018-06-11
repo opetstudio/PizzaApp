@@ -54,3 +54,7 @@ export function * setSession (api, action) {
   const { loginWith, currentUser } = action
   yield put(SessionActions.sessionSuccess(loginWith, currentUser))
 }
+
+export function * loginWithSocmed (api, action) {
+  // const token = yield
+}

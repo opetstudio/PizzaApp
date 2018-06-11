@@ -12,7 +12,7 @@ import SekolahsabatScreen from '../Containers/SekolahsabatScreen'
 import LaunchScreen from '../Containers/LaunchScreen'
 import Sidedrawer from '../Components/Sidedrawer'
 import PresentationScreen from '../../ignite/DevScreens/PresentationScreen'
-import DetailArticleCommentScreen from '../Containers/DetailArticleCommentScreen'
+import DetailArticleCommentScreen from '../Containers/Comment/DetailArticleCommentScreen'
 import navigatorHelper from '../Utils/helper/navigator'
 import {isIphoneX} from '../Utils/helper/platform'
 

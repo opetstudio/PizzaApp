@@ -4,6 +4,7 @@ import Immutable from 'seamless-immutable'
 /* ------------- Types and Action Creators ------------- */
 
 const { Types, Creators } = createActions({
+  sessionLoginWithSocmed: ['data'],
   sessionRequest: ['data'],
   sessionRegserver: ['data'],
   sessionSuccess: ['payload'],
@@ -22,7 +23,8 @@ export const INITIAL_STATE = Immutable({
   loginWith: null,
   currentUser: null,
   payload: null,
-  error: null
+  error: null,
+  isLoginCompleted: null
 })
 
 /* ------------- Selectors ------------- */
@@ -35,6 +37,10 @@ export const SessionSelectors = {
 
 /* ------------- Reducers ------------- */
 
+export const loginWithSocmed = (state, action) => {
+  const { data } = action
+  return state.merge({ isLoginCompleted: false })
+}
 // request the data from an api
 export const request = (state, action) => {
   const { data } = action
@@ -66,6 +72,7 @@ export const logout = state =>
 /* ------------- Hookup Reducers To Types ------------- */
 
 export const reducer = createReducer(INITIAL_STATE, {
+  [Types.SESSION_LOGIN_WITH_SOCMED]: loginWithSocmed,
   [Types.SESSION_REQUEST]: request,
   [Types.SESSION_REGSERVER]: regserver,
   [Types.SESSION_SUCCESS]: success,
