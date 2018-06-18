@@ -47,7 +47,7 @@ class LoginOption extends Component {
         throw new Error('User cancelled request') // Handle this however fits the flow of your app
       }
 
-      console.log(`Login success with permissions: ${result.grantedPermissions.toString()}`)
+      __DEV__ && console.log(`Login success with permissions: ${result.grantedPermissions.toString()}`)
 
       // get the access token
       const data = await AccessToken.getCurrentAccessToken()
@@ -55,7 +55,7 @@ class LoginOption extends Component {
       if (!data) {
         throw new Error('Something went wrong obtaining the users access token') // Handle this however fits the flow of your app
       }
-      console.log('data facebook==>', data)
+      __DEV__ && console.log('data facebook==>', data)
 
       // create a new firebase credential with the token
       const credential = firebase.auth.FacebookAuthProvider.credential(data.accessToken)

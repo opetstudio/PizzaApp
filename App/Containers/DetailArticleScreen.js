@@ -13,7 +13,6 @@ class DetailArticleScreen extends Component {
   render () {
     const { title, htmlContent, date, contributorSpace } = this.props.screenProps
 
-    // console.log('[DetailArticleScreen] props', this.props)
     return (
       <DetailContent
         title={title}

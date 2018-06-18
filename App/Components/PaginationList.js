@@ -68,8 +68,9 @@ export default class PaginationList extends Component {
     return true
   }
   _renderRow (p) {
-    // console.log('====>', p)
     const { item } = p
+    if (this.props.renderRow) return this.props.renderRow(item)
+
     const date = moment(new Date(item[this.props.rightText])).format('DD-MM/YY')
     const avatar = item[this.props.avatar]
     return (
@@ -87,7 +88,6 @@ export default class PaginationList extends Component {
     this.props.handleRefresh()
   }
   _bannerError (p1, p2) {
-    console.log('bannerError=====>>>>>', p1)
   }
   _renderList () {
     // if (this.state.isLoading) return <View><Text>loading</Text></View>

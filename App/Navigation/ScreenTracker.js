@@ -40,14 +40,14 @@ const ScreenTracker = ({prevState, currentState, profile, myPackagesList, state,
 
   // NavReducer(state, dispatch({type: NavigationActions.NAVIGATE, routeName: currentScreenInfo.routeName}))
 
-  console.log('[ScreenTracker] currentState', currentState)
-  console.log('[ScreenTracker] currentScreenInfo', currentScreenInfo)
+  __DEV__ && console.log('[ScreenTracker] currentState', currentState)
+  __DEV__ && console.log('[ScreenTracker] currentScreenInfo', currentScreenInfo)
   if (
     !currentScreenInfo.routeName.match('DrawerOpen') &&
     prevScreenInfo.routeName !== currentScreenInfo.routeName
   ) {
     let screen = filterScreenName(currentScreenInfo.routeName)
-    console.log('[ScreenTracker] screen', screen)
+    __DEV__ && console.log('[ScreenTracker] screen', screen)
     // tracker.trackScreenView(screen)
   }
 }

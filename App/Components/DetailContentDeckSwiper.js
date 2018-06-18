@@ -48,6 +48,7 @@ export default class DetailContentDeckSwiper extends Component {
           contributorSpace={contributorSpace}
           contentId={contentId}
           navigation={this.props.navigation}
+          contentType={this.props.contentType}
         />
         {/* <DetailTabs
           screenProps={{

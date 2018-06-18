@@ -22,7 +22,6 @@ export function * getRestapi (api, action) {
   // make the call to the api
   const response = yield call(api.getRestapi, data)
 
-  // console.log('responseeee', response)
 
   // success?
   if (response.ok) {

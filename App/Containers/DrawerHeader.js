@@ -21,7 +21,7 @@ class DrawerHeader extends Component {
   // }
 
   render () {
-    console.log('[DrawerHeader] render props', this.props)
+    __DEV__ && console.log('[DrawerHeader] render props', this.props)
     return (
       <View style={styles.drawerCoverWrapper}>
         <Image source={drawerCover} style={styles.drawerCover} />

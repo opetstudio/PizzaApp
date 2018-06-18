@@ -17,7 +17,7 @@ class FirebaseClient {
 
 		try {
 			let response = await fetch(API_URL, { method: "POST", headers, body });
-			console.log(response);
+			__DEV__ && console.log(response);
 			try{
 				response = await response.json();
 				if(!response.success){

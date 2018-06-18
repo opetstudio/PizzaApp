@@ -18,10 +18,12 @@ import HeaderMenu from '../../Components/HeaderMenu'
 import PaginationList from '../../Components/PaginationList'
 import AdsBanner from '../../Components/AdsBanner'
 import CommentInput from './CommentInput'
+import CommentRow from './CommentRow'
 // Styles
 import styles from './Styles'
 import {Images} from '../../Themes'
 import CommentAction, {CommentSelectors} from '../../Redux/CommentRedux'
+import UserAction, {UserSelectors} from '../../Redux/UserRedux'
 
 const pratik = Images.pratik
 const sanket = Images.pratik
@@ -80,6 +82,11 @@ class DetailArticleCommentScreen extends Component {
   componentWillMount () {
     this.props.commentRequest({ newerModifiedon: this.props.maxModifiedon })
   }
+  componentWillReceiveProps (nextProps) {
+    // const allUserIdArr = nextProps.allUserIdArr
+
+    // this.props.userRequest({  })
+  }
   _handleRefresh () {
     // this.setState({
     //   isLoading: true
@@ -88,8 +95,11 @@ class DetailArticleCommentScreen extends Component {
 
     this.props.commentRequest({ newerModifiedon: this.props.maxModifiedon })
   }
+  _renderListRow (item) {
+    return <CommentRow item={item} />
+  }
   render () {
-    const {contentId} = this.props.navigation.state.params
+    const {contentId, contentType} = this.props.navigation.state.params
     return (
       <View style={{flex: 1}}>
         <HeaderMenu
@@ -98,7 +108,10 @@ class DetailArticleCommentScreen extends Component {
           navigation={this.props.navigation}
           title={'Comments'}
         />
-        <CommentInput />
+        <CommentInput
+          contentId={contentId}
+          contentType={contentType}
+        />
         <PaginationList
           data={this.props.allDataArr}
           firstText={'createdby'}
@@ -111,6 +124,7 @@ class DetailArticleCommentScreen extends Component {
           }}
           handleRefresh={this._handleRefresh}
           isLoading={this.props.isFetching}
+          renderRow={this._renderListRow}
         />
         <AdsBanner />
       </View>
@@ -118,17 +132,20 @@ class DetailArticleCommentScreen extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
+  const {contentId} = ownProps.navigation.state.params
   return {
-    allDataArr: CommentSelectors.getAllDataArr(state.comment),
+    allDataArr: CommentSelectors.getAllDataArr(state.comment, contentId),
     isFetching: CommentSelectors.getFetching(state.comment),
     maxModifiedon: CommentSelectors.getMaxModifiedon(state.comment)
+    // allUserIdArr: UserSelectors.getAllIds(state.user)
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     commentRequest: (query) => dispatch(CommentAction.commentRequest(query))
+    // userRequest: (query) => dispatch(UserAction.userRequest(query))
   }
 }
 

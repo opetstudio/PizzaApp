@@ -42,7 +42,6 @@ const create = (baseURL = 'https://api.github.com/') => {
   const postSessionRegServer = ({ currentUser }) => api.post('postSessionRegServer', { currentUser })
   const getRenpagi = ({ apiName, baseUrl, newerModifiedon }) => {
     if (baseUrl) api.setBaseURL(baseUrl)
-    // console.log('Api.js=========>>>>>', api.getBaseURL())
     return api.get(apiName || 'getRenpagi', { newerModifiedon })
   }
   const getSsdewasa = ({ apiName, baseUrl, newerModifiedon }) => {
@@ -51,7 +50,7 @@ const create = (baseURL = 'https://api.github.com/') => {
   }
   const postComment = (data) => api.post('postComment', data)
   const postUser = (data) => api.post('postUser', data)
-  const getuser = (data) => api.get('getuser', data)
+  const getListUser = (data) => api.get('getListUser', data)
 
   // ------
   // STEP 3
@@ -77,7 +76,7 @@ const create = (baseURL = 'https://api.github.com/') => {
     getcomment: getComment,
     postComment,
     postUser,
-    getuser
+    getListUser
   }
 }
 

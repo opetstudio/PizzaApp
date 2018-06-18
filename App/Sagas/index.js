@@ -22,7 +22,8 @@ import { getRestapi } from './RestapiSagas'
 import { getRenpagi } from './RenpagiSagas'
 import { getSsdewasa } from './SsdewasaSagas'
 import {getComment, postingComment} from './CommentSagas'
-import { setSession, postSessionRegServer, loginWithSocmed } from './SessionSagas'
+import {getListUser} from './UserSagas'
+import { postSessionRegServer, loginWithSocmed } from './SessionSagas'
 
 /* ------------- API ------------- */
 
@@ -50,6 +51,9 @@ export default function * root () {
     takeLatest(SsdewasaTypes.SSDEWASA_REQUEST, getSsdewasa, apiSsdewasa),
     takeLatest(CommentTypes.COMMENT_REQUEST, getComment, apiJemaatApp),
     takeLatest(CommentTypes.COMMENT_POST, postingComment, apiJemaatApp),
+
+    // user
+    // takeLatest(CommentTypes.USER_REQUEST, getListUser, apiJemaatApp),
 
     // Auth
     takeLatest(SessionTypes.SESSION_LOGIN_WITH_SOCMED, loginWithSocmed, apiJemaatApp),

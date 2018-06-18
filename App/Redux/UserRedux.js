@@ -6,7 +6,7 @@ import {arrayMerge} from '../Utils/helper/datamining'
 
 const { Types, Creators } = createActions({
   userRequest: ['data'],
-  userSuccess: ['payload'],
+  userSuccess: ['byId', 'allIds', 'maxModifiedon'],
   userFailure: null
 })
 

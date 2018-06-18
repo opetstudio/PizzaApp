@@ -1,5 +1,4 @@
 export const arrayMerge = (args = []) => {
-    // console.log(args)
 //   var args = arguments
   var hash = {}
   var arr = []

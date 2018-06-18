@@ -31,13 +31,10 @@ const screenTracking = ({ getState }) => next => (action) => {
   const currentScreen = getCurrentRouteName(getState().nav)
   const result = next(action)
   const nextScreen = getCurrentRouteName(getState().nav)
-  // console.log('[ScreenTrackingMiddleware] currentScreen=', currentScreen)
-  // console.log('[ScreenTrackingMiddleware] nextScreen=', nextScreen)
   if (nextScreen !== currentScreen) {
     try {
       // console.tron.log(`NAVIGATING ${currentScreen} to ${nextScreen}`)
       // let screen = filterScreenName(currentScreenInfo.routeName)
-      // console.log('[ScreenTracker] screen', screen)
       // tracker.trackScreenView(nextScreen)
       Analytics.setCurrentScreen(nextScreen)
       

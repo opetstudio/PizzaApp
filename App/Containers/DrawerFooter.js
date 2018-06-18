@@ -31,7 +31,7 @@ class DrawerFooter extends Component {
     const borderLanguageStyle = isLoggedIn
       ? styles.borderLanguage
       : styles.borderLanguageNotLogin
-    console.log('[DrawerFooter] isLoggedIn', isLoggedIn)
+    __DEV__ && console.log('[DrawerFooter] isLoggedIn', isLoggedIn)
     const logoutSection = isLoggedIn ? (
       <TouchableOpacity style={styles.logout} onPress={() => this.props.sessionLogout()}>
         <StyledText

@@ -33,7 +33,6 @@ class RenunganpagiScreen extends Component {
     this.props.renpagiRequest({ newerModifiedon: this.props.maxModifiedon })
   }
   render () {
-    // console.log('[RenunganpagiScreen] props', this.props)
     return (
       <View style={{flex: 1}}>
         <HeaderMenu
@@ -50,7 +49,7 @@ class RenunganpagiScreen extends Component {
           rightText={'tanggal'}
           itemOnPress={(item) => {
             // alert(item.title)
-            this.props.navigation.navigate('DetailScreen', {title: 'Renungan Pagi', item})
+            this.props.navigation.navigate('DetailScreen', {title: 'Renungan Pagi', item, contentType: 'rp'})
           }}
           handleRefresh={this._handleRefresh}
           isLoading={this.props.fetching}
@@ -64,7 +63,6 @@ class RenunganpagiScreen extends Component {
 }
 
 const mapStateToProps = (state) => {
-  // console.log('====>', state)
   return {
     allDataArr: RenpagiSelectors.getAllDataArr(state.renpagi),
     fetching: RenpagiSelectors.getFetching(state.renpagi),

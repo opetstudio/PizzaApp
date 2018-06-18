@@ -78,7 +78,6 @@ export default class SideDrawer extends Component {
   }
 
   render () {
-    console.log('[Sidedrawer] props', this.props)
     return (
       <ImageBackground
         style={styles.container}

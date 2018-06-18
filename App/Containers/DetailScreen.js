@@ -36,15 +36,17 @@ class DetailScreen extends Component {
   render () {
     const { navigation } = this.props
     // navigation.setParams({ title: 'opeeet' })
-    const item = path(['state', 'params', 'item'], navigation) || {}
-    const headerTitle = path(['state', 'params', 'title'], navigation)
+
+    const params = path(['state', 'params'], navigation) || {}
+    const item = path(['item'], params) || {}
+    const headerTitle = path(['title'], params)
+    const contentType = path(['contentType'], params)
     const title = item['title'] || 'NO-TITLE'
     const contentId = item['_id'] || Date.now()
     const tanggal = item['tanggal'] || 'NO-TITLE'
     const htmlContent = item['isi_html'] || 'NO-TITLE'
     const contributorSpace = item['contributorSpace'] || AppConfig.contributorSpace
 
-    // console.log('[DetailScreen] props', this.props)
     return (
       <View style={{ flex: 1 }}>
         <HeaderMenu
@@ -66,6 +68,7 @@ class DetailScreen extends Component {
           htmlContent={htmlContent}
           contributorSpace={contributorSpace}
           contentId={contentId}
+          contentType={contentType}
           navigation={navigation}
         />
         {/* <Content> */}

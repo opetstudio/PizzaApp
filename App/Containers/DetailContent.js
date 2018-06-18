@@ -20,8 +20,8 @@ class DetailContent extends Component {
     }
     this.showComments = this.showComments.bind(this)
   }
-  showComments (contentId) {
-    if (this.props.currentUser) this.props.navigation.navigate('DetailArticleCommentScreen', { contentId })
+  showComments (contentId, contentType) {
+    if (this.props.currentUser) this.props.navigation.navigate('DetailArticleCommentScreen', { contentId, contentType })
     else {
       this.props.popupShow({
         title: 'Login',
@@ -40,7 +40,7 @@ class DetailContent extends Component {
     }
   }
   render () {
-    const {title, date, htmlContent, contributorSpace, contentId} = this.props
+    const {title, date, htmlContent, contributorSpace, contentId, contentType} = this.props
     return (
       <View style={{ flex: 1 }}>
         <DetailContentComponent
@@ -50,6 +50,7 @@ class DetailContent extends Component {
           contributorSpace={contributorSpace}
           showComments={this.showComments}
           contentId={contentId}
+          contentType={contentType}
         />
       </View>
     )

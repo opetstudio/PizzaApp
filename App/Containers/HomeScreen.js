@@ -46,7 +46,6 @@ class HomeScreen extends Component {
   }
   componentWillMount () {
     // const api = API.create('http://localhost:8090/api/')
-    // console.log('okeeee')
     // this.props.restapiRequest({ newerModifiedon: 1494844278993 })
     // this.props.renpagiRequest({ newerModifiedon: 1494844278993 })
     // this.props.ssdewasaRequest({ newerModifiedon: 1494844278993 })
@@ -93,11 +92,9 @@ class HomeScreen extends Component {
 
     // firebase.messaging().getToken().then(token => {
     //   const newState = {}
-    //   console.log('TOKEN (getFCMToken)', token)
     //   newState.token = token || 'xxx'
     //   if (this.state.isAuthenticated) {
     //     newState.uid = firebase.auth().currentUser.uid
-    //     console.log('current user: ', newState.uid)
     //     fcmToken.child(newState.uid).set(newState)
     //   }
     //   this.setState(newState)
@@ -218,7 +215,6 @@ class HomeScreen extends Component {
     // if (!this.state.isAuthenticated) {
     //   return null;
     // } else {
-    //   console.log('current user: ', firebase.auth().currentUser.uid)
     // }
     return (
       <Container>

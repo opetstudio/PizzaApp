@@ -17,7 +17,7 @@ import {path} from 'ramda'
 // import { SessionSelectors } from '../Redux/SessionRedux'
 
 export function * getSession (api, action) {
-  console.log('[SessonSaga] getSession action', action)
+  __DEV__ && console.log('[SessonSaga] getSession action', action)
   const { data } = action
   // get current data from Store
   // const currentData = yield select(SessionSelectors.getData)
@@ -34,7 +34,6 @@ export function * getSession (api, action) {
   // }
 }
 export function * postSessionRegServer (api, action) {
-  // console.log('[SessonSaga] getSession action', action)
   const { data } = action
   // get current data from Store
   // const currentData = yield select(SessionSelectors.getData)
@@ -52,17 +51,15 @@ export function * postSessionRegServer (api, action) {
 }
 
 export function * setSession (api, action) {
-  console.log('[SessonSaga] setSession action', action)
+  __DEV__ && console.log('[SessonSaga] setSession action', action)
   const { loginWith, currentUser } = action
   yield put(SessionActions.sessionSuccess(loginWith, currentUser))
 }
 
 export function * loginWithSocmed (api, { data }) {
   // const token = yield
-  // console.log('saga loginWithSocmed invoked')
   try {
     const token = yield call(getTokenUsingSocialAccount, data)
-    // console.log('token===>>', token)
     if (!token) throw new Error('Login failed')
     const { accountType: loginWith } = data
     const currentUser = token
@@ -73,14 +70,14 @@ export function * loginWithSocmed (api, { data }) {
       accountType: loginWith
     }
     const response = yield call(api.postUser, dataUser)
-    console.log('response===>', response)
+    __DEV__ && console.log('response===>', response)
 
     const mongoId = path(['_id'], response.data.currUser)
     if (!response.ok || !response.data.status || !mongoId) throw new Error('Login failed')
     currentUser['_id'] = mongoId
     yield put(SessionActions.sessionSuccess({loginWith, currentUser}))
   } catch (e) {
-    console.log('error==>', e)
+    __DEV__ && console.log('error==>', e)
     yield put(SessionActions.sessionFailure())
   }
 }

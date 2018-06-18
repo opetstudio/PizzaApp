@@ -24,7 +24,7 @@ class DetailContentDeckSwiperScreen extends Component {
     const params = path(['state', 'params'], navigation) || {}
     const allData = params['alldata'] || []
     const headerTitle = params['title']
-    // console.log('[DetailContentDeckSwiperScreen] props====>', this.props)
+    const contentType = params['contentType']
     return (
       <View style={{ flex: 1 }}>
         <HeaderMenu
@@ -39,6 +39,7 @@ class DetailContentDeckSwiperScreen extends Component {
           showComments={this.showComments}
           headerHeight={this.refs.myHeader}
           navigation={this.props.navigation}
+          contentType={contentType}
         />
         {/* </Content> */}
       </View>

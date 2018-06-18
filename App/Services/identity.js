@@ -19,14 +19,14 @@ const facebookLogin = async () => {
     if (result.isCancelled) {
       throw new Error('User cancelled request') // Handle this however fits the flow of your app
     }
-    console.log(`Login success with permissions: ${result.grantedPermissions.toString()}`)
+    __DEV__ && console.log(`Login success with permissions: ${result.grantedPermissions.toString()}`)
     // get the access token
     const data = await AccessToken.getCurrentAccessToken()
 
     if (!data) {
       throw new Error('Something went wrong obtaining the users access token') // Handle this however fits the flow of your app
     }
-    console.log('data facebook==>', data)
+    __DEV__ && console.log('data facebook==>', data)
     // create a new firebase credential with the token
     const credential = firebase.auth.FacebookAuthProvider.credential(data.accessToken)
 
@@ -37,16 +37,14 @@ const facebookLogin = async () => {
     // console.info(JSON.stringify(currentUser.user.toJSON()))
     return dataUser
   } catch (e) {
-    console.log(e)
+    __DEV__ && console.log(e)
     return null
   }
 }
 
 export const getTokenUsingSocialAccount = async ({accountType}) => {
-  // console.log('p1', p1)
   // if (!firebase) firebase = require('react-native-firebase')
   // if (!auth0) auth0 = setAuth0()
-  // console.log('accountType===>', accountType)
   // return auth0.webAuth
   //   .authorize({
   //     connection: accountType,

@@ -14,12 +14,12 @@ import { call, put } from 'redux-saga/effects'
 import UserActions from '../Redux/UserRedux'
 // import { UserSelectors } from '../Redux/UserRedux'
 
-export function * getUser (api, action) {
+export function * getListUser (api, action) {
   const { data } = action
   // get current data from Store
   // const currentData = yield select(UserSelectors.getData)
   // make the call to the api
-  const response = yield call(api.getuser, data)
+  const response = yield call(api.getListUser, data)
 
   // success?
   if (response.ok) {

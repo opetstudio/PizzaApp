@@ -44,8 +44,6 @@ export const request = (state, { data, payload }) =>
 // successful api lookup
 export const success = (state, action) => {
   const { byId, allIds, maxModifiedon } = action
-  // console.log('success===>state', state)
-  // console.log('success===>allIds', allIds)
   return state.merge({ fetching: false, error: null, byId: {...state.byId, ...byId}, allIds: arrayMerge([state.allIds, allIds], maxModifiedon) })
 }
 

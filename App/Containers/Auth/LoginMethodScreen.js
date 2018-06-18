@@ -51,7 +51,6 @@ class LoginMethodScreen extends Component {
   onSuccessLogin () {
     const { navigation } = this.props
     const { redirectScreen } = navigation.state.params
-    // console.log('[LoginMethodScreen] props', this.props)
     navigation.goBack()
   }
   renderSuccessLogin () {

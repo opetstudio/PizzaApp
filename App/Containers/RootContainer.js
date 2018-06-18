@@ -62,11 +62,9 @@ class RootContainer extends Component {
     const fcmToken = firebase.database().ref('fcm_token')
     firebase.messaging().getToken().then(token => {
       const newState = {}
-      // console.log('TOKEN (getFCMToken)', token)
       newState.token = token || 'xxx'
       if (this.state.isAuthenticated) {
         newState.uid = firebase.auth().currentUser.uid
-        // console.log('current user: ', newState.uid)
         fcmToken.child(newState.uid).set(newState)
       }
       this.setState(newState)

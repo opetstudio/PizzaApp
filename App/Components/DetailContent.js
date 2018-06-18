@@ -39,7 +39,7 @@ export default class DetailContent extends Component {
 
   render () {
     // const { data: { title, tanggal, isi_html }, even } = this.props
-    const {title, htmlContent, date, contributorSpace, showComments, contentId} = this.props
+    const {title, htmlContent, date, contributorSpace, showComments, contentId, contentType} = this.props
     const formatedDate = moment(new Date(date)).format('dddd DD-MMM YYYY')
 
     const html = `<h3>${formatedDate}</h3><h2>${title}</h2><div>${htmlContent}</div>${AppConfig.getContributorSpace(contributorSpace)}`
@@ -53,7 +53,7 @@ export default class DetailContent extends Component {
           />
           <View style={{alignSelf: 'center', backgroundColor: 'transparent', position: 'absolute', bottom: 5}}>
             <Button
-              onPress={() => showComments(contentId)}
+              onPress={() => showComments(contentId, contentType)}
               style={{ backgroundColor: Colors.colorSecondary10 }}
             >
               <Text>Comments</Text>

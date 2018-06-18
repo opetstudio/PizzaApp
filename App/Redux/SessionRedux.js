@@ -45,21 +45,21 @@ export const loginWithSocmed = (state, action) => {
 // request the data from an api
 export const request = (state, action) => {
   const { data } = action
-  console.log('[SessionRedux] request action', action)
-  console.log('[SessionRedux] request state', state)
+  __DEV__ && console.log('[SessionRedux] request action', action)
+  __DEV__ && console.log('[SessionRedux] request state', state)
   return state.merge({ fetching: true, data, payload: null })
 }
 export const regserver = (state, action) => {
   const { data } = action
-  console.log('[SessionRedux] request action', action)
-  console.log('[SessionRedux] request state', state)
+  __DEV__ && console.log('[SessionRedux] request action', action)
+  __DEV__ && console.log('[SessionRedux] request state', state)
   return state.merge({ fetching: true, data, payload: null })
 }
 
 // successful api lookup
 export const success = (state, {payload}) => {
-  console.log('[SessionRedux] success payload', payload)
-  console.log('[SessionRedux] success state', state)
+  __DEV__ && console.log('[SessionRedux] success payload', payload)
+  __DEV__ && console.log('[SessionRedux] success state', state)
   // const { loginWith, currentUser } = payload
   return state.merge({ isLoginCompleted: true, fetching: false, error: null, payload, currentUser: payload.currentUser, loginWith: payload.loginWith })
 }

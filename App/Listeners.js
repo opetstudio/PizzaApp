@@ -24,7 +24,7 @@ export async function registerHeadlessListener (message: RemoteMessage) {
 // these callback will be triggered only when app is foreground or background
 export function registerAppListener (navigation) {
   this.notificationListener = firebase.notifications().onNotification(notification => {
-    console.log('[Listeners] notification.data', notification)
+    __DEV__ && console.log('[Listeners] notification.data', notification)
     notification.android.setChannelId('test-channel')
     firebase.notifications().displayNotification(notification)
   })
@@ -42,7 +42,7 @@ export function registerAppListener (navigation) {
   })
 
   this.onTokenRefreshListener = firebase.messaging().onTokenRefresh(token => {
-    console.log('TOKEN (refreshUnsubscribe)', token)
+    __DEV__ && console.log('TOKEN (refreshUnsubscribe)', token)
   })
 
   this.messageListener = firebase.messaging().onMessage((message) => {

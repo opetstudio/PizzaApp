@@ -30,7 +30,6 @@ function navigate(routeName, params, key) {
   if (getCurrentRouteInfo().routeName === 'DrawerOpen') {
     _container._navigation.navigate('DrawerClose')
   }
-  // console.log('[navigator] ==>', _container)
   // NavigationActions.navigate(routeName)
   // delay(
   //   () =>

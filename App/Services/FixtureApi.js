@@ -56,7 +56,7 @@ export default {
       data: restapiDataById
     }
   },
-  getuser: (data) => {
+  getListUser: (data) => {
     const restapiDataById = require('../Fixtures/restapi.json')
     return {
       ok: true,

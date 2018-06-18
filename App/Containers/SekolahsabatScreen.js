@@ -75,13 +75,12 @@ class SekolahsabatScreen extends Component {
           secondText={''}
           rightText={'tanggal'}
           itemOnPress={(v) => {
-              // console.log('[SekolahsabatScreen] ====>>>>>>onPress')
               // alert(item.title)
             const listPelajaran = _.orderBy(_.filter(
                 this.props.allDataSsdewasaArr,
                 { pelajaranke: v.pelajaranke, triwulanke: v.triwulanke, year: v.year }
                 ), ['tanggal'], ['asc'])
-            this.props.navigation.navigate('DetailContentDeckSwiperScreen', {title: 'Sekolah Sabat', alldata: listPelajaran})
+            this.props.navigation.navigate('DetailContentDeckSwiperScreen', {title: 'Sekolah Sabat', alldata: listPelajaran, contentType: 'ss'})
           }}
           handleRefresh={this._handleRefresh}
           isLoading={this.props.fetching}

@@ -128,3 +128,16 @@ test('Api postUser returns the right response', async () => {
   // expect('allIds' in response.data).toBe(true)
   // expect(response.data.allIds.length).toBe(30)
 })
+test('Api getListUser returns the right response', async () => {
+  const api = API.create('http://localhost:8090/api/')
+  const newerModifiedon = 0
+  const listId = ['59186fc6db7839453c4c6ac9', '5b263863b364d6f616c080ae', '5b2643440606f34f7aaff90a']
+  const response = await api.getListUser({ newerModifiedon, listId })
+  expect(response.status).toBe(200)
+  // expect(response.data.minModifiedon > newerModifiedon).toBe(true)
+  // expect('minModifiedon' in response.data).toBe(true)
+  expect('maxModifiedon' in response.data).toBe(true)
+  expect('byId' in response.data).toBe(true)
+  expect('allIds' in response.data).toBe(true)
+  expect(response.data.allIds.length).toBe(listId.length)
+})

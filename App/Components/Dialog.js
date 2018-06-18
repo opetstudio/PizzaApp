@@ -27,7 +27,6 @@ export default class Dialog extends Component {
   //   someSetting: false
   // }
   generateActionButton (type, addedStyle, actionObject) {
-    console.log('[Popup.generateActionButton] props=>', this.props)
     const { message, hidePopup } = this.props
     const onPressHandler = () => {
       hidePopup();

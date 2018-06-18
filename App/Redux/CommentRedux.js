@@ -43,7 +43,9 @@ export const CommentSelectors = {
   getData: state => state.data,
   getById: state => state.byId,
   getAllIds: state => state.allIds,
-  getAllDataArr: state => _.orderBy(state.allIds.map(id => state.byId[id]), ['createdon'], ['desc']),
+  getAllDataArr: (state, contentId) => {
+    return _.orderBy(_.filter(state.allIds.map(id => state.byId[id]), {'contentId': contentId}), ['createdon'], ['desc'])
+  },
   getFetching: state => state.fetching || false,
   getIsPostingInProgress: state => state.posting || false,
   getTextInput: state => state.textInput,
@@ -69,7 +71,7 @@ state.merge({ fetching: false, posting: false, error: true, payload: null, dataP
 export const textinputOnchange = (state, { textInput }) => state.merge({ textInput })
 export const post = (state, { dataPost }) => state.merge({ posting: true, dataPost })
 export const postsuccess = (state, {byId, allIds, maxModifiedon}) => state.merge({ textInput: '', posting: false, error: null, byId: {...state.byId, ...byId}, allIds: arrayMerge([state.allIds, allIds]), maxModifiedon, errorMessage: null })
-export const postfailure = (state, { errorCode, errorMessage }) => state.merge({ textInput: '', fetching: false, posting: false, error: true, payload: null, dataPost: null, errorCode, errorMessage })
+export const postfailure = (state, { errorCode, errorMessage }) => state.merge({ fetching: false, posting: false, error: true, payload: null, dataPost: null, errorCode, errorMessage })
 export const resetInputtext = (state) =>
   state.merge({
     textInput: null,

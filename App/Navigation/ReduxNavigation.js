@@ -24,9 +24,6 @@ class ReduxNavigation extends React.Component {
     // })
     BackHandler.addEventListener('hardwareBackPress', () => {
       const { dispatch, nav } = this.props
-      // console.log('this.props', this.props)
-      // console.log('nav.routes[0].routeName', nav.routes[0].routeName)
-      // console.log('nav.routes.length', nav.routes.length)
 
       // gets the current screen from navigation state
       const getCurrentRouteName = (navigationState) => {
@@ -40,7 +37,6 @@ class ReduxNavigation extends React.Component {
         }
         return route.routeName
       }
-      // console.log('getCurrentRouteName', getCurrentRouteName(nav))
       // change to whatever is your first screen, otherwise unpredictable results may occur
       // if (nav.routes.length === 1 && (nav.routes[0].routeName === 'LaunchScreen')) {
       if (getCurrentRouteName(nav) === 'HomeScreen') {

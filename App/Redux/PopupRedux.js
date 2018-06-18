@@ -50,7 +50,6 @@ export const failure = state =>
   state.merge({ fetching: false, error: true, payload: null })
 
 export const show = (state, action) => {
-  // console.log('showwwww==>', action)
   return state.merge({
     popupOpen: true,
     popupMessage: {

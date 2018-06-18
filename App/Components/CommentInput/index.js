@@ -17,7 +17,9 @@ class CommentInput extends Component {
     currentTextInputValue: PropTypes.string,
     errorMessage: PropTypes.string,
     commentResetInputtext: PropTypes.func,
-    currentUser: PropTypes.object
+    currentUser: PropTypes.object,
+    contentType: PropTypes.string,
+    contentId: PropTypes.string
   }
 
   constructor (props) {
@@ -29,13 +31,12 @@ class CommentInput extends Component {
     this.props.commentResetInputtext()
   }
   _submitInputText (inputText = {}) {
-    console.log('[CommentInput] _submitInputText', inputText._lastNativeText)
     const dataPost = {
       contentComment: this.props.currentTextInputValue,
       // contentComment: inputText._lastNativeText,
-      contentType: 'ss',
-      contentId: 'content-22',
-      user: '' // mongo_id
+      contentType: this.props.contentType,
+      contentId: this.props.contentId,
+      user: this.props.currentUser._id // mongo_id
     }
     this.props.commentPost(dataPost)
   }
