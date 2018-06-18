@@ -12,6 +12,8 @@
 
 import { call, put } from 'redux-saga/effects'
 import SessionActions from '../Redux/SessionRedux'
+import {getTokenUsingSocialAccount} from '../Services/identity'
+import {path} from 'ramda'
 // import { SessionSelectors } from '../Redux/SessionRedux'
 
 export function * getSession (api, action) {
@@ -55,6 +57,30 @@ export function * setSession (api, action) {
   yield put(SessionActions.sessionSuccess(loginWith, currentUser))
 }
 
-export function * loginWithSocmed (api, action) {
+export function * loginWithSocmed (api, { data }) {
   // const token = yield
+  // console.log('saga loginWithSocmed invoked')
+  try {
+    const token = yield call(getTokenUsingSocialAccount, data)
+    // console.log('token===>>', token)
+    if (!token) throw new Error('Login failed')
+    const { accountType: loginWith } = data
+    const currentUser = token
+    const dataUser = {
+      email: currentUser.email,
+      displayName: currentUser.displayName,
+      photoURL: currentUser.photoURL,
+      accountType: loginWith
+    }
+    const response = yield call(api.postUser, dataUser)
+    console.log('response===>', response)
+
+    const mongoId = path(['_id'], response.data.currUser)
+    if (!response.ok || !response.data.status || !mongoId) throw new Error('Login failed')
+    currentUser['_id'] = mongoId
+    yield put(SessionActions.sessionSuccess({loginWith, currentUser}))
+  } catch (e) {
+    console.log('error==>', e)
+    yield put(SessionActions.sessionFailure())
+  }
 }

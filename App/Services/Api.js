@@ -50,6 +50,8 @@ const create = (baseURL = 'https://api.github.com/') => {
     return api.get(apiName || 'getSsdewasa', { newerModifiedon })
   }
   const postComment = (data) => api.post('postComment', data)
+  const postUser = (data) => api.post('postUser', data)
+  const getuser = (data) => api.get('getuser', data)
 
   // ------
   // STEP 3
@@ -73,7 +75,9 @@ const create = (baseURL = 'https://api.github.com/') => {
     getSsdewasa,
     postSessionRegServer,
     getcomment: getComment,
-    postComment
+    postComment,
+    postUser,
+    getuser
   }
 }
 

@@ -34,6 +34,7 @@ export function * getComment (api, action) {
   }
 }
 export function * postingComment (api, action) {
+  console.log('postingComment', action)
   const { dataPost } = action
   // get current data from Store
   // const currentData = yield select(CommentSelectors.getData)
@@ -48,6 +49,6 @@ export function * postingComment (api, action) {
     yield put(CommentActions.commentPostsuccess(byId, allIds, maxModifiedon))
   } else {
     const {problem} = response
-    yield put(CommentActions.commentFailure(problem, 'System error.'))
+    yield put(CommentActions.commentPostfailure(problem, 'System error, Plase try again.'))
   }
 }

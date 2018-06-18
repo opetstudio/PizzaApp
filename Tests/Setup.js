@@ -24,3 +24,19 @@ jest
     }
   }
 })
+// jest.mock('react-native-auth0')
+jest.mock('react-native-firebase', () => {
+  return null
+})
+jest.mock('../App/Themes/Images', () => {
+  var result = {}
+  var listImage = ['sendMsgIcon']
+  listImage.forEach((v) => {
+    result[v] = 0
+    for (var i = 0; i < v.length; i++) {
+      // alert(v.charAt(i));
+      result[v] += v.charCodeAt(i)
+    }
+  })
+  return result
+})

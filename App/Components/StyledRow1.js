@@ -18,7 +18,8 @@ export default class StyledRow1 extends Component {
     firstText: PropTypes.string,
     secondText: PropTypes.string,
     rightText: PropTypes.string,
-    itemOnPress: PropTypes.func
+    itemOnPress: PropTypes.func,
+    numberOfLines: PropTypes.number
   }
 
   // Defaults for props
@@ -27,7 +28,7 @@ export default class StyledRow1 extends Component {
   }
 
   render () {
-    const { firstText, secondText, rightText, itemOnPress, avatar } = this.props
+    const { firstText, secondText, rightText, itemOnPress, avatar, numberOfLines } = this.props
     return (
       <View style={{ flex: 1 }}>
         <ListItem avatar={(avatar)} onPress={itemOnPress}>
@@ -40,9 +41,16 @@ export default class StyledRow1 extends Component {
             <Text>
               {firstText}
             </Text>
-            {secondText && <Text numberOfLines={1} note>
-              {secondText}
-            </Text>}
+            {secondText && numberOfLines &&
+              <Text numberOfLines={numberOfLines} note>
+                {secondText}
+              </Text>
+            }
+            {secondText && !numberOfLines &&
+              <Text note>
+                {secondText}
+              </Text>
+            }
           </Body>
           <Right>
             <Text note>

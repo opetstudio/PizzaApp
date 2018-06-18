@@ -1,6 +1,7 @@
 import { createReducer, createActions } from 'reduxsauce'
 import Immutable from 'seamless-immutable'
 import {arrayMerge} from '../Utils/helper/datamining'
+import _ from 'lodash'
 
 /* ------------- Types and Action Creators ------------- */
 
@@ -10,7 +11,9 @@ const { Types, Creators } = createActions({
   commentFailure: ['errorCode', 'errorMessage'],
   commentPost: ['dataPost'],
   commentPostsuccess: ['byId', 'allIds', 'maxModifiedon'],
-  commentPostfailure: ['errorCode', 'errorMessage']
+  commentPostfailure: ['errorCode', 'errorMessage'],
+  commentTextinputOnchange: ['textInput'],
+  commentResetInputtext: null
 })
 
 export const CommentTypes = Types
@@ -29,7 +32,8 @@ export const INITIAL_STATE = Immutable({
   posting: null,
   dataPost: null,
   errorCode: null,
-  errorMessage: null
+  errorMessage: null,
+  textInput: null
 })
 
 /* ------------- Selectors ------------- */
@@ -39,8 +43,11 @@ export const CommentSelectors = {
   getData: state => state.data,
   getById: state => state.byId,
   getAllIds: state => state.allIds,
-  getAllDataArr: state => state.allIds.map(id => state.byId[id]),
-  getFetching: state => state.fetching || false
+  getAllDataArr: state => _.orderBy(state.allIds.map(id => state.byId[id]), ['createdon'], ['desc']),
+  getFetching: state => state.fetching || false,
+  getIsPostingInProgress: state => state.posting || false,
+  getTextInput: state => state.textInput,
+  getErrorMessage: state => state.errorMessage
 }
 
 /* ------------- Reducers ------------- */
@@ -59,12 +66,18 @@ export const failure = (state, { errorCode, errorMessage }) =>
 state.merge({ fetching: false, posting: false, error: true, payload: null, dataPost: null, errorCode, errorMessage })
 
 // POSTING COMMENT
-export const post = (state, { dataPost }) =>
-  state.merge({ posting: true, dataPost })
-export const postsuccess = (state, action) => {
-  const { byId, allIds, maxModifiedon } = action
-  return state.merge({ posting: false, error: null, byId: {...state.byId, ...byId}, allIds: arrayMerge([state.allIds, allIds]), maxModifiedon })
-}
+export const textinputOnchange = (state, { textInput }) => state.merge({ textInput })
+export const post = (state, { dataPost }) => state.merge({ posting: true, dataPost })
+export const postsuccess = (state, {byId, allIds, maxModifiedon}) => state.merge({ textInput: '', posting: false, error: null, byId: {...state.byId, ...byId}, allIds: arrayMerge([state.allIds, allIds]), maxModifiedon, errorMessage: null })
+export const postfailure = (state, { errorCode, errorMessage }) => state.merge({ textInput: '', fetching: false, posting: false, error: true, payload: null, dataPost: null, errorCode, errorMessage })
+export const resetInputtext = (state) =>
+  state.merge({
+    textInput: null,
+    posting: false,
+    error: null,
+    errorCode: null,
+    errorMessage: null
+  })
 
 /* ------------- Hookup Reducers To Types ------------- */
 
@@ -73,5 +86,8 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.COMMENT_SUCCESS]: success,
   [Types.COMMENT_FAILURE]: failure,
   [Types.COMMENT_POST]: post,
-  [Types.COMMENT_POSTSUCCESS]: postsuccess
+  [Types.COMMENT_TEXTINPUT_ONCHANGE]: textinputOnchange,
+  [Types.COMMENT_POSTSUCCESS]: postsuccess,
+  [Types.COMMENT_POSTFAILURE]: postfailure,
+  [Types.COMMENT_RESET_INPUTTEXT]: resetInputtext // commentResetInputText
 })

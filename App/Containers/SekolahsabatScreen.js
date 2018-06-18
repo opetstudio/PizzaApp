@@ -45,16 +45,16 @@ class SekolahsabatScreen extends Component {
       body: {template: 'bodyyy'},
       actions: [
         { name: 'Cancel', handler: this.props.popupHide },
-        { name: 'Submit', handler: this.props.popupHide },
-       
+        { name: 'Submit', handler: this.props.popupHide }
+
       ],
       imageSource: null,
-      imageBody: null,
-    });
+      imageBody: null
+    })
   }
   render () {
     return (
-      <View style={{flex:1}}>
+      <View style={{flex: 1}}>
         <HeaderMenu
           hasHamburger
           hasSearch
@@ -62,29 +62,30 @@ class SekolahsabatScreen extends Component {
           title={labelScreen}
         />
         {/* <Content> */}
-          {/* <Button
+        {/* <Button
             onPress={() => this.showPopup()}
             success
             full
           >
             <Text>Menu</Text>
           </Button> */}
-          <PaginationList
-            data={this.props.allDataArr}
-            firstText={'title'}
-            secondText={''}
-            rightText={'tanggal'}
-            itemOnPress={(v) => {
+        <PaginationList
+          data={this.props.allDataArr}
+          firstText={'title'}
+          secondText={''}
+          rightText={'tanggal'}
+          itemOnPress={(v) => {
               // console.log('[SekolahsabatScreen] ====>>>>>>onPress')
               // alert(item.title)
-              const listPelajaran = _.orderBy(_.filter(
+            const listPelajaran = _.orderBy(_.filter(
                 this.props.allDataSsdewasaArr,
                 { pelajaranke: v.pelajaranke, triwulanke: v.triwulanke, year: v.year }
                 ), ['tanggal'], ['asc'])
-              this.props.navigation.navigate('DetailContentDeckSwiperScreen', {title: 'Sekolah Sabat', alldata: listPelajaran})
-            }}
-            handleRefresh={this._handleRefresh}
-            isLoading={this.props.fetching}
+            this.props.navigation.navigate('DetailContentDeckSwiperScreen', {title: 'Sekolah Sabat', alldata: listPelajaran})
+          }}
+          handleRefresh={this._handleRefresh}
+          isLoading={this.props.fetching}
+          numberOfLines={1}
           />
         <AdsBanner />
         {/* </Content> */}

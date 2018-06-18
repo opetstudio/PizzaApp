@@ -32,7 +32,8 @@ export const INITIAL_STATE = Immutable({
 export const SessionSelectors = {
   getData: state => state.data,
   getCurrentUser: state => state.currentUser,
-  getFetching: state => state.fetching
+  getFetching: state => state.fetching,
+  getIsLoginCompleted: state => state.isLoginCompleted
 }
 
 /* ------------- Reducers ------------- */
@@ -60,14 +61,14 @@ export const success = (state, {payload}) => {
   console.log('[SessionRedux] success payload', payload)
   console.log('[SessionRedux] success state', state)
   // const { loginWith, currentUser } = payload
-  return state.merge({ fetching: false, error: null, payload, currentUser: payload.currentUser })
+  return state.merge({ isLoginCompleted: true, fetching: false, error: null, payload, currentUser: payload.currentUser, loginWith: payload.loginWith })
 }
 
 // Something went wrong somewhere.
 export const failure = state =>
-  state.merge({ fetching: false, error: true, payload: null })
+  state.merge({ isLoginCompleted: true, fetching: false, error: true, payload: null })
 export const logout = state =>
-  state.merge({ fetching: false, error: false, payload: null, currentUser: null })
+  state.merge({ isLoginCompleted: true, fetching: false, error: false, payload: null, currentUser: null })
 
 /* ------------- Hookup Reducers To Types ------------- */
 

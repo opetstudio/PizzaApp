@@ -33,6 +33,7 @@ class LoginOption extends Component {
   constructor (props) {
     super(props)
     this.state = {}
+    this._loginWithSocialAccount = this._loginWithSocialAccount.bind(this)
   }
   componentWillMount () {
     this.props.sessionFailure()
@@ -75,9 +76,13 @@ class LoginOption extends Component {
     }
   }
   _loginWithSocialAccount (accountKey) {
+    // const {
+    //   loginWithSocialAccount
+    // } = this.props
     switch (accountKey) {
       case 'facebook':
-        this.facebookLogin()
+        // this.facebookLogin()
+        this.props.loginWithSocialAccount({ accountType: accountKey })
         break
       default:
         alert('Login method belum support.')
@@ -164,7 +169,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     sessionRequest: (data) => dispatch(SessionActions.sessionRequest(data)),
     sessionSuccess: (data) => dispatch(SessionActions.sessionSuccess(data)),
-    sessionFailure: () => dispatch(SessionActions.sessionFailure())
+    sessionFailure: () => dispatch(SessionActions.sessionFailure()),
+    loginWithSocialAccount: (data) => dispatch(SessionActions.sessionLoginWithSocmed(data))
   }
 }
 

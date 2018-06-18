@@ -55,5 +55,12 @@ export default {
       ok: true,
       data: restapiDataById
     }
+  },
+  getuser: (data) => {
+    const restapiDataById = require('../Fixtures/restapi.json')
+    return {
+      ok: true,
+      data: restapiDataById
+    }
   }
 }

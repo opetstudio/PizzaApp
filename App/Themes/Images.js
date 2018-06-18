@@ -45,7 +45,9 @@ const images = {
   backWhite: require('../Images/back_white.png'),
   headerHome: require('../Images/home/home.png'),
   searchWhite: require('../Images/search_white/search.png'),
-  bg: require('../Images/bg.png')
+  bg: require('../Images/bg.png'),
+  // sendMsgIcon: 0
+  sendMsgIcon: require('../Images/send-msg.png')
 }
 
 export default images

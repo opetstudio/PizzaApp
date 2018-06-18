@@ -10,6 +10,7 @@ export default class AlertMessage extends Component {
     title: PropTypes.string,
     icon: PropTypes.string,
     style: PropTypes.object,
+    styleText: PropTypes.object,
     show: PropTypes.bool
   }
 
@@ -22,7 +23,7 @@ export default class AlertMessage extends Component {
           style={[styles.container, this.props.style]}
         >
           <View style={styles.contentContainer}>
-            <Text allowFontScaling={false} style={styles.message}>{title && title.toUpperCase()}</Text>
+            <Text allowFontScaling={false} style={[styles.message, this.props.styleText]}>{title}</Text>
           </View>
         </View>
       )

@@ -17,6 +17,7 @@ import { connect } from 'react-redux'
 import HeaderMenu from '../../Components/HeaderMenu'
 import PaginationList from '../../Components/PaginationList'
 import AdsBanner from '../../Components/AdsBanner'
+import CommentInput from './CommentInput'
 // Styles
 import styles from './Styles'
 import {Images} from '../../Themes'
@@ -75,7 +76,9 @@ class DetailArticleCommentScreen extends Component {
       isLoading: false
     }
     this._handleRefresh = this._handleRefresh.bind(this)
-    this.props.renpagiRequest({ newerModifiedon: this.props.maxModifiedon })
+  }
+  componentWillMount () {
+    this.props.commentRequest({ newerModifiedon: this.props.maxModifiedon })
   }
   _handleRefresh () {
     // this.setState({
@@ -83,57 +86,34 @@ class DetailArticleCommentScreen extends Component {
     // })
     // setTimeout(() => { this.setState({ isLoading: false }) }, 2000)
 
-    this.props.renpagiRequest({ newerModifiedon: this.props.maxModifiedon })
+    this.props.commentRequest({ newerModifiedon: this.props.maxModifiedon })
   }
   render () {
     const {contentId} = this.props.navigation.state.params
     return (
-      <Container>
+      <View style={{flex: 1}}>
         <HeaderMenu
           hasBack
           hasSearch
           navigation={this.props.navigation}
           title={'Comments'}
         />
-        <Content>
-          <PaginationList
-            data={datas}
-            firstText={'text'}
-            secondText={'note'}
-            rightText={'time'}
-            avatar={'img'}
-            itemOnPress={(item) => {
-              // alert(item.title)
-              // this.props.navigation.navigate('DetailScreen', {title: 'Renungan Pagi', item})
-            }}
-            handleRefresh={this._handleRefresh}
-            isLoading={this.props.isFetching}
-          />
-          <AdsBanner />
-          {/* <List
-            dataArray={datas}
-            renderRow={data =>
-              <ListItem avatar>
-                <Left>
-                  <Thumbnail small source={data.img} />
-                </Left>
-                <Body>
-                  <Text>
-                    {data.text}
-                  </Text>
-                  <Text numberOfLines={1} note>
-                    {data.note}
-                  </Text>
-                </Body>
-                <Right>
-                  <Text note>
-                    {data.time}
-                  </Text>
-                </Right>
-              </ListItem>}
-          /> */}
-        </Content>
-      </Container>
+        <CommentInput />
+        <PaginationList
+          data={this.props.allDataArr}
+          firstText={'createdby'}
+          secondText={'contentComment'}
+          rightText={'createdon'}
+          avatar={'img'}
+          itemOnPress={(item) => {
+            // alert(item.title)
+            // this.props.navigation.navigate('DetailScreen', {title: 'Renungan Pagi', item})
+          }}
+          handleRefresh={this._handleRefresh}
+          isLoading={this.props.isFetching}
+        />
+        <AdsBanner />
+      </View>
     )
   }
 }

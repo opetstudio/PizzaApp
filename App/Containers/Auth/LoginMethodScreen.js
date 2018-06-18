@@ -30,7 +30,7 @@ class LoginMethodScreen extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      fetching: this.props.fetching,
+      isLoginCompleted: this.props.isLoginCompleted,
       currentUser: this.props.currentUser
     }
     this.renderLoginOption = this.renderLoginOption.bind(this)
@@ -43,7 +43,7 @@ class LoginMethodScreen extends Component {
 
   componentWillReceiveProps (nextProps) {
     this.setState({
-      fetching: nextProps.fetching,
+      isLoginCompleted: nextProps.isLoginCompleted,
       currentUser: nextProps.currentUser
     })
   }
@@ -78,11 +78,11 @@ class LoginMethodScreen extends Component {
     return (
       <View style={{flex: 1}}>
         {
-          this.props.fetching &&
+          !this.props.isLoginCompleted &&
           (<View style={{ justifyContent: 'center', alignItems: 'center' }}><ActivityIndicator size='large' color={Colors.colorPrimary} />
             <Text style={{ color: Colors.whitePrimary, fontSize: 24 }}>Please wait</Text></View>)
         }
-        { !this.props.fetching &&
+        { this.props.isLoginCompleted &&
           <LoginOption />
         }
       </View>
@@ -106,7 +106,7 @@ class LoginMethodScreen extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    fetching: SessionSelectors.getFetching(state.session),
+    isLoginCompleted: SessionSelectors.getIsLoginCompleted(state.session),
     currentUser: SessionSelectors.getCurrentUser(state.session)
   }
 }

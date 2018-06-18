@@ -6,7 +6,6 @@ exports[`Storyshots AlertMessage Custom Style 1`] = `
     Array [
       Object {
         "justifyContent": "center",
-        "marginVertical": 25,
       },
       Object {
         "backgroundColor": "red",
@@ -27,15 +26,16 @@ exports[`Storyshots AlertMessage Custom Style 1`] = `
       allowFontScaling={false}
       ellipsizeMode="tail"
       style={
-        Object {
-          "color": "#CCCCCC",
-          "fontFamily": "Avenir-Book",
-          "fontSize": 17,
-          "fontWeight": "bold",
-          "marginHorizontal": 10,
-          "marginTop": 10,
-          "textAlign": "center",
-        }
+        Array [
+          Object {
+            "color": "#CCCCCC",
+            "fontFamily": "Avenir-Book",
+            "fontSize": 17,
+            "fontWeight": "bold",
+            "textAlign": "center",
+          },
+          undefined,
+        ]
       }
     >
       ALERT ALERT
@@ -50,7 +50,6 @@ exports[`Storyshots AlertMessage Default 1`] = `
     Array [
       Object {
         "justifyContent": "center",
-        "marginVertical": 25,
       },
       undefined,
     ]
@@ -69,15 +68,16 @@ exports[`Storyshots AlertMessage Default 1`] = `
       allowFontScaling={false}
       ellipsizeMode="tail"
       style={
-        Object {
-          "color": "#CCCCCC",
-          "fontFamily": "Avenir-Book",
-          "fontSize": 17,
-          "fontWeight": "bold",
-          "marginHorizontal": 10,
-          "marginTop": 10,
-          "textAlign": "center",
-        }
+        Array [
+          Object {
+            "color": "#CCCCCC",
+            "fontFamily": "Avenir-Book",
+            "fontSize": 17,
+            "fontWeight": "bold",
+            "textAlign": "center",
+          },
+          undefined,
+        ]
       }
     >
       ALERT ALERT
@@ -87,6 +87,162 @@ exports[`Storyshots AlertMessage Default 1`] = `
 `;
 
 exports[`Storyshots AlertMessage Hidden 1`] = `null`;
+
+exports[`Storyshots CommentInput Custom Height 1`] = `
+<View>
+  <View
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#cdcdcd",
+          "flexDirection": "row",
+          "height": 60,
+          "marginBottom": 0,
+          "paddingTop": 5,
+        },
+      ]
+    }
+  >
+    <TextInput
+      allowFontScaling={true}
+      multiline={true}
+      placeholder="Type something.."
+      placeholderTextColor="#1F1F1F50"
+      style={
+        Array [
+          Object {
+            "backgroundColor": "#cdcdcd",
+            "flex": 4,
+            "fontSize": 15,
+            "marginBottom": 0,
+            "marginLeft": 15,
+            "marginRight": 10,
+            "marginTop": 5,
+            "paddingBottom": 6,
+            "paddingVertical": 10,
+          },
+        ]
+      }
+      underlineColorAndroid="transparent"
+    />
+    <View
+      accessible={true}
+      isTVSelectable={true}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "opacity": 1,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "flex": 1,
+            "justifyContent": "center",
+            "marginBottom": 6,
+            "marginRight": 15,
+          }
+        }
+      >
+        <Image
+          resizeMode="contain"
+          source={1114}
+          style={
+            Object {
+              "height": 50,
+              "width": 40,
+            }
+          }
+        />
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`Storyshots CommentInput Default 1`] = `
+<View>
+  <View
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#cdcdcd",
+          "flexDirection": "row",
+          "height": 60,
+          "marginBottom": 0,
+          "paddingTop": 5,
+        },
+      ]
+    }
+  >
+    <TextInput
+      allowFontScaling={true}
+      multiline={true}
+      placeholder="Type something.."
+      placeholderTextColor="#1F1F1F50"
+      style={
+        Array [
+          Object {
+            "backgroundColor": "#cdcdcd",
+            "flex": 4,
+            "fontSize": 15,
+            "marginBottom": 0,
+            "marginLeft": 15,
+            "marginRight": 10,
+            "marginTop": 5,
+            "paddingBottom": 6,
+            "paddingVertical": 10,
+          },
+        ]
+      }
+      underlineColorAndroid="transparent"
+    />
+    <View
+      accessible={true}
+      isTVSelectable={true}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "opacity": 1,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "flex": 1,
+            "justifyContent": "center",
+            "marginBottom": 6,
+            "marginRight": 15,
+          }
+        }
+      >
+        <Image
+          resizeMode="contain"
+          source={1114}
+          style={
+            Object {
+              "height": 50,
+              "width": 40,
+            }
+          }
+        />
+      </View>
+    </View>
+  </View>
+</View>
+`;
 
 exports[`Storyshots DrawerButton Default 1`] = `
 <View

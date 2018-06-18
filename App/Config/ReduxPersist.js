@@ -5,7 +5,7 @@ import storage from 'redux-persist/lib/storage' // or whatever storage you are u
 // More info here:  https://shift.infinite.red/shipping-persistant-reducers-7341691232b1
 const REDUX_PERSIST = {
   active: true,
-  reducerVersion: '1.2',
+  reducerVersion: '1.23',
   storeConfig: {
     key: 'primary',
     storage,

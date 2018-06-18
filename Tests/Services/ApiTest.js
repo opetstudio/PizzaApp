@@ -107,3 +107,24 @@ test('Api getComment returns the right response', async () => {
   // expect('allIds' in response.data).toBe(true)
   // expect(response.data.allIds.length).toBe(30)
 })
+test('Api postUser returns the right response', async () => {
+  const api = API.create('http://localhost:8090/api/')
+  const email = 'opetstudio@gmail.com'
+  const data = {
+    email,
+    msisdn: '34343'
+  }
+
+  // const response = await api.postUser(data)
+  // console.log('response: ', response)
+  // expect(response.status).toBe(200)
+  // expect(JSON.parse(response.config.data)).toEqual(data)
+  // expect('status' in response.data).toBe(true)
+  // expect('message' in response.data).toBe(true)
+  // expect(response.data.minModifiedon > newerModifiedon).toBe(true)
+  // expect('minModifiedon' in response.data).toBe(true)
+  // expect('maxModifiedon' in response.data).toBe(true)
+  // expect('byId' in response.data).toBe(true)
+  // expect('allIds' in response.data).toBe(true)
+  // expect(response.data.allIds.length).toBe(30)
+})

@@ -1,6 +1,7 @@
 import {Platform} from 'react-native'
 import Colors from './Colors'
 const type = {
+  // base: 'Avenir-Black',
   base: 'Avenir-Book',
   // bold: 'Avenir-Black',
   emphasis: 'HelveticaNeue-Italic',

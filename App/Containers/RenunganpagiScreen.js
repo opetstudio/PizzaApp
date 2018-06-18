@@ -54,6 +54,7 @@ class RenunganpagiScreen extends Component {
           }}
           handleRefresh={this._handleRefresh}
           isLoading={this.props.fetching}
+          numberOfLines={1}
           />
         <AdsBanner />
         {/* </Content> */}

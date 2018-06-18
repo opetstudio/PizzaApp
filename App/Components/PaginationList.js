@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { View, FlatList, RefreshControl, Platform } from 'react-native'
 import {
   ListItem, Body, Text, Right
@@ -12,10 +12,10 @@ import StyledRow1 from './StyledRow1'
 
 export default class PaginationList extends Component {
   // // Prop type warnings
-  // static propTypes = {
-  //   someProperty: PropTypes.object,
-  //   someSetting: PropTypes.bool.isRequired,
-  // }
+  static propTypes = {
+    numberOfLines: PropTypes.number
+    // someSetting: PropTypes.bool.isRequired,
+  }
   //
   // // Defaults for props
   // static defaultProps = {
@@ -79,6 +79,7 @@ export default class PaginationList extends Component {
         rightText={date}
         itemOnPress={() => this.props.itemOnPress(item)}
         avatar={avatar}
+        numberOfLines={this.props.numberOfLines}
       />
     )
   }

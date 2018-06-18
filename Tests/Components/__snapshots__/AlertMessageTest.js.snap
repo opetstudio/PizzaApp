@@ -8,7 +8,6 @@ exports[`AlertMessage component renders correctly if backgroundColor prop is set
     Array [
       Object {
         "justifyContent": "center",
-        "marginVertical": 25,
       },
       Object {
         "backgroundColor": "red",
@@ -29,18 +28,19 @@ exports[`AlertMessage component renders correctly if backgroundColor prop is set
       allowFontScaling={false}
       ellipsizeMode="tail"
       style={
-        Object {
-          "color": "#CCCCCC",
-          "fontFamily": "Avenir-Book",
-          "fontSize": 17,
-          "fontWeight": "bold",
-          "marginHorizontal": 10,
-          "marginTop": 10,
-          "textAlign": "center",
-        }
+        Array [
+          Object {
+            "color": "#CCCCCC",
+            "fontFamily": "Avenir-Book",
+            "fontSize": 17,
+            "fontWeight": "bold",
+            "textAlign": "center",
+          },
+          undefined,
+        ]
       }
     >
-      HOWDY
+      howdy
     </Text>
   </View>
 </View>
@@ -52,7 +52,6 @@ exports[`AlertMessage component renders correctly if show is true 1`] = `
     Array [
       Object {
         "justifyContent": "center",
-        "marginVertical": 25,
       },
       undefined,
     ]
@@ -71,18 +70,19 @@ exports[`AlertMessage component renders correctly if show is true 1`] = `
       allowFontScaling={false}
       ellipsizeMode="tail"
       style={
-        Object {
-          "color": "#CCCCCC",
-          "fontFamily": "Avenir-Book",
-          "fontSize": 17,
-          "fontWeight": "bold",
-          "marginHorizontal": 10,
-          "marginTop": 10,
-          "textAlign": "center",
-        }
+        Array [
+          Object {
+            "color": "#CCCCCC",
+            "fontFamily": "Avenir-Book",
+            "fontSize": 17,
+            "fontWeight": "bold",
+            "textAlign": "center",
+          },
+          undefined,
+        ]
       }
     >
-      HOWDY
+      howdy
     </Text>
   </View>
 </View>
