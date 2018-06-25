@@ -1,8 +1,5 @@
 import React, { Component } from 'react'
 // import PropTypes from 'prop-types';
-import { View, Text } from 'react-native'
-import styles from './Styles/AdsBannerStyle'
-
 import {
   AdMobBanner
 } from 'react-native-admob'

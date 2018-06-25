@@ -6,10 +6,6 @@ import {
   Text
 } from 'native-base'
 import moment from 'moment'
-import styles from './Styles/DetailContentStyle'
-import {
-  AdMobBanner
-} from 'react-native-admob'
 import AppConfig from '../Config/AppConfig'
 import FabShare from '../Containers/FabShare'
 import AdsBanner from './AdsBanner'
@@ -38,7 +34,6 @@ export default class DetailContent extends Component {
   }
 
   render () {
-    // const { data: { title, tanggal, isi_html }, even } = this.props
     const {title, htmlContent, date, contributorSpace, showComments, contentId, contentType} = this.props
     const formatedDate = moment(new Date(date)).format('dddd DD-MMM YYYY')
 

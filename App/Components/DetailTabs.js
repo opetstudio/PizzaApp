@@ -1,8 +1,5 @@
-import React, { Component } from 'react'
-// import PropTypes from 'prop-types';
-import { View, Text } from 'react-native'
 import {TabNavigator} from 'react-navigation'
-import styles, {tabNavigationStyles} from './Styles/DetailTabsStyle'
+import {tabNavigationStyles} from './Styles/DetailTabsStyle'
 
 import I18n from '../I18n'
 import DetailArticleScreen from '../Containers/DetailArticleScreen'

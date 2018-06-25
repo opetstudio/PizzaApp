@@ -2,7 +2,7 @@ import React from 'react'
 import { BackHandler, Platform } from 'react-native'
 import { addNavigationHelpers, NavigationActions } from 'react-navigation'
 // import { NavigationActions } from 'react-navigation';
-import NavigatorHelper from '../Utils/helper/navigator'
+import NavigatorHelper from '../Lib/helper/navigator'
 import { createReduxBoundAddListener } from 'react-navigation-redux-helpers'
 import { connect } from 'react-redux'
 import AppNavigation from './AppNavigation'

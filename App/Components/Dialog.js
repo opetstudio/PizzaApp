@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types';
-import { View, Text, Modal, TouchableWithoutFeedback } from 'react-native'
+import PropTypes from 'prop-types'
+import { View, Image } from 'react-native'
 import Lodash from 'lodash'
 import I18n from '../I18n'
 import Overlay from './Overlay'
@@ -10,16 +10,15 @@ import styles, { modalStyle } from './Styles/DialogStyle'
 //   Button
 // } from 'native-base'
 import Button from '../Components/StyledButton'
-import { isNullOrUndefined } from 'util';
 
-const textMessage = I18n.t;
+const textMessage = I18n.t
 
 export default class Dialog extends Component {
   // // Prop type warnings
   static propTypes = {
     hidePopup: PropTypes.func,
     isOpen: PropTypes.bool,
-    message: PropTypes.object,
+    message: PropTypes.object
   }
   //
   // // Defaults for props
@@ -29,25 +28,14 @@ export default class Dialog extends Component {
   generateActionButton (type, addedStyle, actionObject) {
     const { message, hidePopup } = this.props
     const onPressHandler = () => {
-      hidePopup();
+      hidePopup()
       // alert('coook')
       if (actionObject && actionObject.handler) {
         return actionObject.handler()
       }
-      return null;
+      return null
     }
 
-    // return (
-    //   <Button
-    //     onPress={onPressHandler}
-    //     block
-    //     info
-    //     >
-    //     <Text
-    //       style={{ color: 'white' }}
-    //     >{textMessage(actionObject.name)}</Text>
-    //   </Button>
-    // )
     return (
       <View
         style={[
@@ -130,7 +118,7 @@ export default class Dialog extends Component {
             {renderReactElementOrString(body)}
           </StyledText>
         )}
-        
+
         {actionButtons.length === 1 &&
           this.generateActionButton(
             'secondary',
@@ -144,19 +132,19 @@ export default class Dialog extends Component {
               styles.actionButtons,
               actionButtons.length === 1
                 ? styles.centerButton
-                : styles.spaceBetweenButton,
+                : styles.spaceBetweenButton
             ]}
-          > 
-          {this.generateActionButton(
-            'secondary',
-            styles.buttonAddedStyle,
-            actionButtons[0],
-          )}
-          {this.generateActionButton(
-            'primary',
-            styles.highlightedButtonStyle,
-            actionButtons[1],
-          )}
+          >
+            {this.generateActionButton(
+              'secondary',
+              styles.buttonAddedStyle,
+              actionButtons[0]
+            )}
+            {this.generateActionButton(
+              'primary',
+              styles.highlightedButtonStyle,
+              actionButtons[1]
+            )}
           </View>
         }
         {actionButtons.length > 2 &&
@@ -165,18 +153,18 @@ export default class Dialog extends Component {
               styles.actionButtons,
               actionButtons.length === 1
                 ? styles.centerButton
-                : styles.spaceBetweenButton,
+                : styles.spaceBetweenButton
             ]}
-          > 
+          >
             {this.generateActionButton(
               'secondary',
               styles.buttonAddedStyle,
-              actionButtons[1],
+              actionButtons[1]
             )}
             {this.generateActionButton(
               'primary',
               styles.highlightedButtonStyle,
-              actionButtons[actionButtons.length - 1],
+              actionButtons[actionButtons.length - 1]
             )}
           </View>
         }

@@ -21,7 +21,7 @@ import styles from './styles'
 
 const labelScreen = 'Renungan'
 
-class RenunganpagiScreen extends Component {
+class RenpagiScreen extends Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -80,4 +80,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(RenunganpagiScreen)
+export default connect(mapStateToProps, mapDispatchToProps)(RenpagiScreen)

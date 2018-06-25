@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { View, Image, Platform } from 'react-native'
-import { Container, Header, Button, Content, ActionSheet, Text, Body, Left, Right, Title, Icon, Thumbnail } from 'native-base'
-import styles from './Styles/HeaderMenuStyle'
-import NavigatorHelper from '../Utils/helper/navigator'
-import { Images, Colors, Metrics } from '../Themes'
-import I18n from '../I18n'
-import StyledText from './StyledText'
+import { View, Image } from 'react-native'
+import styles from './Styles'
+import NavigatorHelper from '../../Lib/helper/navigator'
+import { Images } from '../../Themes'
+import I18n from '../../I18n'
+import StyledText from '../StyledText'
 
-import StyledTouchableOpacity from './StyledTouchableOpacity'
+import StyledTouchableOpacity from '../StyledTouchableOpacity'
 
 export default class HeaderMenu extends Component {
   // // Prop type warnings

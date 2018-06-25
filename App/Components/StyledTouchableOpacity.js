@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { TouchableOpacity } from 'react-native'
 // import styles from './Styles/StyledTouchableOpacityStyle'
-import { setPrevTarget, getPrevTarget } from '../Utils/helper/clickHelper'
+import { setPrevTarget, getPrevTarget } from '../Lib/helper/clickHelper'
 
 export default class StyledTouchableOpacity extends Component {
   // // Prop type warnings

@@ -30,7 +30,7 @@ import styles from './styles'
 
 const labelScreen = 'Sekolah Sabat'
 
-class SekolahsabatScreen extends Component {
+class SsabatScreen extends Component {
   constructor (props) {
     super(props)
     this._handleRefresh = this._handleRefresh.bind(this)
@@ -127,4 +127,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SekolahsabatScreen)
+export default connect(mapStateToProps, mapDispatchToProps)(SsabatScreen)

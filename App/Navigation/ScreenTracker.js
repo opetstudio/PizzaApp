@@ -1,8 +1,8 @@
 import { GoogleAnalyticsTracker } from 'react-native-google-analytics-bridge'
 import { forEach, isUndefined, toString } from 'lodash'
-import NavigationHelper from '../Utils/helper/navigator'
+import NavigationHelper from '../Lib/helper/navigator'
 import AppConfig from '../Config/AppConfig'
-import { getCurrentRouteInfo } from '../Utils/helper/currentRouteName'
+import { getCurrentRouteInfo } from '../Lib/helper/currentRouteName'
 import {reducer as NavReducer} from '../Redux/NavigationRedux'
 import {NavigationActions} from 'react-navigation'
 

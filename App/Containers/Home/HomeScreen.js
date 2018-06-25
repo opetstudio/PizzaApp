@@ -8,8 +8,8 @@ import {
 } from 'native-base'
 import {path} from 'ramda'
 // import { LoginButton } from 'react-native-fbsdk'
-import HeaderMenu from '../Components/HeaderMenu'
-import LoginOption from '../Containers/Auth/LoginOption'
+import HeaderMenu from '../../Components/HeaderMenu'
+import LoginOption from '../../Containers/Auth/LoginOption'
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
 // import API from '../Services/Api'
@@ -17,17 +17,17 @@ import LoginOption from '../Containers/Auth/LoginOption'
 // import RestapiActions from '../Redux/RestapiRedux'
 // import RenpagiActions from '../Redux/RenpagiRedux'
 // import SsdewasaActions from '../Redux/SsdewasaRedux'
-import SessionActions, {SessionSelectors} from '../Redux/SessionRedux'
+import SessionActions, {SessionSelectors} from '../../Redux/SessionRedux'
 
 // firebase
 import firebase from 'react-native-firebase'
-import {registerAppListener} from '../Listeners'
+import {registerAppListener} from '../../Listeners'
 // import firebaseClient from '../FirebaseClient'
 
 // Styles
-import styles from './Styles/HomeScreenStyle'
-import { Images } from '../Themes'
-import { Colors } from '../../ignite/DevScreens/DevTheme';
+import styles from './HomeScreenStyle'
+import { Images } from '../../Themes'
+import { Colors } from '../../../ignite/DevScreens/DevTheme'
 const launchscreenBg = Images.launchscreenBg
 const launchscreenLogo = Images.launchscreenLogo
 
@@ -223,7 +223,7 @@ class HomeScreen extends Component {
           hasHamburger
           hasSearch
           navigation={this.props.navigation}
-          title={'JemaatApp'}
+          title={'PizzaApp'}
         />
         <ImageBackground source={launchscreenBg} style={styles.imageContainer}>
           <ScrollView style={{ flex: 1 }}>

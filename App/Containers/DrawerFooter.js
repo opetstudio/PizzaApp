@@ -6,7 +6,7 @@ import {
 import { connect } from 'react-redux'
 import StyledText from '../Components/StyledText'
 import LanguageProvider from '../Components/LanguageProvider'
-import NavigatorHelpr from '../Utils/helper/navigator'
+import NavigatorHelpr from '../Lib/helper/navigator'
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
 

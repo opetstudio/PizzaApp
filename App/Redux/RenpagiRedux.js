@@ -1,6 +1,6 @@
 import { createReducer, createActions } from 'reduxsauce'
 import Immutable from 'seamless-immutable'
-import {arrayMerge} from '../Utils/helper/datamining'
+import {arrayMerge} from '../Lib/helper/datamining'
 
 /* ------------- Types and Action Creators ------------- */
 

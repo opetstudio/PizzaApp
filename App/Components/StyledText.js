@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { View, Text } from 'react-native'
 import { Fonts } from '../Themes'
 import styles from './Styles/StyledTextStyle'
-import { insertSpace, isAndroid } from '../Utils/helper/spaceInsertor'
+import { insertSpace, isAndroid } from '../Lib/helper/spaceInsertor'
 import I18n from '../I18n'
 
 export default class StyledText extends Component {

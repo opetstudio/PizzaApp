@@ -3,7 +3,7 @@ import { View, AsyncStorage, StatusBar } from 'react-native'
 import { Root } from 'native-base'
 import SplashScreen from 'react-native-splash-screen'
 import {SafeAreaView} from 'react-navigation'
-import {isIphoneX} from '../Utils/helper/platform'
+import {isIphoneX} from '../Lib/helper/platform'
 
 import ReduxNavigation from '../Navigation/ReduxNavigation'
 import { connect } from 'react-redux'
@@ -24,7 +24,7 @@ import firebase from 'react-native-firebase'
 
 // Styles
 import styles from './Styles/RootContainerStyles'
-import { Colors } from '../Themes';
+import { Colors } from '../Themes'
 
 class RootContainer extends Component {
   constructor (props) {
