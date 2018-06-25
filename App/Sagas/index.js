@@ -3,6 +3,7 @@ import { takeLatest, all } from 'redux-saga/effects'
 import API from '../Services/Api'
 import FixtureAPI from '../Services/FixtureApi'
 import DebugConfig from '../Config/DebugConfig'
+import AppConfig from '../Config/AppConfig'
 
 /* ------------- Types ------------- */
 
@@ -29,7 +30,7 @@ import { postSessionRegServer, loginWithSocmed } from './SessionSagas'
 
 // The API we use is only used from Sagas, so we create it here and pass along
 // to the sagas which need it.
-const host = Platform.OS === 'ios' ? 'http://localhost:8090/api/' : 'http://10.0.2.2:8090/api/'
+const host = __DEV__ ? Platform.OS === 'ios' ? 'http://localhost:8090/api/' : 'http://10.0.2.2:8090/api/' : AppConfig.backendURL
 const api = DebugConfig.useFixtures ? FixtureAPI : API.create()
 const apiJemaatApp = DebugConfig.useFixtures ? FixtureAPI : API.create(host)
 const apiRestapi = DebugConfig.useFixtures ? FixtureAPI : API.create(host)

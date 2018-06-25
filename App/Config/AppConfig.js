@@ -15,5 +15,6 @@ export default {
   auth0: {
     clientId: cred.AUTH0_CLIENT_ID,
     host: cred.AUTH0_HOST
-  }
+  },
+  backendURL: cred.backendURL
 }
