@@ -5,6 +5,14 @@ import android.support.multidex.MultiDexApplication;
 
 import com.facebook.appevents.AppEventsLogger;
 import com.facebook.react.ReactApplication;
+import com.oblador.vectoricons.VectorIconsPackage;
+import org.devio.rn.splashscreen.SplashScreenReactPackage;
+import com.AlexanderZaytsev.RNI18n.RNI18nPackage;
+import com.evollu.react.fcm.FIRMessagingPackage;
+import com.learnium.RNDeviceInfo.RNDeviceInfo;
+import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
+import com.microsoft.codepush.react.CodePush;
+
 import com.auth0.react.A0Auth0Package;
 import com.facebook.reactnative.androidsdk.FBSDKPackage;
 import com.sbugert.rnadmob.RNAdMobPackage;
@@ -61,6 +69,16 @@ public class MainApplication extends MultiDexApplication implements ReactApplica
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new VectorIconsPackage(),
+            new SplashScreenReactPackage(),
+            new RNI18nPackage(),
+            new FIRMessagingPackage(),
+            new RNDeviceInfo(),
+            new ReactNativeConfigPackage(),
+            new CodePush(null, getApplicationContext(), BuildConfig.DEBUG),
+
+
+
             new A0Auth0Package(),
             new FBSDKPackage(mCallbackManager),
             new RNAdMobPackage(),

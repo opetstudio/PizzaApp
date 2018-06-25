@@ -47,6 +47,7 @@
 		2F302F9920BC0C2E0013C7EC /* libCodePush.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F302F9620BC0C0A0013C7EC /* libCodePush.a */; };
 		2F30321E20BC1F810013C7EC /* libSplashScreen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F30321D20BC1F640013C7EC /* libSplashScreen.a */; };
 		2FD0378920BFB7F7004D6564 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2FD0378820BFB7F7004D6564 /* GoogleService-Info.plist */; };
+		2FDBDBC120E0F97A0078CA5E /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FDBDBC020E0F97A0078CA5E /* FBSDKShareKit.framework */; };
 		322C88F3735C4BB2A748550F /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 43094E7DEB4042AB916F0B7E /* MaterialIcons.ttf */; };
 		33B308E18F2546E8B214825B /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DB6345E8955B4C33B90D1496 /* Entypo.ttf */; };
 		37118552E56048E79DCF5763 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E7F2BD3010844F469C4C72A5 /* Zocial.ttf */; };
@@ -503,6 +504,7 @@
 		2F302F9020BC0C0A0013C7EC /* CodePush.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CodePush.xcodeproj; path = "../node_modules/react-native-code-push/ios/CodePush.xcodeproj"; sourceTree = "<group>"; };
 		2F30321820BC1F640013C7EC /* SplashScreen.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SplashScreen.xcodeproj; path = "../node_modules/react-native-splash-screen/ios/SplashScreen.xcodeproj"; sourceTree = "<group>"; };
 		2FD0378820BFB7F7004D6564 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2FDBDBC020E0F97A0078CA5E /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../../../Documents/FacebookSDK/FBSDKShareKit.framework; sourceTree = "<group>"; };
 		3851AAE2E98F479F8DFE3DF5 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		3A3AFB52FBA34D5B90FF64A2 /* AppCenter-Config.plist */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = text.plist.xml; name = "AppCenter-Config.plist"; path = "PizzaApp/AppCenter-Config.plist"; sourceTree = "<group>"; };
 		3BD131E3538346AEB279610F /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/native-base/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
@@ -590,6 +592,7 @@
 				139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */,
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
+				2FDBDBC120E0F97A0078CA5E /* FBSDKShareKit.framework in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				4062A4A0177544E38A5AE314 /* libRNDeviceInfo.a in Frameworks */,
 				789B968EAE72484CA2908B81 /* libRNVectorIcons.a in Frameworks */,
@@ -761,6 +764,7 @@
 				2F302F8B20BC09D40013C7EC /* libz.tbd */,
 				2D16E6891FA4F8E400B85C8A /* libReact.a */,
 				9A77175C5970D1ECAD38CC95 /* libPods-PizzaApp.a */,
+				2FDBDBC020E0F97A0078CA5E /* FBSDKShareKit.framework */,
 				E6D63B278F0E3CC6D434F106 /* libPods-PizzaApp-tvOS.a */,
 				22B16D2FF5D031FB64D9691F /* libPods-PizzaApp-tvOSTests.a */,
 				BB2640B72B1D49598FF9A596 /* libPods-PizzaAppTests.a */,
@@ -1127,6 +1131,7 @@
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = W66Y3BA56U;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
@@ -1862,6 +1867,7 @@
 			baseConfigurationReference = C2413E19C52031D01AE0C9E3 /* Pods-PizzaAppTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = W66Y3BA56U;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Frameworks/";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1895,7 +1901,7 @@
 					"-lc++",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PizzaApp.app/PizzaApp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JemaatApp.app/JemaatApp";
 			};
 			name = Debug;
 		};
@@ -1905,6 +1911,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = W66Y3BA56U;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Frameworks/";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1934,7 +1941,7 @@
 					"-lc++",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PizzaApp.app/PizzaApp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JemaatApp.app/JemaatApp";
 			};
 			name = Release;
 		};
@@ -1958,6 +1965,7 @@
 					"\"${PODS_ROOT}/FirebaseDatabase/Frameworks\"",
 					"\"${PODS_ROOT}/FirebaseMessaging/Frameworks\"",
 					"\"${PODS_ROOT}/Google-Mobile-Ads-SDK/Frameworks\"",
+					"$(PROJECT_DIR)",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2021,6 +2029,7 @@
 					"\"${PODS_ROOT}/FirebaseDatabase/Frameworks\"",
 					"\"${PODS_ROOT}/FirebaseMessaging/Frameworks\"",
 					"\"${PODS_ROOT}/Google-Mobile-Ads-SDK/Frameworks\"",
+					"$(PROJECT_DIR)",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",

@@ -1,4 +1,5 @@
 <resources>
+    <string moduleConfig="true" name="reactNativeCodePush_androidDeploymentKey"></string>
     <string moduleConfig="true" name="reactNativeCodePush_androidDeploymentKey">vL3j1b5kYIvGxefzMhBgEWhiyA5LBy30evK17</string>
     <string name="app_name">JemaatApp</string>
     <string name="fb_app_id">267685973617313</string>
