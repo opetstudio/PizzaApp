@@ -11,6 +11,7 @@ import NavigatorHelpr from '../Utils/helper/navigator'
 // import YourActions from '../Redux/YourRedux'
 
 import SessionActions, {SessionSelectors} from '../Redux/SessionRedux'
+import PopupActions from '../Redux/PopupRedux'
 
 // Styles
 import styles from './Styles/DrawerFooterStyle'
@@ -33,7 +34,22 @@ class DrawerFooter extends Component {
       : styles.borderLanguageNotLogin
     __DEV__ && console.log('[DrawerFooter] isLoggedIn', isLoggedIn)
     const logoutSection = isLoggedIn ? (
-      <TouchableOpacity style={styles.logout} onPress={() => this.props.sessionLogout()}>
+      <TouchableOpacity style={styles.logout} onPress={() => {
+        this.props.popupShow({
+          title: 'Logout',
+          body: {template: 'Are you sure?.'},
+          actions: [
+            { name: 'Cancel', handler: this.props.popupHide },
+            { name: 'Confirm',
+              handler: () => {
+                this.props.sessionLogout()
+              }
+            }
+          ],
+          imageSource: null,
+          imageBody: null
+        })
+      }}>
         <StyledText
           addedStyle={styles.footerLogout}
           textStyle='h11LtGreyS'
@@ -51,7 +67,7 @@ class DrawerFooter extends Component {
     )
     return (
       <View style={styles.footer}>
-        <TouchableOpacity style={footerStyle} onPress={() => {}}>
+        <TouchableOpacity style={footerStyle} onPress={() => this.props.navigation.navigate('SupportScreen')}>
           <StyledText
             i18nKey='drawer-support'
             textStyle='h11LtGreyS'
@@ -82,6 +98,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    popupShow: (popupMessage) => dispatch(PopupActions.popupShow(popupMessage)),
+    popupHide: (popupMessage) => dispatch(PopupActions.popupHide()),
     sessionLogout: () => dispatch(SessionActions.sessionLogout())
   }
 }

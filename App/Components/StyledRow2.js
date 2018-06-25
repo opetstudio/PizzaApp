@@ -12,7 +12,7 @@ import {
   Badge
 } from 'native-base'
 
-export default class StyledRow1 extends Component {
+export default class StyledRow2 extends Component {
   // // Prop type warnings
   static propTypes = {
     avatar: PropTypes.number,
@@ -21,7 +21,10 @@ export default class StyledRow1 extends Component {
     rightText: PropTypes.string,
     itemOnPress: PropTypes.func,
     numberOfLines: PropTypes.number,
-    badge1: PropTypes.number
+    badge1: PropTypes.number,
+    subListData: PropTypes.array,
+    renderSubList: PropTypes.func,
+    renderRowBadge: PropTypes.func
   }
 
   // Defaults for props
@@ -29,15 +32,21 @@ export default class StyledRow1 extends Component {
     firstText: '',
     badge1: 0
   }
+  constructor (props) {
+    super(props)
+    this.state = {
+      hideSubList: true
+    }
+  }
 
   render () {
-    const { firstText, secondText, rightText, itemOnPress, avatar, numberOfLines, badge1 } = this.props
+    const { firstText, secondText, rightText, itemOnPress, avatar, numberOfLines, badge1, subListData, renderSubList, renderRowBadge } = this.props
     return (
       <View style={{ flex: 1 }}>
-        <ListItem avatar={(avatar)} onPress={itemOnPress}>
-          {avatar &&
+        <ListItem avatar={(avatar)} onPress={() => renderSubList ? this.setState({ hideSubList: !this.state.hideSubList }) : itemOnPress}>
+          {/* {avatar &&
             <Thumbnail medium square source={avatar} />
-          }
+          } */}
           <Body>
             <Text>
               {firstText}
@@ -57,12 +66,14 @@ export default class StyledRow1 extends Component {
             <Text note>
               {rightText}
             </Text>
-            {badge1 > 0 &&
+            {renderRowBadge && renderRowBadge()}
+            {!renderRowBadge && badge1 > 0 &&
             <Badge primary>
               <Text>{badge1}</Text>
             </Badge>}
           </Right>
         </ListItem>
+        {!this.state.hideSubList && renderSubList(subListData)}
       </View>
     )
   }

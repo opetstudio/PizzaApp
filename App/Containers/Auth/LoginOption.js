@@ -1,12 +1,6 @@
 import React, { Component } from 'react'
-import { View, Text, TouchableHighlight, Image } from 'react-native'
-import {
-  Button
-} from 'native-base'
+import { View, TouchableHighlight, Image } from 'react-native'
 import { connect } from 'react-redux'
-import firebase from 'react-native-firebase'
-import { AccessToken, LoginManager, LoginButton } from 'react-native-fbsdk'
-import {path} from 'ramda'
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
 import SessionActions from '../../Redux/SessionRedux'
@@ -38,50 +32,12 @@ class LoginOption extends Component {
   componentWillMount () {
     this.props.sessionFailure()
   }
-  async facebookLogin () {
-    try {
-      this.props.sessionRequest({data: {}})
-      const result = await LoginManager.logInWithReadPermissions(['public_profile', 'email'])
-
-      if (result.isCancelled) {
-        throw new Error('User cancelled request') // Handle this however fits the flow of your app
-      }
-
-      __DEV__ && console.log(`Login success with permissions: ${result.grantedPermissions.toString()}`)
-
-      // get the access token
-      const data = await AccessToken.getCurrentAccessToken()
-
-      if (!data) {
-        throw new Error('Something went wrong obtaining the users access token') // Handle this however fits the flow of your app
-      }
-      __DEV__ && console.log('data facebook==>', data)
-
-      // create a new firebase credential with the token
-      const credential = firebase.auth.FacebookAuthProvider.credential(data.accessToken)
-
-      // login with credential
-      const currentUser = await firebase.auth().signInAndRetrieveDataWithCredential(credential)
-      // this.props.sessionSuccess('FB', currentUser)
-      const dataUser = path(['user', '_user'], currentUser)
-      this.props.sessionSuccess({
-        loginWith: 'FB',
-        currentUser: dataUser
-      })
-
-      console.info(JSON.stringify(currentUser.user.toJSON()))
-    } catch (e) {
-      // console.error(e)
-      this.props.sessionFailure()
-    }
-  }
   _loginWithSocialAccount (accountKey) {
     // const {
     //   loginWithSocialAccount
     // } = this.props
     switch (accountKey) {
       case 'facebook':
-        // this.facebookLogin()
         this.props.loginWithSocialAccount({ accountType: accountKey })
         break
       default:

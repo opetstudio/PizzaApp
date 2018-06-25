@@ -47,7 +47,12 @@ const images = {
   searchWhite: require('../Images/search_white/search.png'),
   bg: require('../Images/bg.png'),
   // sendMsgIcon: 0
-  sendMsgIcon: require('../Images/send-msg.png')
+  sendMsgIcon: require('../Images/send-msg.png'),
+  liveIcon: require('../Images/live_icon/live.png'),
+  upcomingIcon: require('../Images/upcoming_icon/upcoming.png'),
+  replayIcon: require('../Images/replay_icon/replay.png'),
+  freeIcon: require('../Images/free_icon/free.png'),
+  womanhandIcon: require('../Images/womanhandIcon.png')
 }
 
 export default images

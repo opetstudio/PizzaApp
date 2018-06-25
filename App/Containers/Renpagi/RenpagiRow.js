@@ -1,29 +1,30 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import moment from 'moment'
-import CommentInput from '../../Components/CommentInput'
-import CommentAction, {CommentSelectors} from '../../Redux/CommentRedux'
-import {SessionSelectors} from '../../Redux/SessionRedux'
+// import CommentInput from '../../Components/CommentInput'
+import {CommentSelectors} from '../../Redux/CommentRedux'
+// import {SessionSelectors} from '../../Redux/SessionRedux'
 import StyledRow1 from '../../Components/StyledRow1'
 
-const row = ({ item }) => {
-  const date = moment(new Date(item['createdon'])).format('DD-MM/YY')
+const row = ({ item, onPress, totalComment }) => {
+  const date = moment(new Date(item['tanggal'])).format('DD-MM/YY')
 //   const avatar = item[this.props.avatar]
-  const avatar = { uri: item['createdby'].photoURL + '?type=small' }
   return (
     <StyledRow1
-      firstText={item['createdby']['displayName']}
-      secondText={item['contentComment']}
+      firstText={item['title']}
+      // secondText={item['contentComment']}
       rightText={date}
-      itemOnPress={() => {}}
-      avatar={avatar}
+      itemOnPress={() => onPress(item)}
+      badge1={totalComment}
+    //   avatar={avatar}
     />
   )
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
+  const { item } = ownProps
   return {
-    // isPostingInProgress: CommentSelectors.getIsPostingInProgress(state.comment),
+    totalComment: CommentSelectors.getTotalCommentByContentId(state.comment, item._id)
     // currentTextInputValue: CommentSelectors.getTextInput(state.comment),
     // errorMessage: CommentSelectors.getErrorMessage(state.comment),
     // currentUser: SessionSelectors.getCurrentUser(state.session)

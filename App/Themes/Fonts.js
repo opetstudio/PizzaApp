@@ -182,6 +182,17 @@ const style = {
       // this letterSpacing will be used in Android
       letterSpacing: 2.1
     }
+  },
+  h7BoldWhiteT: {
+    style: {
+      fontSize: size.h7,
+      fontFamily: type.bold,
+      color: Colors.whiteTertiary
+    },
+    props: {
+      letterSpacing: 4,
+      lineHeight: 10
+    }
   }
 }
 

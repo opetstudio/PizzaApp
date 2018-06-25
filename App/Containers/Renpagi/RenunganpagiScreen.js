@@ -6,16 +6,18 @@ import {
   Content,
   Button
 } from 'native-base'
-import HeaderMenu from '../Components/HeaderMenu'
-import PaginationList from '../Components/PaginationList'
+import HeaderMenu from '../../Components/HeaderMenu'
+import PaginationList from '../../Components/PaginationList'
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
 
-import RenpagiActions, {RenpagiSelectors} from '../Redux/RenpagiRedux'
-import AdsBanner from '../Components/AdsBanner'
+import RenpagiActions, {RenpagiSelectors} from '../../Redux/RenpagiRedux'
+import FabCreate from '../FabCreate'
+import AdsBanner from '../../Components/AdsBanner'
+import RenpagiRow from './RenpagiRow'
 
 // Styles
-import styles from './Styles/RenunganpagiScreenStyle'
+import styles from './styles'
 
 const labelScreen = 'Renungan'
 
@@ -49,12 +51,14 @@ class RenunganpagiScreen extends Component {
           rightText={'tanggal'}
           itemOnPress={(item) => {
             // alert(item.title)
-            this.props.navigation.navigate('DetailScreen', {title: 'Renungan Pagi', item, contentType: 'rp'})
+            // this.props.navigation.navigate('DetailScreen', {title: 'Renungan Pagi', item, contentType: 'rp'})
           }}
           handleRefresh={this._handleRefresh}
           isLoading={this.props.fetching}
           numberOfLines={1}
+          renderRow={(item) => <RenpagiRow item={item} onPress={(item) => this.props.navigation.navigate('DetailScreen', {title: 'Renungan Pagi', item, contentType: 'rp'})} />}
           />
+        <FabCreate />
         <AdsBanner />
         {/* </Content> */}
       </View>

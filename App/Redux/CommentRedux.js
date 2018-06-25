@@ -46,6 +46,19 @@ export const CommentSelectors = {
   getAllDataArr: (state, contentId) => {
     return _.orderBy(_.filter(state.allIds.map(id => state.byId[id]), {'contentId': contentId}), ['createdon'], ['desc'])
   },
+  getTotalCommentByContentId: (state, contentId) => {
+    return _.filter(state.allIds.map(id => state.byId[id]), {'contentId': contentId}).length
+    // return (_.filter(state.allIds.map(id => state.byId[id]), {'contentId': contentId})).length
+  },
+  getTotalCommentByListContentId: (state, contentIdArr) => {
+    const listTotal = contentIdArr.map(contentId => CommentSelectors.getTotalCommentByContentId(state, contentId))
+    var tot = 0
+    listTotal.forEach((v) => {
+      tot += v
+    })
+    return tot
+    // return (_.filter(state.allIds.map(id => state.byId[id]), {'contentId': contentId})).length
+  },
   getFetching: state => state.fetching || false,
   getIsPostingInProgress: state => state.posting || false,
   getTextInput: state => state.textInput,

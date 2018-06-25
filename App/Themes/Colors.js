@@ -59,8 +59,11 @@ const colors = {
   greyPrimary: '#e9e8ed',
   greySecondary: '#9ca4ac',
   greySecondaryOpacity: 'rgba(156,164,172,0.25)',
-  greyTertiary: '#3b4854'
+  greyTertiary: '#3b4854',
 
+  greenPrimary: '#00b311',
+  greenSecondary: '#1D9940',
+  greenLive: '#1D9940'
 }
 
 export default colors

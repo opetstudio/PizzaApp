@@ -7,24 +7,26 @@ import {
   Button
 } from 'native-base'
 import _ from 'lodash'
-import HeaderMenu from '../Components/HeaderMenu'
-import PaginationList from '../Components/PaginationList'
+import HeaderMenu from '../../Components/HeaderMenu'
+import PaginationList from '../../Components/PaginationList'
 import {
   AdMobBanner
 } from 'react-native-admob'
-import AppConfig from '../Config/AppConfig'
+import AppConfig from '../../Config/AppConfig'
 
-import AdsBanner from '../Components/AdsBanner'
+import AdsBanner from '../../Components/AdsBanner'
+import SsabatRow from './SsabatRow'
+import FabCreate from '../FabCreate'
 
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
-import SsdewasaActions, {SsdewasaSelectors} from '../Redux/SsdewasaRedux'
+import SsdewasaActions, {SsdewasaSelectors} from '../../Redux/SsdewasaRedux'
 
 // redux
-import PopupActions, { reducer, INITIAL_STATE } from '../Redux/PopupRedux'
+import PopupActions, { reducer, INITIAL_STATE } from '../../Redux/PopupRedux'
 
 // Styles
-import styles from './Styles/SekolahsabatScreenStyle'
+import styles from './styles'
 
 const labelScreen = 'Sekolah Sabat'
 
@@ -76,16 +78,31 @@ class SekolahsabatScreen extends Component {
           rightText={'tanggal'}
           itemOnPress={(v) => {
               // alert(item.title)
-            const listPelajaran = _.orderBy(_.filter(
-                this.props.allDataSsdewasaArr,
-                { pelajaranke: v.pelajaranke, triwulanke: v.triwulanke, year: v.year }
-                ), ['tanggal'], ['asc'])
-            this.props.navigation.navigate('DetailContentDeckSwiperScreen', {title: 'Sekolah Sabat', alldata: listPelajaran, contentType: 'ss'})
+            // const listPelajaran = _.orderBy(_.filter(
+            //     this.props.allDataSsdewasaArr,
+            //     { pelajaranke: v.pelajaranke, triwulanke: v.triwulanke, year: v.year }
+            //     ), ['tanggal'], ['asc'])
+            // this.props.navigation.navigate('DetailContentDeckSwiperScreen', {title: 'Sekolah Sabat', alldata: listPelajaran, contentType: 'ss'})
           }}
           handleRefresh={this._handleRefresh}
           isLoading={this.props.fetching}
           numberOfLines={1}
+          renderRow={(item) => {
+            const v = item
+            const listPelajaran = _.orderBy(_.filter(
+              this.props.allDataSsdewasaArr,
+              { pelajaranke: v.pelajaranke, triwulanke: v.triwulanke, year: v.year }
+              ), ['tanggal'], ['asc'])
+            return (<SsabatRow
+              item={item}
+              listPelajaran={listPelajaran}
+              onPress={(v) => {
+                this.props.navigation.navigate('DetailContentDeckSwiperScreen', {title: 'Sekolah Sabat', alldata: listPelajaran, contentType: 'ss'})
+              }}
+            />)
+          }}
           />
+        <FabCreate />
         <AdsBanner />
         {/* </Content> */}
       </View>

@@ -4,7 +4,6 @@
     <string name="fb_app_id">267685973617313</string>
     <string name="facebook_app_id">267685973617313</string>
     <string name="fb_login_protocol_scheme">fb267685973617313</string>
-
     <string name="appCenterAnalytics_whenToEnableAnalytics" moduleConfig="true">ALWAYS_SEND</string>
     <string name="appCenterCrashes_whenToSendCrashes" moduleConfig="true">ALWAYS_SEND</string>
 </resources>

@@ -23,6 +23,7 @@ const drawerCover = Images.drawerCover
 const drawerImage = Images.drawerImage
 const renunganPagiIcon = Images.renunganPagiIcon
 const sekolahsabatIcon = Images.sekolahsabatIcon
+const womanhandIcon = Images.womanhandIcon
 const menufacesIcon = Images.menufaces
 const datas = [
   {
@@ -49,6 +50,14 @@ const datas = [
     iconPicture: sekolahsabatIcon
   },
   {
+    name: 'Sponsors',
+    route: 'SponsorScreen',
+    icon: 'phone-portrait',
+    bg: '#DA4437',
+    iconPicture: womanhandIcon
+    // types: "4"
+  },
+  {
     name: 'Tentang App',
     route: 'AboutAppScreen',
     icon: 'phone-portrait',
@@ -56,7 +65,7 @@ const datas = [
     iconPicture: menufacesIcon
     // types: "4"
   },
-];
+]
 
 export default class SideDrawer extends Component {
   // // Prop type warnings
