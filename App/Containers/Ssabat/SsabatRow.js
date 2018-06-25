@@ -26,7 +26,7 @@ const row = ({ item, onPress, totalComment, listPelajaran }) => {
       firstText={item['title']}
       // secondText={item['contentComment']}
       rightText={date}
-      itemOnPress={() => onPress(item)}
+      // itemOnPress={() => onPress(item)}
       // badge1={totalComment}
       subListData={listPelajaran}
       renderRowBadge={() => {
@@ -34,23 +34,21 @@ const row = ({ item, onPress, totalComment, listPelajaran }) => {
       }}
       renderSubList={(subListData) => {
         return (<View style={{ flex: 1, backgroundColor: '#cdcdcd' }}>
-          <TouchableOpacity onPress={() => onPress(item)}>
-            {
-            subListData.map(subItem => (<ListItem>
-              <Body>
-                <Text>
-                  {subItem['title']}
-                </Text>
-              </Body>
-              <Right>
-                <Text note>
-                  {moment(new Date(subItem['tanggal'])).format('DD-MM/YY')}
-                </Text>
-                {<BadgePerSubRow contentId={subItem['_id']} />}
-              </Right>
-            </ListItem>))
-          }
-          </TouchableOpacity>
+          {
+          subListData.map(subItem => (<ListItem key={subItem['_id']} onPress={onPress} >
+            <Body>
+              <Text>
+                {subItem['title']}
+              </Text>
+            </Body>
+            <Right>
+              <Text note>
+                {moment(new Date(subItem['tanggal'])).format('DD-MM/YY')}
+              </Text>
+              {<BadgePerSubRow contentId={subItem['_id']} />}
+            </Right>
+          </ListItem>))
+        }
         </View>)
       }}
     //   avatar={avatar}

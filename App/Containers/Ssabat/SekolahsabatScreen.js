@@ -94,6 +94,7 @@ class SekolahsabatScreen extends Component {
               { pelajaranke: v.pelajaranke, triwulanke: v.triwulanke, year: v.year }
               ), ['tanggal'], ['asc'])
             return (<SsabatRow
+              key={item._id}
               item={item}
               listPelajaran={listPelajaran}
               onPress={(v) => {
