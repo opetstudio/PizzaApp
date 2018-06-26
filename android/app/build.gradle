@@ -180,7 +180,6 @@ dependencies {
     compile project(':react-native-vector-icons')
     compile project(':react-native-splash-screen')
     compile project(':react-native-i18n')
-    compile project(':react-native-fcm')
     compile project(':react-native-device-info')
     compile project(':react-native-config')
     compile project(':react-native-code-push')
@@ -198,15 +197,15 @@ dependencies {
     }
 
 //    implementation project(':react-native-firebase')
-    implementation project(':react-native-splash-screen')
-    implementation project(':react-native-code-push')
-    implementation project(':appcenter-crashes')
-    implementation project(':appcenter-analytics')
-    implementation project(':appcenter')
-    implementation project(':react-native-i18n')
-    implementation project(':react-native-config')
-    implementation project(':react-native-vector-icons')
-    implementation project(':react-native-device-info')
+//    implementation project(':react-native-splash-screen')
+//    implementation project(':react-native-code-push')
+//    implementation project(':appcenter-crashes')
+//    implementation project(':appcenter-analytics')
+//    implementation project(':appcenter')
+//    implementation project(':react-native-i18n')
+//    implementation project(':react-native-config')
+//    implementation project(':react-native-vector-icons')
+//    implementation project(':react-native-device-info')
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:26.+'
     implementation 'com.android.support:customtabs:26.+'

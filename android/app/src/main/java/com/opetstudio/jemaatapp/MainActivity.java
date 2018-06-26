@@ -5,7 +5,6 @@ import android.os.Bundle;
 
 import com.facebook.react.ReactActivity;
 import com.google.android.gms.ads.MobileAds;
-//import com.google.android.gms.ads.MobileAds;
 
 import org.devio.rn.splashscreen.SplashScreen; // here
 

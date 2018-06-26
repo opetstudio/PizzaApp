@@ -8,7 +8,6 @@ import com.facebook.react.ReactApplication;
 import com.oblador.vectoricons.VectorIconsPackage;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import com.AlexanderZaytsev.RNI18n.RNI18nPackage;
-import com.evollu.react.fcm.FIRMessagingPackage;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
 import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
 import com.microsoft.codepush.react.CodePush;
@@ -16,7 +15,6 @@ import com.microsoft.codepush.react.CodePush;
 import com.auth0.react.A0Auth0Package;
 import com.facebook.reactnative.androidsdk.FBSDKPackage;
 import com.sbugert.rnadmob.RNAdMobPackage;
-//import com.sbugert.rnadmob.RNAdMobPackage;
 import io.invertase.firebase.RNFirebasePackage;
 import io.invertase.firebase.auth.RNFirebaseAuthPackage;
 import io.invertase.firebase.database.RNFirebaseDatabasePackage;
@@ -32,7 +30,6 @@ import com.microsoft.appcenter.reactnative.appcenter.AppCenterReactNativePackage
 import com.AlexanderZaytsev.RNI18n.RNI18nPackage;
 import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
-import com.learnium.RNDeviceInfo.RNDeviceInfo;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
@@ -68,37 +65,25 @@ public class MainApplication extends MultiDexApplication implements ReactApplica
     @Override
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
-          new MainReactPackage(),
-            new VectorIconsPackage(),
-            new SplashScreenReactPackage(),
-            new RNI18nPackage(),
-            new FIRMessagingPackage(),
-            new RNDeviceInfo(),
-            new ReactNativeConfigPackage(),
-            new CodePush(null, getApplicationContext(), BuildConfig.DEBUG),
-
-
-
-            new A0Auth0Package(),
-            new FBSDKPackage(mCallbackManager),
-            new RNAdMobPackage(),
-//            new RNAdMobPackage(),
-            new RNFirebasePackage(),
-              new RNFirebaseNotificationsPackage(),
-            new RNFirebaseMessagingPackage(),
-              new RNFirebaseDatabasePackage(),
-              new RNFirebaseAuthPackage(),
-              new RNFirebaseAnalyticsPackage(),
-//            new FIRMessagingPackage(),
-            new SplashScreenReactPackage(),
-            new CodePush(getResources().getString(R.string.reactNativeCodePush_androidDeploymentKey), getApplicationContext(), BuildConfig.DEBUG),
-            new AppCenterReactNativeCrashesPackage(MainApplication.this, getResources().getString(R.string.appCenterCrashes_whenToSendCrashes)),
-            new AppCenterReactNativeAnalyticsPackage(MainApplication.this, getResources().getString(R.string.appCenterAnalytics_whenToEnableAnalytics)),
-            new AppCenterReactNativePackage(MainApplication.this),
-            new RNI18nPackage(),
-            new ReactNativeConfigPackage(),
-            new VectorIconsPackage(),
-            new RNDeviceInfo()
+        new MainReactPackage(),
+        new VectorIconsPackage(),
+        new SplashScreenReactPackage(),
+        new RNI18nPackage(),
+        new ReactNativeConfigPackage(),
+        new A0Auth0Package(),
+        new FBSDKPackage(mCallbackManager),
+        new RNAdMobPackage(),
+        new RNFirebasePackage(),
+        new RNFirebaseNotificationsPackage(),
+        new RNFirebaseMessagingPackage(),
+        new RNFirebaseDatabasePackage(),
+        new RNFirebaseAuthPackage(),
+        new RNFirebaseAnalyticsPackage(),
+        new RNDeviceInfo(),
+        new CodePush(getResources().getString(R.string.reactNativeCodePush_androidDeploymentKey), getApplicationContext(), BuildConfig.DEBUG),
+        new AppCenterReactNativeCrashesPackage(MainApplication.this, getResources().getString(R.string.appCenterCrashes_whenToSendCrashes)),
+        new AppCenterReactNativeAnalyticsPackage(MainApplication.this, getResources().getString(R.string.appCenterAnalytics_whenToEnableAnalytics)),
+        new AppCenterReactNativePackage(MainApplication.this)
       );
     }
 

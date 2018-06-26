@@ -23,19 +23,21 @@ import { getRestapi } from './RestapiSagas'
 import { getRenpagi } from './RenpagiSagas'
 import { getSsdewasa } from './SsdewasaSagas'
 import {getComment, postingComment} from './CommentSagas'
-import {getListUser} from './UserSagas'
+// import {getListUser} from './UserSagas'
 import { postSessionRegServer, loginWithSocmed } from './SessionSagas'
 
 /* ------------- API ------------- */
 
 // The API we use is only used from Sagas, so we create it here and pass along
 // to the sagas which need it.
-const host = __DEV__ ? Platform.OS === 'ios' ? 'http://localhost:8090/api/' : 'http://10.0.2.2:8090/api/' : AppConfig.backendURL
+// const host = __DEV__ ? Platform.OS === 'ios' ? 'http://localhost:8099/api/service/v1/' : 'http://10.0.2.2:8099/api/service/v1/' : AppConfig.backendURL
+const hostMiddleware = __DEV__ ? Platform.OS === 'ios' ? 'http://localhost:8099/api/service/v1/pizzaJs/api/' : 'http://10.0.2.2:8099/api/service/v1/pizzaJs/api/' : AppConfig.backendURL
+// const host = __DEV__ ? Platform.OS === 'ios' ? 'http://localhost:8090/api/' : 'http://10.0.2.2:8090/api/' : AppConfig.backendURL
 const api = DebugConfig.useFixtures ? FixtureAPI : API.create()
-const apiJemaatApp = DebugConfig.useFixtures ? FixtureAPI : API.create(host)
-const apiRestapi = DebugConfig.useFixtures ? FixtureAPI : API.create(host)
-const apiRenpagi = DebugConfig.useFixtures ? FixtureAPI : API.create(host)
-const apiSsdewasa = DebugConfig.useFixtures ? FixtureAPI : API.create(host)
+const apiJemaatApp = DebugConfig.useFixtures ? FixtureAPI : API.create(hostMiddleware)
+const apiRestapi = DebugConfig.useFixtures ? FixtureAPI : API.create(hostMiddleware)
+const apiRenpagi = DebugConfig.useFixtures ? FixtureAPI : API.create(hostMiddleware)
+const apiSsdewasa = DebugConfig.useFixtures ? FixtureAPI : API.create(hostMiddleware)
 
 /* ------------- Connect Types To Sagas ------------- */
 
