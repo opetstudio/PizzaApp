@@ -63,7 +63,13 @@ const colors = {
 
   greenPrimary: '#00b311',
   greenSecondary: '#1D9940',
-  greenLive: '#1D9940'
+  greenLive: '#1D9940',
+
+  acckitBg: '#FF480E',
+  white: '#FFFFFF',
+  black: '#1a1917',
+  acckitOrange: '#FF3700',
+  lightGray: '#cccccc'
 }
 
 export default colors

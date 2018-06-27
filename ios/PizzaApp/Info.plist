@@ -35,6 +35,8 @@
 	<string>SmzbNJW8Y4bb9MzWtz43dTXfE-zLr1P4-Uty7</string>
 	<key>FacebookAppID</key>
 	<string>267685973617313</string>
+	<key>AccountKitClientToken</key>
+	<string>dfa30bea59f55e34b86c76a9c985ad07</string>
 	<key>FacebookDisplayName</key>
 	<string>JemaatApp</string>
 	<key>LSApplicationQueriesSchemes</key>
@@ -88,6 +90,6 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<false/>
+	<true/>
 </dict>
 </plist>
