@@ -1,7 +1,7 @@
-import { StyleSheet, Platform } from 'react-native'
+import { StyleSheet } from 'react-native'
 import { Colors } from '../../Themes'
 
-const inputHeight = 60
+// const inputHeight = 60
 const tabMeasurement = 40
 
 export default StyleSheet.create({
