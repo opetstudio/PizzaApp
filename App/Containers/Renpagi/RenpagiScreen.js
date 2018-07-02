@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View } from 'react-native'
+import { Text, View, ScrollView } from 'react-native'
 import { connect } from 'react-redux'
 import {
   Container,
@@ -37,25 +37,25 @@ class RenpagiScreen extends Component {
   render () {
     return (
       <View style={{flex: 1}}>
-        <HeaderMenu
-          hasHamburger
-          hasSearch
+        {/* <HeaderMenu
+          // hasHamburger
+          // hasSearch
           navigation={this.props.navigation}
           title={labelScreen}
-        />
+        /> */}
         {/* <Content> */}
         <PaginationList
           data={this.props.allDataArr}
-          firstText={'title'}
-          secondText={''}
-          rightText={'tanggal'}
-          itemOnPress={(item) => {
-            // alert(item.title)
-            // this.props.navigation.navigate('DetailScreen', {title: 'Renungan Pagi', item, contentType: 'rp'})
-          }}
+          // firstText={'title'}
+          // secondText={''}
+          // rightText={'tanggal'}
+          // itemOnPress={(item) => {
+          //   // alert(item.title)
+          //   // this.props.navigation.navigate('DetailScreen', {title: 'Renungan Pagi', item, contentType: 'rp'})
+          // }}
           handleRefresh={this._handleRefresh}
           isLoading={this.props.fetching}
-          numberOfLines={1}
+          // numberOfLines={1}
           renderRow={(item) => <RenpagiRow item={item} onPress={(item) => this.props.navigation.navigate('DetailScreen', {title: 'Renungan Pagi', item, contentType: 'rp'})} />}
           />
         <FabCreate />

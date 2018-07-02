@@ -46,6 +46,8 @@
 		2F302F8C20BC09D40013C7EC /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F302F8B20BC09D40013C7EC /* libz.tbd */; };
 		2F302F9920BC0C2E0013C7EC /* libCodePush.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F302F9620BC0C0A0013C7EC /* libCodePush.a */; };
 		2F30321E20BC1F810013C7EC /* libSplashScreen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F30321D20BC1F640013C7EC /* libSplashScreen.a */; };
+		2F67D94E20E9D3430078C445 /* libBVLinearGradient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F67D91C20E9D30C0078C445 /* libBVLinearGradient.a */; };
+		2F67D9BE20E9DA900078C445 /* libBVLinearGradient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F67D91C20E9D30C0078C445 /* libBVLinearGradient.a */; };
 		2FD0378920BFB7F7004D6564 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2FD0378820BFB7F7004D6564 /* GoogleService-Info.plist */; };
 		2FDBDBC120E0F97A0078CA5E /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FDBDBC020E0F97A0078CA5E /* FBSDKShareKit.framework */; };
 		2FEA787020E23DCD00661602 /* AccountKitStrings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2FEA786E20E23DCD00661602 /* AccountKitStrings.bundle */; };
@@ -322,6 +324,20 @@
 			remoteGlobalIDString = 134814201AA4EA6300B7C361;
 			remoteInfo = A0Auth0;
 		};
+		2F67D91920E9D30C0078C445 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2F67D91020E9D30B0078C445 /* BVLinearGradient.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = BVLinearGradient;
+		};
+		2F67D91B20E9D30C0078C445 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2F67D91020E9D30B0078C445 /* BVLinearGradient.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 64AA15081EF7F30100718508;
+			remoteInfo = "BVLinearGradient-tvOS";
+		};
 		2F6F964220C79F94005AD117 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2823CD7AFA63434AAF2C6D0A /* RCTFBSDK.xcodeproj */;
@@ -513,6 +529,7 @@
 		2F302F8B20BC09D40013C7EC /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		2F302F9020BC0C0A0013C7EC /* CodePush.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CodePush.xcodeproj; path = "../node_modules/react-native-code-push/ios/CodePush.xcodeproj"; sourceTree = "<group>"; };
 		2F30321820BC1F640013C7EC /* SplashScreen.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SplashScreen.xcodeproj; path = "../node_modules/react-native-splash-screen/ios/SplashScreen.xcodeproj"; sourceTree = "<group>"; };
+		2F67D91020E9D30B0078C445 /* BVLinearGradient.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BVLinearGradient.xcodeproj; path = "../node_modules/react-native-linear-gradient/BVLinearGradient.xcodeproj"; sourceTree = "<group>"; };
 		2FD0378820BFB7F7004D6564 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2FDBDBC020E0F97A0078CA5E /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../../../Documents/FacebookSDK/FBSDKShareKit.framework; sourceTree = "<group>"; };
 		2FEA786E20E23DCD00661602 /* AccountKitStrings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = AccountKitStrings.bundle; path = "../node_modules/react-native-facebook-account-kit/ios/AccountKitStrings.bundle"; sourceTree = "<group>"; };
@@ -583,6 +600,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */,
+				2F67D94E20E9D3430078C445 /* libBVLinearGradient.a in Frameworks */,
 				13F120F9132033BECE68E9F3 /* libPods-PizzaAppTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -601,6 +619,7 @@
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
 				00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */,
 				00C302E81ABCBA2D00DB3ED1 /* libRCTImage.a in Frameworks */,
+				2F67D9BE20E9DA900078C445 /* libBVLinearGradient.a in Frameworks */,
 				133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */,
 				00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */,
 				139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */,
@@ -895,6 +914,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		2F67D91120E9D30B0078C445 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2F67D91A20E9D30C0078C445 /* libBVLinearGradient.a */,
+				2F67D91C20E9D30C0078C445 /* libBVLinearGradient.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		2F6F963F20C79F94005AD117 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -948,6 +976,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				2F67D91020E9D30B0078C445 /* BVLinearGradient.xcodeproj */,
 				2F30321820BC1F640013C7EC /* SplashScreen.xcodeproj */,
 				2F302F9020BC0C0A0013C7EC /* CodePush.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
@@ -1203,6 +1232,10 @@
 				{
 					ProductGroup = 2F302F7320BC06D30013C7EC /* Products */;
 					ProjectRef = 284827D87F984E3A88B79E2B /* AppCenterReactNativeCrashes.xcodeproj */;
+				},
+				{
+					ProductGroup = 2F67D91120E9D30B0078C445 /* Products */;
+					ProjectRef = 2F67D91020E9D30B0078C445 /* BVLinearGradient.xcodeproj */;
 				},
 				{
 					ProductGroup = 2F302F9120BC0C0A0013C7EC /* Products */;
@@ -1519,6 +1552,20 @@
 			fileType = archive.ar;
 			path = libA0Auth0.a;
 			remoteRef = 2F62AD2020CE9E3D006E8E3F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2F67D91A20E9D30C0078C445 /* libBVLinearGradient.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libBVLinearGradient.a;
+			remoteRef = 2F67D91920E9D30C0078C445 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2F67D91C20E9D30C0078C445 /* libBVLinearGradient.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libBVLinearGradient.a;
+			remoteRef = 2F67D91B20E9D30C0078C445 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		2F6F964320C79F94005AD117 /* libRCTFBSDK.a */ = {
@@ -2049,7 +2096,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.opetstudio.jemaatapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.opetstudio.iphcloud;
 				PRODUCT_NAME = JemaatApp;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -2114,7 +2161,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.opetstudio.jemaatapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.opetstudio.iphcloud;
 				PRODUCT_NAME = JemaatApp;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

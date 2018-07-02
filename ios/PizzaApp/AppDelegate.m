@@ -56,7 +56,7 @@
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
-//  [SplashScreen show];  // here
+  [SplashScreen show];  // here
   
   [RNFirebaseNotifications configure];
   [GADMobileAds configureWithApplicationID:@"ca-app-pub-3773214315606599~1905069305"];

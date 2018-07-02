@@ -18,6 +18,7 @@ export default class AdsBanner extends Component {
   // }
 
   render () {
+    if (!AppConfig.isAdsActive) return null
     return (
       <AdMobBanner
         adSize='fullBanner'

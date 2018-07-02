@@ -12,22 +12,22 @@ import HeaderMenu from '../Components/HeaderMenu'
 // Styles
 import styles from './Styles/AboutAppScreenStyle'
 
-const labelScreen = 'Tentang JemaatApp'
+const labelScreen = 'Tentang IPH'
 
 class AboutAppScreen extends Component {
   render () {
     return (
       <Container>
         <HeaderMenu
-          hasHamburger
-          hasSearch
+          // hasHamburger
+          // hasSearch
           navigation={this.props.navigation}
           title={labelScreen}
         />
         <Content>
           <ScrollView style={styles.container}>
             <KeyboardAvoidingView behavior='position'>
-              <Text>Tentang Jemaat App</Text>
+              <Text>Tentang IPH-Online. Env: {__DEV__}</Text>
             </KeyboardAvoidingView>
           </ScrollView>
         </Content>

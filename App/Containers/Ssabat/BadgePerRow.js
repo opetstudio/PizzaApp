@@ -7,6 +7,7 @@ import {
 import {CommentSelectors} from '../../Redux/CommentRedux'
 
 const row = ({ totalComment }) => {
+  if (totalComment === 0) return null
   return (<Badge primary>
     <Text>{totalComment}</Text>
   </Badge>)

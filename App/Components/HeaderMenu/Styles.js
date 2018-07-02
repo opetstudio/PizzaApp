@@ -8,7 +8,7 @@ export default StyleSheet.create({
     flex: 1
   },
   header: {
-    backgroundColor: Colors.bluePrimary,
+    backgroundColor: Colors.colorPrimary,
     // backgroundColor: Colors.darkGreyTertiary2,
     flexDirection: 'row',
     justifyContent: 'space-between',

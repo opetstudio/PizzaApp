@@ -33,11 +33,11 @@ class ButtonLoginFBAccountKit extends React.Component {
             }
           })
         } else {
-          // console.log('No user account logged');
+          // __DEV__ && console.log('No user account logged');
         }
       })
       .catch(e => {
-        // console.log('Failed to get current access token', e)
+        // __DEV__ && console.log('Failed to get current access token', e)
       })
   }
   _configureAccountKit () {
@@ -68,11 +68,10 @@ class ButtonLoginFBAccountKit extends React.Component {
     })
   }
   _onErrorFbAccountKit (e) {
-    // console.log(e);
+    // __DEV__ && console.log(e);
     alert('errrrror')
   }
   _onLogin (token) {
-    console.log('onLogin')
     if (!token) {
       console.warn('User canceled login')
     } else {
@@ -81,9 +80,7 @@ class ButtonLoginFBAccountKit extends React.Component {
         //   authToken: token,
         //   loggedAccount: account
         // })
-        console.log('cek2')
         if (account) {
-          console.log('cek2')
           this.props.onLogedIn(token, account)
         }
       })
@@ -98,7 +95,6 @@ class ButtonLoginFBAccountKit extends React.Component {
   //       })
   //     })
   //     .catch(e => {
-  //       // console.log('Failed to logout', e);
   //     })
   // }
   render () {

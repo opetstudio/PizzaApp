@@ -12,7 +12,7 @@ const menufacesIcon = Images.menufaces
 const datas = [
   {
     name: 'Home',
-    route: 'HomeScreen',
+    route: 'CPDashboardScreen',
     icon: 'home',
     bg: '#C5F442',
     fontColor: '#00bfff'

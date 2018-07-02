@@ -28,5 +28,12 @@
    "login-method-text1": "Login With",  
    "drawer-support": "Support",
    "drawer-logout": "Logout", 
-   "drawer-login": "Login"     
+   "drawer-login": "Login",
+   "TITLE-CAROUSAL-BESTSELLER": "Best Seller",
+   "TITLE-CAROUSAL-POPULAR": "Popular",
+   "dashboard-view-more": "More",
+   "dashboard-more": "More",
+   "tab-renungan": "Renungan Pagi",
+   "tab-ssabat": "Sekolah Sabat",
+   "header-message": "Renungan"
 }

@@ -48,7 +48,6 @@ class LoginOption extends Component {
     }
   }
   _onLogedIn (token, account) {
-    console.log('okeeeeee user is logedin')
     // alert('on logedin')
     // const { screenProps } = this.props;
     // if (screenProps) {

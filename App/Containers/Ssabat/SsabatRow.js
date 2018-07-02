@@ -17,6 +17,7 @@ import {CommentSelectors} from '../../Redux/CommentRedux'
 import StyledRow2 from '../../Components/StyledRow2'
 import BadgePerRow from './BadgePerRow'
 import BadgePerSubRow from './BadgePerSubRow'
+import AppConfig from '../../Config/AppConfig'
 
 const row = ({ item, onPress, totalComment, listPelajaran }) => {
   const date = moment(new Date(item['tanggal'])).format('DD-MM/YY')
@@ -30,7 +31,7 @@ const row = ({ item, onPress, totalComment, listPelajaran }) => {
       // badge1={totalComment}
       subListData={listPelajaran}
       renderRowBadge={() => {
-        return <BadgePerRow listPelajaran={listPelajaran} />
+        return AppConfig.isCommentActive && <BadgePerRow listPelajaran={listPelajaran} />
       }}
       renderSubList={(subListData) => {
         return (<View style={{ flex: 1, backgroundColor: '#cdcdcd' }}>
@@ -45,7 +46,7 @@ const row = ({ item, onPress, totalComment, listPelajaran }) => {
               <Text note>
                 {moment(new Date(subItem['tanggal'])).format('DD-MM/YY')}
               </Text>
-              {<BadgePerSubRow contentId={subItem['_id']} />}
+              {AppConfig.isCommentActive && <BadgePerSubRow contentId={subItem['_id']} />}
             </Right>
           </ListItem>))
         }

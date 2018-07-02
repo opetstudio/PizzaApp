@@ -5,6 +5,7 @@ import android.support.multidex.MultiDexApplication;
 
 import com.facebook.appevents.AppEventsLogger;
 import com.facebook.react.ReactApplication;
+import com.BV.LinearGradient.LinearGradientPackage;
 import io.underscope.react.fbak.RNAccountKitPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
@@ -67,6 +68,7 @@ public class MainApplication extends MultiDexApplication implements ReactApplica
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
         new MainReactPackage(),
+            new LinearGradientPackage(),
             new RNAccountKitPackage(),
         new VectorIconsPackage(),
         new SplashScreenReactPackage(),

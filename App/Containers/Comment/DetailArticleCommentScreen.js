@@ -114,14 +114,14 @@ class DetailArticleCommentScreen extends Component {
         />
         <PaginationList
           data={this.props.allDataArr}
-          firstText={'createdby'}
-          secondText={'contentComment'}
-          rightText={'createdon'}
-          avatar={'img'}
-          itemOnPress={(item) => {
-            // alert(item.title)
-            // this.props.navigation.navigate('DetailScreen', {title: 'Renungan Pagi', item})
-          }}
+          // firstText={'createdby'}
+          // secondText={'contentComment'}
+          // rightText={'createdon'}
+          // avatar={'img'}
+          // itemOnPress={(item) => {
+          //   // alert(item.title)
+          //   // this.props.navigation.navigate('DetailScreen', {title: 'Renungan Pagi', item})
+          // }}
           handleRefresh={this._handleRefresh}
           isLoading={this.props.isFetching}
           renderRow={this._renderListRow}

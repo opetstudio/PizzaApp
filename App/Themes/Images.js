@@ -52,7 +52,16 @@ const images = {
   upcomingIcon: require('../Images/upcoming_icon/upcoming.png'),
   replayIcon: require('../Images/replay_icon/replay.png'),
   freeIcon: require('../Images/free_icon/free.png'),
-  womanhandIcon: require('../Images/womanhandIcon.png')
+  womanhandIcon: require('../Images/womanhandIcon.png'),
+
+  defaultImageBanner: require('../Images/default_image/banner/banner.png'),
+  defaultImageBannerLandscape: require('../Images/default_image/banner_landscape/banner_landscape.png'),
+  defaultImageCarousal: require('../Images/default_image/carousal/carousal.png'),
+  defaultImageSearchLandscape: require('../Images/default_image/search_landscape/search_landscape.png'),
+
+  nextArrow: require('../Images/next_arrow/next_arrow.png'),
+  info: require('../Images/info.png'),
+  chevronRightImg: require('../Images/chevron_right.png')
 }
 
 export default images

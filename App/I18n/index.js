@@ -12,14 +12,14 @@ const translateOrFallback = (initialMsg, defaultVal) => {
     return '' // We don't return any message as we don't know what to send
   }
 
-  let localMsg = I18n.t(initialMsg)
+  let localMsg = I18n.t(initialMsg, defaultVal)
 
   // The translation does not exist, the default message is not very sexy
   // Instead we return the message we tried to translate
   if (missingTranslationRegex.test(localMsg)) {
     __DEV__ && console.log(`translation "${initialMsg}" does not exists in translations files`)
 
-    return defaultVal || initialMsg
+    return initialMsg
   }
 
   return localMsg

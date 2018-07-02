@@ -16,6 +16,7 @@ import styles from './Styles'
 import { Images } from '../../Themes'
 import DrawerHeader from '../../Containers/DrawerHeader'
 import DrawerFooter from '../../Containers/DrawerFooter'
+import AppConfig from '../../Config/AppConfig'
 
 // const drawerCover = Images.drawerCover
 // const drawerImage = Images.drawerImage
@@ -100,9 +101,9 @@ export default class Drawer extends Component {
               />
             </View>
           </ScrollView>
-          <DrawerFooter
+          {AppConfig.isDrawerFooterActive && <DrawerFooter
             navigation={this.props.navigation}
-          />
+          />}
         </View>
       </ImageBackground>
     )

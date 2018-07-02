@@ -16,5 +16,10 @@ export default {
     clientId: cred.AUTH0_CLIENT_ID,
     host: cred.AUTH0_HOST
   },
-  backendURL: cred.backendURL
+  backendURL: cred.backendURL,
+  isContributorSpaceActive: false,
+  isCommentActive: false,
+  isDrawerFooterActive: false,
+  isAdsActive: false,
+  env: Config.ENV
 }

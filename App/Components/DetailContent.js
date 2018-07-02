@@ -37,7 +37,7 @@ export default class DetailContent extends Component {
     const {title, htmlContent, date, contributorSpace, showComments, contentId, contentType} = this.props
     const formatedDate = moment(new Date(date)).format('dddd DD-MMM YYYY')
 
-    const html = `<h3>${formatedDate}</h3><h2>${title}</h2><div>${htmlContent}</div>${AppConfig.getContributorSpace(contributorSpace)}`
+    const html = `<h3>${formatedDate}</h3><h2>${title}</h2><div>${htmlContent}</div>${AppConfig.isContributorSpaceActive ? AppConfig.getContributorSpace(contributorSpace) : ''}`
     return (
       <View style={{ flex: 1 }}>
         <View style={{ flex: 1 }}>
@@ -46,14 +46,14 @@ export default class DetailContent extends Component {
             source={{ html }}
             scalesPageToFit={Platform.OS === 'android'}
           />
-          <View style={{alignSelf: 'center', backgroundColor: 'transparent', position: 'absolute', bottom: 5}}>
+          {AppConfig.isCommentActive && <View style={{alignSelf: 'center', backgroundColor: 'transparent', position: 'absolute', bottom: 5}}>
             <Button
               onPress={() => showComments(contentId, contentType)}
               style={{ backgroundColor: Colors.colorSecondary10 }}
             >
               <Text>Comments</Text>
             </Button>
-          </View>
+          </View>}
         </View>
         <FabShare />
         <AdsBanner />

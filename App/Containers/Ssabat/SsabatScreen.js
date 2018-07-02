@@ -57,12 +57,12 @@ class SsabatScreen extends Component {
   render () {
     return (
       <View style={{flex: 1}}>
-        <HeaderMenu
-          hasHamburger
-          hasSearch
+        {/* <HeaderMenu
+          // hasHamburger
+          // hasSearch
           navigation={this.props.navigation}
           title={labelScreen}
-        />
+        /> */}
         {/* <Content> */}
         {/* <Button
             onPress={() => this.showPopup()}
@@ -73,20 +73,20 @@ class SsabatScreen extends Component {
           </Button> */}
         <PaginationList
           data={this.props.allDataArr}
-          firstText={'title'}
-          secondText={''}
-          rightText={'tanggal'}
-          itemOnPress={(v) => {
-              // alert(item.title)
-            // const listPelajaran = _.orderBy(_.filter(
-            //     this.props.allDataSsdewasaArr,
-            //     { pelajaranke: v.pelajaranke, triwulanke: v.triwulanke, year: v.year }
-            //     ), ['tanggal'], ['asc'])
-            // this.props.navigation.navigate('DetailContentDeckSwiperScreen', {title: 'Sekolah Sabat', alldata: listPelajaran, contentType: 'ss'})
-          }}
+          // firstText={'title'}
+          // secondText={''}
+          // rightText={'tanggal'}
+          // itemOnPress={(v) => {
+          //     // alert(item.title)
+          //   // const listPelajaran = _.orderBy(_.filter(
+          //   //     this.props.allDataSsdewasaArr,
+          //   //     { pelajaranke: v.pelajaranke, triwulanke: v.triwulanke, year: v.year }
+          //   //     ), ['tanggal'], ['asc'])
+          //   // this.props.navigation.navigate('DetailContentDeckSwiperScreen', {title: 'Sekolah Sabat', alldata: listPelajaran, contentType: 'ss'})
+          // }}
           handleRefresh={this._handleRefresh}
           isLoading={this.props.fetching}
-          numberOfLines={1}
+          // numberOfLines={1}
           renderRow={(item) => {
             const v = item
             const listPelajaran = _.orderBy(_.filter(

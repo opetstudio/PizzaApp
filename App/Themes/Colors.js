@@ -23,8 +23,10 @@ const colors = {
   banner: '#5F3E63',
   text: '#E0D7E5',
   backgroundDark: '#202020',
-  colorPrimaryDark: '#008395',
-  colorPrimary: '#00BAD4',
+  backgroundPrimary: '#202020',
+
+  colorPrimaryDark: '#000000',
+  colorPrimary: '#000000',
   colorPrimary1: '#17DFFB',
 
   colorSecondary10: '#FFAE00',
@@ -69,7 +71,13 @@ const colors = {
   white: '#FFFFFF',
   black: '#1a1917',
   acckitOrange: '#FF3700',
-  lightGray: '#cccccc'
+  lightGray: '#cccccc',
+  blackPrimary: '#000000',
+  blackSecondaryOpacity: 'rgba(0,0,0,0.32)',
+  blackPrimaryOpacity: 'rgba(0,0,0,0.6)',
+
+  slateGreyPrimary: '#516376',
+  slateGreySecondary: '#333e48'
 }
 
 export default colors
