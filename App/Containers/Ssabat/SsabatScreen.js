@@ -1,18 +1,15 @@
 import React, { Component } from 'react'
-import { ScrollView, Text, KeyboardAvoidingView, View } from 'react-native'
+import { View } from 'react-native'
 import { connect } from 'react-redux'
-import {
-  Container,
-  Content,
-  Button
-} from 'native-base'
+// import {
+//   Container,
+//   Content,
+//   Button
+// } from 'native-base'
 import _ from 'lodash'
-import HeaderMenu from '../../Components/HeaderMenu'
+// import HeaderMenu from '../../Components/HeaderMenu'
 import PaginationList from '../../Components/PaginationList'
-import {
-  AdMobBanner
-} from 'react-native-admob'
-import AppConfig from '../../Config/AppConfig'
+// import AppConfig from '../../Config/AppConfig'
 
 import AdsBanner from '../../Components/AdsBanner'
 import SsabatRow from './SsabatRow'
@@ -23,20 +20,29 @@ import FabCreate from '../FabCreate'
 import SsdewasaActions, {SsdewasaSelectors} from '../../Redux/SsdewasaRedux'
 
 // redux
-import PopupActions, { reducer, INITIAL_STATE } from '../../Redux/PopupRedux'
+import PopupActions from '../../Redux/PopupRedux'
 
 // Styles
-import styles from './styles'
+// import styles from './styles'
 
-const labelScreen = 'Sekolah Sabat'
+// const labelScreen = 'Sekolah Sabat'
 
 class SsabatScreen extends Component {
   constructor (props) {
     super(props)
+    this.state = {
+      allDataArr: []
+    }
     this._handleRefresh = this._handleRefresh.bind(this)
   }
   componentWillMount () {
+    this.state.allDataArr = _.orderBy(this.props.allDataArr, ['tanggal'], ['desc'])
     this.props.ssdewasaRequest({ newerModifiedon: this.props.maxModifiedon })
+  }
+  componentWillReceiveProps (nextProps) {
+    this.setState({
+      allDataArr: _.orderBy(nextProps.allDataArr, ['tanggal'], ['desc'])
+    })
   }
   _handleRefresh () {
     this.props.ssdewasaRequest({ newerModifiedon: this.props.maxModifiedon })
@@ -72,7 +78,7 @@ class SsabatScreen extends Component {
             <Text>Menu</Text>
           </Button> */}
         <PaginationList
-          data={this.props.allDataArr}
+          data={this.state.allDataArr}
           // firstText={'title'}
           // secondText={''}
           // rightText={'tanggal'}

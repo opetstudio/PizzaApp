@@ -12,7 +12,7 @@ import HeaderMenu from '../Components/HeaderMenu'
 // Styles
 import styles from './Styles/AboutAppScreenStyle'
 
-const labelScreen = 'Tentang IPH'
+const labelScreen = 'About IPH'
 
 class AboutAppScreen extends Component {
   render () {

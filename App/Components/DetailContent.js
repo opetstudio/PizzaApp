@@ -51,7 +51,7 @@ export default class DetailContent extends Component {
               onPress={() => showComments(contentId, contentType)}
               style={{ backgroundColor: Colors.colorSecondary10 }}
             >
-              <Text>Comments</Text>
+              <Text>Discussion</Text>
             </Button>
           </View>}
         </View>

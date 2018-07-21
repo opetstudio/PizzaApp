@@ -1,11 +1,13 @@
 import '../Config'
-import DebugConfig from '../Config/DebugConfig'
+// import DebugConfig from '../Config/DebugConfig'
 import React, { Component } from 'react'
 import { Provider } from 'react-redux'
+import { AppState } from 'react-native'
 import RootContainer from './RootContainer'
 import createStore from '../Redux'
 import codePush from 'react-native-code-push'
-
+import firebase from 'react-native-firebase'
+import AppConfig from '../Config/AppConfig'
 
 // create our store
 const store = createStore()
@@ -19,10 +21,28 @@ const store = createStore()
  *
  * We separate like this to play nice with React Native's hot reloading.
  */
-// const codePushOptions = { checkFrequency: codePush.CheckFrequency.MANUAL };
-const codePushOptions = { checkFrequency: codePush.CheckFrequency.ON_APP_RESUME }
+const codePushOptions = { checkFrequency: codePush.CheckFrequency.MANUAL }
+// const codePushOptions = { checkFrequency: codePush.CheckFrequency.ON_APP_RESUME }
 
 class App extends Component {
+  constructor (props) {
+    super(props)
+    this._handleAppStateChange = this._handleAppStateChange.bind(this)
+    firebase.admob().initialize(AppConfig.adPubID)
+  }
+  componentWillMount () {
+    AppState.addEventListener('change', this._handleAppStateChange)
+  }
+  _handleAppStateChange () {
+    this._onButtonPress()
+    // FCM.setBadgeNumber(0)
+  }
+  _onButtonPress () {
+    codePush.sync({
+      updateDialog: true,
+      installMode: codePush.InstallMode.IMMEDIATE
+    })
+  }
   render () {
     return (
       <Provider store={store}>
@@ -33,7 +53,7 @@ class App extends Component {
 }
 
 // allow reactotron overlay for fast design in dev mode
-export default DebugConfig.useReactotron
-  ? console.tron.overlay(App)
-  : codePush(codePushOptions)(App)
-// export default codePush(codePushOptions)(App)
+// export default DebugConfig.useReactotron
+//   ? console.tron.overlay(App)
+//   : codePush(codePushOptions)(App)
+export default codePush(codePushOptions)(App)

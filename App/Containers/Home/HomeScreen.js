@@ -9,7 +9,7 @@ import {
 import {path} from 'ramda'
 // import { LoginButton } from 'react-native-fbsdk'
 import HeaderMenu from '../../Components/HeaderMenu'
-import LoginOption from '../../Containers/Auth/LoginOption'
+// import LoginOption from '../../Containers/Auth/LoginOption'
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
 // import API from '../Services/Api'
@@ -240,7 +240,6 @@ class HomeScreen extends Component {
                 backgroundColor: 'transparent'
               }}
             >
-              
               {!this.props.currentUser && this.renderUnloggedinSection()}
               {this.props.currentUser && this.renderLoggedInSection()}
               {/* <LoginOption /> */}

@@ -1,29 +1,28 @@
 import React from 'react'
-import {View} from 'react-native'
+import {View, Text} from 'react-native'
 import { StackNavigator, DrawerNavigator, TabNavigator, TabBarBottom } from 'react-navigation'
-import {Thumbnail} from 'native-base'
+// import {Thumbnail} from 'native-base'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import LoginMethodScreen from '../Containers/Auth/LoginMethodScreen'
 import DetailContentDeckSwiperScreen from '../Containers/DetailContentDeckSwiperScreen'
 import DetailScreen from '../Containers/DetailScreen'
 import SermonScreen from '../Containers/Sermon'
-import HomeScreen from '../Containers/Home/HomeScreen'
+// import HomeScreen from '../Containers/Home/HomeScreen'
 import AboutAppScreen from '../Containers/AboutAppScreen'
-import RenpagiScreen from '../Containers/Renpagi/RenpagiScreen'
-import SsabatScreen from '../Containers/Ssabat/SsabatScreen'
+// import RenpagiScreen from '../Containers/Renpagi/RenpagiScreen'
+// import SsabatScreen from '../Containers/Ssabat/SsabatScreen'
 import CPDashboardScreen from '../Containers/CPDashboard/CPDashboardScreen'
 // import LaunchScreen from '../Containers/LaunchScreen'
 import Drawer from '../Containers/Drawer'
-import PresentationScreen from '../../ignite/DevScreens/PresentationScreen'
+// import PresentationScreen from '../../ignite/DevScreens/PresentationScreen'
 import DetailArticleCommentScreen from '../Containers/Comment/DetailArticleCommentScreen'
-import SponsorScreen from '../Containers/Sponsor/SponsorScreen'
-import SupportScreen from '../Containers/Support/SupportScreen'
+// import SponsorScreen from '../Containers/Sponsor/SponsorScreen'
+// import SupportScreen from '../Containers/Support/SupportScreen'
 import navigatorHelper from '../Lib/helper/navigator'
 import {isIphoneX} from '../Lib/helper/platform'
 
 import styles, {tabNavigationStyles} from './Styles/NavigationStyles'
-import {Images, Colors} from '../Themes'
-
+import {Colors} from '../Themes'
 
 // const renunganTabNab = TabNavigator({
 //   RenunganpagiScreen: { screen: RenpagiScreen, navigationOptions: { drawerLabel: 'RenpagiScreen' } },
@@ -80,7 +79,7 @@ const menuRoutes = {
   // SekolahsabatScreen: { screen: SsabatScreen, navigationOptions: { drawerLabel: 'SsabatScreen' } },
   // SponsorScreen: { screen: SponsorScreen, navigationOptions: { drawerLabel: 'Sponsors' } },
   // SupportScreen: { screen: SupportScreen, navigationOptions: { drawerLabel: 'Support' } },
-  AboutAppScreen: { screen: AboutAppScreen, navigationOptions: { drawerLabel: 'Tentang JemaatApp' } },
+  AboutAppScreen: { screen: AboutAppScreen, navigationOptions: { drawerLabel: 'Tentang JemaatApp' } }
   // PresentationScreen: { screen: (props) => <PresentationScreen screenProps={{ toggle: () => {} }} /> }
 }
 const PrimaryNav = DrawerNavigator(menuRoutes, {
@@ -93,32 +92,39 @@ const PrimaryNav = DrawerNavigator(menuRoutes, {
   contentComponent: props => <Drawer {...props} />
 })
 
-
-
 const TabNav = TabNavigator(menuRoutes, {
   navigationOptions: ({ navigation }) => ({
     tabBarIcon: ({ focused, tintColor }) => {
       const { routeName } = navigation.state
       let iconName
+      let labelName
       if (routeName === 'CPDashboardScreen') {
         iconName = `ios-home${focused ? '' : '-outline'}`
+        labelName = 'Home'
       } else if (routeName === 'SermonScreen') {
         iconName = `ios-partly-sunny${focused ? '' : '-outline'}`
-        const middleStyle = {
-          // borderRightWidth: 2,
-          // borderRightColor: '#777',
-          // borderLeftWidth: 2,
-          // borderLeftColor: '#777'
-        }
+        labelName = 'Devotion'
+        // const middleStyle = {
+        //   // borderRightWidth: 2,
+        //   // borderRightColor: '#777',
+        //   // borderLeftWidth: 2,
+        //   // borderLeftColor: '#777'
+        // }
         // return <View style={[styles.itemTabNavigator, middleStyle]}><Thumbnail source={Images.renunganPagiIcon} small square /></View>
       } else if (routeName === 'AboutAppScreen') {
+        labelName = 'About'
         iconName = `ios-information-circle${focused ? '' : '-outline'}`
       }
 
       // You can return any component that you like here! We usually use an
       // icon component from react-native-vector-icons
       // return <View style={[styles.itemTabNavigator]}><Thumbnail source={Images.renunganPagiIcon} small square /></View>
-      return <Ionicons name={iconName} size={25} color={tintColor} />
+      return (
+        <View style={{justifyContent: 'center', flex: 1, alignItems: 'center'}}>
+          <Ionicons name={iconName} size={25} color={tintColor} />
+          <Text>{labelName}</Text>
+        </View>
+      )
     }
   }),
   ...TabNavigator.Presets.AndroidTopTabs,

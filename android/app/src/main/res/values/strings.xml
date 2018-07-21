@@ -1,10 +1,16 @@
 <resources>
-    <string moduleConfig="true" name="reactNativeCodePush_androidDeploymentKey">vL3j1b5kYIvGxefzMhBgEWhiyA5LBy30evK17</string>
+    <string moduleConfig="true" name="reactNativeCodePush_androidDeploymentKey">9KPxrL2JmB5_lDsJw2HzfLczlsoRry03MhlNX</string>
     <string name="app_name">IPH</string>
-    <string name="fb_app_id">267685973617313</string>
-    <string name="facebook_app_id">267685973617313</string>
-    <string name="fb_login_protocol_scheme">fb267685973617313</string>
+    <string name="fb_app_id">1359614610840225</string>
+    <string name="facebook_app_id">1359614610840225</string>
+    <string name="fb_login_protocol_scheme">fb1359614610840225</string>
     <string name="ak_client_token">dfa30bea59f55e34b86c76a9c985ad07</string>
     <string name="appCenterAnalytics_whenToEnableAnalytics" moduleConfig="true">ALWAYS_SEND</string>
     <string name="appCenterCrashes_whenToSendCrashes" moduleConfig="true">ALWAYS_SEND</string>
+    <string name="CodePushPublicKey">
+    -----BEGIN PUBLIC KEY-----
+    MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKxC9Z4j6nKpuy6tKPUA4EJIoUEk/M1N
+    BFy95cnuhb/U2+ZdDlJAuvYQJoR75Pk6pbQ2LYwKz+NtQ2SPtx6AnQ0CAwEAAQ==
+    -----END PUBLIC KEY-----
+  </string>
 </resources>

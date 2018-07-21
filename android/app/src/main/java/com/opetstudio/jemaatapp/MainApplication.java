@@ -16,12 +16,12 @@ import com.microsoft.codepush.react.CodePush;
 
 import com.auth0.react.A0Auth0Package;
 import com.facebook.reactnative.androidsdk.FBSDKPackage;
-import com.sbugert.rnadmob.RNAdMobPackage;
 import io.invertase.firebase.RNFirebasePackage;
 import io.invertase.firebase.auth.RNFirebaseAuthPackage;
 import io.invertase.firebase.database.RNFirebaseDatabasePackage;
 import io.invertase.firebase.messaging.RNFirebaseMessagingPackage;
 import io.invertase.firebase.notifications.RNFirebaseNotificationsPackage;
+import io.invertase.firebase.admob.RNFirebaseAdMobPackage;
 import io.invertase.firebase.analytics.RNFirebaseAnalyticsPackage;
 //import com.evollu.react.fcm.FIRMessagingPackage;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
@@ -76,7 +76,7 @@ public class MainApplication extends MultiDexApplication implements ReactApplica
         new ReactNativeConfigPackage(),
         new A0Auth0Package(),
         new FBSDKPackage(mCallbackManager),
-        new RNAdMobPackage(),
+        new RNFirebaseAdMobPackage(),
         new RNFirebasePackage(),
         new RNFirebaseNotificationsPackage(),
         new RNFirebaseMessagingPackage(),

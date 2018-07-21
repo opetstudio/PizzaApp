@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import {View} from 'react-native'
+import {View, BackHandler} from 'react-native'
 
 import {styles} from './styles'
 import HeaderMenu from '../HeaderMenu'
@@ -27,6 +27,25 @@ class CPDashboard extends Component {
     wcmsUrl: '',
     providerConfig: []
   }
+  // constructor (props) {
+  //   super(props)
+  //   this._backHandle = this._backHandle.bind(this)
+  // }
+  // componentWillMount () {
+  //   BackHandler.addEventListener('hardwareBackPress', this._backHandle)
+  // }
+  // componentWillUnmount () {
+  //   BackHandler.removeEventListener('hardwareBackPress')
+  // }
+  // _backHandle () {
+  //   const { dispatch, navigation, nav } = this.props
+  //   // if (nav.routes.length === 1 && (nav.routes[0].routeName === 'Login' || nav.routes[0].routeName === 'Start')) {
+  //   //   return false
+  //   // }
+  // // if (shouldCloseApp(nav)) return false
+  //   dispatch({ type: 'Navigation/BACK' })
+  //   return true
+  // }
   render () {
     const {
         carousalData,
@@ -55,7 +74,7 @@ class CPDashboard extends Component {
         // hasHamburger
         // hasSearch
         navigation={navigation}
-        title={'IPH-Online'}
+        title={'IPH-Cloud'}
         />
       )
     return (

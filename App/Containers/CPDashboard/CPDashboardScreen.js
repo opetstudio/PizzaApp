@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-import { get } from 'lodash'
+// import { bindActionCreators } from 'redux'
+// import { get } from 'lodash'
 
 import CPDashboard from '../../Components/CPDashboard'
 

@@ -6,6 +6,7 @@ import {
   Content,
   Button
 } from 'native-base'
+import _ from 'lodash'
 import HeaderMenu from '../../Components/HeaderMenu'
 import PaginationList from '../../Components/PaginationList'
 // Add Actions - replace 'Your' with whatever your reducer is called :)
@@ -25,11 +26,18 @@ class RenpagiScreen extends Component {
   constructor (props) {
     super(props)
     this.state = {
+      allDataArr: []
     }
     this._handleRefresh = this._handleRefresh.bind(this)
   }
   componentWillMount () {
+    this.state.allDataArr = _.orderBy(this.props.allDataArr, ['tanggal'], ['desc'])
     this.props.renpagiRequest({ newerModifiedon: this.props.maxModifiedon })
+  }
+  componentWillReceiveProps (nextProps) {
+    this.setState({
+      allDataArr: _.orderBy(nextProps.allDataArr, ['tanggal'], ['desc'])
+    })
   }
   _handleRefresh () {
     this.props.renpagiRequest({ newerModifiedon: this.props.maxModifiedon })
@@ -45,7 +53,7 @@ class RenpagiScreen extends Component {
         /> */}
         {/* <Content> */}
         <PaginationList
-          data={this.props.allDataArr}
+          data={this.state.allDataArr}
           // firstText={'title'}
           // secondText={''}
           // rightText={'tanggal'}
